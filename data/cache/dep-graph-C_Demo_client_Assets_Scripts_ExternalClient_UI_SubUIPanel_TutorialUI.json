@@ -1,0 +1,153 @@
+{
+  "nodes": {
+    "AssistantPanel.cs": {
+      "classes": [
+        "AssistantPanel",
+        "AssistantPanelData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "Client.UI.BattleUI",
+        "UnityEngine.UI",
+        "TMPro",
+        "Unity.VisualScripting",
+        "UnityEngine",
+        "System",
+        "System.Collections",
+        "ClientCommon"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "MainUITutorialPanel.cs": {
+      "classes": [
+        "MainUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System.Collections.Generic",
+        "Gameplay.Manager",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneTutorialUIElement.cs": {
+      "classes": [
+        "PlaneTutorialUIElement"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneUITutorialPanel.cs": {
+      "classes": [
+        "PlaneUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System.Collections.Generic",
+        "Gameplay.Manager",
+        "Client.UI.BattleUI",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementUITutorialPanel.cs": {
+      "classes": [
+        "SettlementUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System.Collections.Generic",
+        "Gameplay.Manager",
+        "Client.UI.BattleUI",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "UnityEngine",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "TutorialUIElement.cs": {
+      "classes": [
+        "TutorialUIElement"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    }
+  },
+  "edges": [],
+  "class_to_file": {
+    "AssistantPanel": "AssistantPanel.cs",
+    "AssistantPanelData": "AssistantPanel.cs",
+    "MainUITutorialPanel": "MainUITutorialPanel.cs",
+    "PlaneTutorialUIElement": "PlaneTutorialUIElement.cs",
+    "PlaneUITutorialPanel": "PlaneUITutorialPanel.cs",
+    "SettlementUITutorialPanel": "SettlementUITutorialPanel.cs",
+    "TutorialUIElement": "TutorialUIElement.cs"
+  },
+  "scan_dir": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI",
+  "updated_at": "2026-05-11T20:51:03+0800",
+  "total_files": 6,
+  "graphed_files": 6,
+  "total_edges": 0,
+  "scan_ms": 0
+}

@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deep: #12131c;
+  --bg-panel: #1a1b2e;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.25);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-deep);
+  color: #e5e7eb;
+  font-family: system-ui, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,1551 @@
+{
+  "available": true,
+  "status": "enabled",
+  "files_scanned": 47,
+  "methods": [],
+  "calls": [
+    {
+      "call": "PlaneEditorManager.Undo()",
+      "line": 563,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs",
+      "target_class": "PlaneEditorManager"
+    },
+    {
+      "call": "PlaneEditorManager.Redo()",
+      "line": 568,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs",
+      "target_class": "PlaneEditorManager"
+    }
+  ],
+  "events": [
+    {
+      "kind": "add_listener",
+      "text": "AddListener()",
+      "line": 79,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "kind": "remove_listener",
+      "text": "RemoveListener()",
+      "line": 78,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    }
+  ],
+  "inheritance": [],
+  "custom_rules": [
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 325,
+      "text": "p += tp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 326,
+      "text": "p_min += min / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 327,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 334,
+      "text": "p += tp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 335,
+      "text": "p_min += min / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 336,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 398,
+      "text": "fight += GetPlanePartFight(part,out var minFight, out var maxFight)",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 648,
+      "text": "p += Mathf.Abs((float)(data.Value + baseValue)) / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 649,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 654,
+      "text": "p += (float)(data.Value + baseValue) / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 655,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 732,
+      "text": "p += Mathf.Abs((float)(data.Value + baseValue)) / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 733,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 738,
+      "text": "p += (float)(data.Value + baseValue) / max",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 739,
+      "text": "count += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 26,
+      "text": "void Start()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\TutorialMask.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 83,
+      "text": "void Update()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\TutorialMask.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 104,
+      "text": "TouchController.Instance.OnTouchDown += HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 105,
+      "text": "TouchController.Instance.OnTouchUp += HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 106,
+      "text": "TouchController.Instance.OnDrag += HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 107,
+      "text": "TouchController.Instance.OnPinchZoom += HandleTouchZoom",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 268,
+      "text": "PlaneEditorCamera.transform.position += offset",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 113,
+      "text": "TouchController.Instance.OnTouchDown -= HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 114,
+      "text": "TouchController.Instance.OnTouchUp -= HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 115,
+      "text": "TouchController.Instance.OnDrag -= HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 116,
+      "text": "TouchController.Instance.OnPinchZoom -= HandleTouchZoom",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 275,
+      "text": "PlaneEditorCamera.transform.position -= offset",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mainCameraData = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 44,
+      "text": "var mainCameraData = MainCamera.GetComponent<UniversalAdditionalCameraData>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: planeCameraData = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 45,
+      "text": "var planeCameraData = PlaneCamera.GetComponent<UniversalAdditionalCameraData>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: dragRect = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 85,
+      "text": "var dragRect = PlaneEditUI_Portrait.Instance.DragArea.GetComponent<RectTransform>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\Camera\\CameraControllerManager.PlaneEditor.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 366,
+      "text": "needLoadSum += shapeSlotsLen",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 367,
+      "text": "needLoadSum += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 371,
+      "text": "needLoadSum += effSlotsLen",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 383,
+      "text": "needLoadSum += connectHash.Count",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: EditorHolder = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 157,
+      "text": "EditorHolder = Instantiate(go).GetComponent<PlaneEditorHolder>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: hitGrid = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 432,
+      "text": "var hitGrid = Instantiate(go).GetComponent<PlaneEditHitGrid>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: hitGrid = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 488,
+      "text": "var hitGrid = Instantiate(go).GetComponent<PlaneEditHitGrid>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: hitGrid = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 523,
+      "text": "var hitGrid = Instantiate(go).GetComponent<PlaneEditHitGrid>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mDragObject = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 574,
+      "text": "mDragObject = go.GetComponent<Collider2D>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: ActivePlanePart = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 576,
+      "text": "ActivePlanePart = go.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mDragObject = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 591,
+      "text": "mDragObject = go.GetComponent<Collider2D>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: ActivePlanePart = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 592,
+      "text": "ActivePlanePart = go.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mDragObject = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 652,
+      "text": "mDragObject = go.GetComponent<Collider2D>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: ActivePlanePart = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 653,
+      "text": "ActivePlanePart = go.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: img = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 1113,
+      "text": "var img = basicUI.GetComponent<Image>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 1127,
+      "text": "baseCost += partInfo.BaseCost",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 1128,
+      "text": "cost += CalculatePartUsedCost(partInfo, partInfos)",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 1491,
+      "text": "fight += partInfo.PartData.Fight",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 1506,
+      "text": "dps += partInfo.PartData.DPS",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 1521,
+      "text": "survival += partInfo.PartData.Survival",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 29,
+      "text": "TouchController.OnTouchDown += HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 30,
+      "text": "TouchController.OnTouchUp += HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 31,
+      "text": "TouchController.OnDrag += HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 32,
+      "text": "TouchController.OnPinchZoom += HandleTouchZoom",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 43,
+      "text": "TouchController.OnTouchDown -= HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 44,
+      "text": "TouchController.OnTouchUp -= HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 45,
+      "text": "TouchController.OnDrag -= HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 46,
+      "text": "TouchController.OnPinchZoom -= HandleTouchZoom",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Event.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 210,
+      "text": "private void OnExitTutorialArea(Collider2D collider)\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 636,
+      "text": "ActivePlanePart.transform.position += dir",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 637,
+      "text": "PlaneCamera.transform.position += dir",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 550,
+      "text": "ActivePlanePart.transform.position -= overFlow",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 553,
+      "text": "PlaneCamera.transform.position -= overFlow",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: sortingGroup = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 240,
+      "text": "var sortingGroup = collider.GetComponent<SortingGroup>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: partInfo = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 248,
+      "text": "var partInfo = collider.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: ActivePlanePart = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 252,
+      "text": "ActivePlanePart = collider.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: partInfo = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 318,
+      "text": "var partInfo = collider.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 383,
+      "text": "playerId += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\TutorialManager\\TutorialManager.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 384,
+      "text": "userCount += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\TutorialManager\\TutorialManager.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mTargetGraphic = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 157,
+      "text": "mTargetGraphic = GetComponent<Graphic>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\Common\\GuideCutoutMaskController.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: clickArea = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 53,
+      "text": "var clickArea = Instantiate(mClickAreaPrefab, holder.transform).GetComponent<WeaponClickAreaHolder>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\PlaneUI\\PlaneWeaponHolder.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: clickItem = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 76,
+      "text": "var clickItem = go.GetComponent<WeaponClickArea>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\PlaneUI\\PlaneWeaponHolder.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 251,
+      "text": "public async System.Threading.Tasks.Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\MainUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 152,
+      "text": "mUIToggleGroup.onToggleValueChangedEventAction += SelectToggle",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\MainUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 220,
+      "text": "mBalckMask.DOFade(0, 1).SetDelay(0.5f).onComplete += () =>\r\n                      {\r\n                          mBalckMask.gameObject.SetActive_Self(false);\r\n                      }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\MainUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 129,
+      "text": "public async Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PilotUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 134,
+      "text": "public async Task OnPause()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PilotUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 139,
+      "text": "public async Task OnResume()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PilotUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 144,
+      "text": "public void DestoryUI()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PilotUI.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mUITutorialPanel = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 47,
+      "text": "mUITutorialPanel = Instantiate(uiTutorialPanelABGameObject, TutorialRoot).GetComponent<PlaneUITutorialPanel>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlaneEditUI_Portrait.Tutorial.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 90,
+      "text": "public async Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlaneLevelUpUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 95,
+      "text": "public async Task OnPause()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlaneLevelUpUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 113,
+      "text": "public void DestoryUI()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlaneLevelUpUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 68,
+      "text": "public async Task OnEnter<T>(T _arg)\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlanePartDecomposeUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 73,
+      "text": "public async Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlanePartDecomposeUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 78,
+      "text": "public async Task OnPause()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlanePartDecomposeUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 83,
+      "text": "public async Task OnResume()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlanePartDecomposeUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 87,
+      "text": "public void DestoryUI()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlanePartDecomposeUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 93,
+      "text": "public async System.Threading.Tasks.Task OnPause()\r\n    {\r\n    }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 97,
+      "text": "public async System.Threading.Tasks.Task OnResume()\r\n    {\r\n    }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 49,
+      "text": "TouchController.Instance.OnTouchDown += HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 50,
+      "text": "TouchController.Instance.OnDrag += HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 51,
+      "text": "TouchController.Instance.OnTouchUp += HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 52,
+      "text": "TouchController.Instance.OnSingleTap += OnPointerClick",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 167,
+      "text": "sum += _hist[i]",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 103,
+      "text": "TouchController.Instance.OnTouchDown -= HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 104,
+      "text": "TouchController.Instance.OnDrag -= HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 105,
+      "text": "TouchController.Instance.OnTouchUp -= HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 106,
+      "text": "TouchController.Instance.OnSingleTap -= OnPointerClick",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: starMapPoint = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 329,
+      "text": "var starMapPoint = hitObj.transform.GetComponent<StarMapPoint>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 52,
+      "text": "public async Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WarehouseUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 57,
+      "text": "public async Task OnPause()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WarehouseUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 62,
+      "text": "public async Task OnResume()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WarehouseUI.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 41,
+      "text": "mWarehousePanel.mUseItemAction += OpenUseItemPanel",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WarehouseUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 89,
+      "text": "public async Task OnExit()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WeaponUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 94,
+      "text": "public async Task OnPause()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WeaponUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 99,
+      "text": "public async Task OnResume()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WeaponUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 103,
+      "text": "public void DestoryUI()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WeaponUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 38,
+      "text": "public void Init()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\HangarUI\\PlaneLevelUpShowPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 89,
+      "text": "public void OpenPanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\HangarUI\\PlaneLevelUpShowPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 94,
+      "text": "public void ClosePanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\HangarUI\\PlaneLevelUpShowPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 126,
+      "text": "TouchController.Instance.OnTouchDown += HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 127,
+      "text": "TouchController.Instance.OnDrag += HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 128,
+      "text": "TouchController.Instance.OnTouchUp += HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 129,
+      "text": "TouchController.Instance.OnSingleTap += OnPointerClick",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 350,
+      "text": "sum += _hist[i]",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 575,
+      "text": "mCurrentChapter += 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 138,
+      "text": "TouchController.Instance.OnTouchDown -= HandleTouchDown",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 139,
+      "text": "TouchController.Instance.OnDrag -= HandleTouchDrag",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 140,
+      "text": "TouchController.Instance.OnTouchUp -= HandleTouchUp",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 141,
+      "text": "TouchController.Instance.OnSingleTap -= OnPointerClick",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 565,
+      "text": "mCurrentChapter -= 1",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: starMapPoint = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 475,
+      "text": "var starMapPoint = hitObj.transform.GetComponent<StarMapPoint>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 46,
+      "text": "private void OnDisable()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 51,
+      "text": "private void OnDestroy()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 48,
+      "text": "private void OnDisable()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 66,
+      "text": "GeneralUI_RewardPanel.onRewardPanelClosed += OnRewardPanelClosed",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 126,
+      "text": "GeneralUI_RewardPanel.onRewardPanelClosed -= OnRewardPanelClosed",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mMainUITutorialPanel = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 40,
+      "text": "mMainUITutorialPanel = Instantiate(MainUITutorialPanelABGameObject, mMainUI.TutorialRootTransform).GetComponent<MainUITutorialPanel>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\MainPanel_Portrait.Tutorial.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: sortingGroup = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 557,
+      "text": "var sortingGroup = GetComponent<SortingGroup>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\CPlanePartInfo.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 80,
+      "text": "public void UpdatePlaneBasic(int planeId)\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 102,
+      "text": "public void UpdatePlanePart(int planePartId, bool add)\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 313,
+      "text": "public void OpenPanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 318,
+      "text": "public void ClosePanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 190,
+      "text": "public void UpdatePlaneBasic(int planeId)\n        {\n\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 209,
+      "text": "public void UpdatePlanePart(int planePartId, bool add)\n        {\n\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 571,
+      "text": "public void OpenPanel()\n        {\n\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 576,
+      "text": "public void ClosePanel()\n        {\n\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 299,
+      "text": "PlaneEditorManager.HistoryChanged += OnHistoryChanged",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "event-unsubscribe",
+      "message": "�¼�ȡ������: $$$",
+      "note": "����¼�ȡ�����ĵ㣬�� event-subscribe-unpaired ��Է���",
+      "severity": "info",
+      "line": 316,
+      "text": "PlaneEditorManager.HistoryChanged -= OnHistoryChanged",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneEditPanel_Portrait.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 291,
+      "text": "void Update()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mPartInfo = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 69,
+      "text": "mPartInfo = partGO.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: PlaneEditorManager.Instance.ActivePlanePart = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 83,
+      "text": "PlaneEditorManager.Instance.ActivePlanePart = partGO.GetComponent<CPlanePartInfo>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: sortingGroup = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 192,
+      "text": "var sortingGroup = mPartGO.GetComponent<SortingGroup>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: sortingGroup = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 206,
+      "text": "var sortingGroup = mPartGO.GetComponent<SortingGroup>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: sortingGroup = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 221,
+      "text": "var sortingGroup = mPartGO.GetComponent<SortingGroup>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 67,
+      "text": "private void OnDisable()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\AssistantPanel.cs"
+    },
+    {
+      "rule_id": "event-subscribe-unpaired",
+      "message": "�¼�����: $$$",
+      "note": "����¼����ĵ㣬��� event-unsubscribe �������Ƿ������ȡ��",
+      "severity": "info",
+      "line": 206,
+      "text": "mFrameRectTransform.anchoredPosition += offset",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\AssistantPanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent ����: mButton = $$$",
+      "note": "��� GetComponent ���õ㣬�����������Ƿ��� null ���",
+      "severity": "info",
+      "line": 58,
+      "text": "mButton = GetComponent<Button>()",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\AssistantPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 417,
+      "text": "private void StartSecondEditTutorial()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\PlaneUITutorialPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 119,
+      "text": "public void OpenPanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\PlanePanel\\PlanePanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "�շ�����: ",
+      "note": "�������ڵ�ʵ��Ϊ�գ������ǹ���ȱʧ����ʵ���������ã�",
+      "severity": "warning",
+      "line": 124,
+      "text": "public void ClosePanel()\r\n        {\r\n\r\n        }",
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\PlanePanel\\PlanePanel.cs"
+    }
+  ],
+  "event_pairing": [
+    {
+      "handler": "tp",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 325,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "tp",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 334,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "min / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 326,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "min / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 335,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "GetPlanePartFight(part,out var minFight, out var maxFight)",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 398,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "Mathf.Abs((float)(data.Value + baseValue)) / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 648,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "Mathf.Abs((float)(data.Value + baseValue)) / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 732,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "(float)(data.Value + baseValue) / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 654,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "(float)(data.Value + baseValue) / max",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Utils\\PlaneAndPartUtil.cs",
+      "subscribe_line": 738,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "shapeSlotsLen",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs",
+      "subscribe_line": 366,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "effSlotsLen",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs",
+      "subscribe_line": 371,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "connectHash.Count",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs",
+      "subscribe_line": 383,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "partInfo.BaseCost",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs",
+      "subscribe_line": 1127,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "CalculatePartUsedCost(partInfo, partInfos)",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs",
+      "subscribe_line": 1128,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "partInfo.PartData.Fight",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs",
+      "subscribe_line": 1491,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "partInfo.PartData.DPS",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs",
+      "subscribe_line": 1506,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "partInfo.PartData.Survival",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Data.cs",
+      "subscribe_line": 1521,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "dir",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs",
+      "subscribe_line": 636,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "dir",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.Operate.cs",
+      "subscribe_line": 637,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "SelectToggle",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\MainUI.cs",
+      "subscribe_line": 152,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "() =>\r\n                      {\r\n                          mBalckMask.gameObject.SetActive_Self(false);\r\n                      }",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\MainUI.cs",
+      "subscribe_line": 220,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "_hist[i]",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\StarMapUI.cs",
+      "subscribe_line": 167,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "_hist[i]",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\MainUI\\ChapterPanel_MainPanel.cs",
+      "subscribe_line": 350,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    },
+    {
+      "handler": "OpenUseItemPanel",
+      "subscribe_file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\WarehouseUI.cs",
+      "subscribe_line": 41,
+      "issue": "�¼������޶�Ӧȡ�������ܴ����ڴ�й©"
+    }
+  ]
+}

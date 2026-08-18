@@ -1,0 +1,38 @@
+[
+  {
+    "id": "client",
+    "name": "Client",
+    "type": "plastic",
+    "path": "C:\\Demo\\client",
+    "branch": "",
+    "updatedAt": "2026-04-13T09:57:24.967Z",
+    "createdAt": "2026-04-13T09:57:24.967Z"
+  },
+  {
+    "id": "ds",
+    "name": "DS (战斗服)",
+    "type": "plastic",
+    "path": "C:\\Demo\\ds",
+    "branch": "",
+    "updatedAt": "2026-04-13T09:57:24.971Z",
+    "createdAt": "2026-04-13T09:57:24.971Z"
+  },
+  {
+    "id": "config",
+    "name": "Config",
+    "type": "plastic",
+    "path": "C:\\Demo\\config",
+    "branch": "",
+    "updatedAt": "2026-04-13T09:57:24.973Z",
+    "createdAt": "2026-04-13T09:57:24.973Z"
+  },
+  {
+    "id": "gameplay",
+    "name": "Gameplay (局外服务端)",
+    "type": "git",
+    "path": "C:\\Demo\\gameplay",
+    "branch": "",
+    "updatedAt": "2026-04-13T09:57:24.977Z",
+    "createdAt": "2026-04-13T09:57:24.977Z"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "质量契约走查反馈",
+  "description": "记录开发/测试对走查判定结果的反馈，用于改进 LLM 判定准确性",
+  "type": "object",
+  "required": ["feedbacks"],
+  "properties": {
+    "feedbacks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["contractId", "originalConclusion", "feedback", "feedbackAt"],
+        "properties": {
+          "contractId": {
+            "type": "string",
+            "description": "被反馈的契约 ID"
+          },
+          "reportFile": {
+            "type": "string",
+            "description": "反馈所属的报告文件名"
+          },
+          "originalConclusion": {
+            "type": "string",
+            "enum": ["pass", "fail", "uncertain"],
+            "description": "原始走查判定结论"
+          },
+          "feedback": {
+            "type": "string",
+            "enum": ["agree", "disagree_should_pass", "disagree_should_fail", "disagree_should_uncertain"],
+            "description": "agree=同意原判定; disagree_should_X=不同意，应为X"
+          },
+          "feedbackReason": {
+            "type": "string",
+            "description": "反馈原因说明（如：该功能已实现但搜索关键词不匹配）"
+          },
+          "feedbackBy": {
+            "type": "string",
+            "description": "反馈人（developer/tester/boss）"
+          },
+          "feedbackAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "反馈时间 ISO 8601"
+          },
+          "moduleLabel": {
+            "type": "string",
+            "description": "模块标签（冗余字段，便于按模块聚合）"
+          },
+          "absorbed": {
+            "type": "boolean",
+            "default": false,
+            "description": "是否已被回流到下次走查 prompt 中"
+          }
+        }
+      }
+    }
+  }
+}

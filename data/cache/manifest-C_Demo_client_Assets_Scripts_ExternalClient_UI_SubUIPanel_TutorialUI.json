@@ -1,0 +1,31 @@
+{
+  "scan_dir": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI",
+  "updated_at": "2026-05-11T20:48:59+0800",
+  "file_count": 6,
+  "files": {
+    "AssistantPanel.cs": {
+      "mtime": 1774578788.6800518,
+      "size": 13688
+    },
+    "MainUITutorialPanel.cs": {
+      "mtime": 1774086791.654914,
+      "size": 6896
+    },
+    "PlaneTutorialUIElement.cs": {
+      "mtime": 1774511925.6608286,
+      "size": 1255
+    },
+    "PlaneUITutorialPanel.cs": {
+      "mtime": 1774511925.6634717,
+      "size": 25104
+    },
+    "SettlementUITutorialPanel.cs": {
+      "mtime": 1774229765.0025718,
+      "size": 4413
+    },
+    "TutorialUIElement.cs": {
+      "mtime": 1773831099.5920844,
+      "size": 487
+    }
+  }
+}

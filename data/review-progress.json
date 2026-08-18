@@ -1,0 +1,36 @@
+{
+  "steps": {
+    "resolve-dir": {
+      "status": "done",
+      "at": "2026-06-16T09:43:13",
+      "scanDir": "C:\\Demo\\client\\Assets\\Scripts",
+      "rootPath": "C:\\Demo\\client"
+    },
+    "verify-evidence": {
+      "status": "done",
+      "at": "2026-06-16T10:58:40"
+    },
+    "init": {
+      "status": "done",
+      "at": "2026-06-16T09:49:35",
+      "elapsed_ms": 3264,
+      "scan_dir": "C:\\Demo\\client\\Assets\\Scripts"
+    },
+    "validate": {
+      "status": "done",
+      "at": "2026-06-16T11:07:43",
+      "elapsed_ms": 265
+    },
+    "search": {
+      "status": "done",
+      "at": "2026-06-16T09:51:23",
+      "elapsed_ms": 21281
+    },
+    "scan": {
+      "status": "done",
+      "at": "2026-06-16T10:34:15",
+      "elapsed_ms": 228781,
+      "scan_dir": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient"
+    }
+  }
+}

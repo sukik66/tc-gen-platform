@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>质量契约 · 布局预览稿（临时）</title>
+    <style>
+      :root {
+        --bg: #0f1018;
+        --panel: #14151f;
+        --panel-2: #1a1b2e;
+        --main: #12131c;
+        --border: rgba(255, 255, 255, 0.1);
+        --teal: #2dd4bf;
+        --teal-dim: rgba(45, 212, 191, 0.2);
+        --violet: #a78bfa;
+        --text: #e4e4e7;
+        --muted: #a1a1aa;
+        --faint: #71717a;
+        /* 阅读区：明显大于当前页常用的 text-xs（12px） */
+        --read-base: 1.0625rem;
+        --read-lg: 1.1875rem;
+        --read-line: 1.65;
+        --radius: 14px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: ui-sans-serif, system-ui, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        font-size: 15px;
+      }
+      .banner {
+        background: linear-gradient(90deg, rgba(45, 212, 191, 0.12), rgba(167, 139, 250, 0.08));
+        border-bottom: 1px solid var(--border);
+        padding: 10px 20px;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+      .banner strong {
+        color: var(--teal);
+        font-weight: 600;
+      }
+      header.top {
+        border-bottom: 1px solid var(--border);
+        background: var(--panel);
+        padding: 16px 20px;
+      }
+      .header-inner {
+        max-width: 1600px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      header h1 {
+        margin: 4px 0 0;
+        font-size: 1.375rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .eyebrow {
+        font-size: 0.6875rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(45, 212, 191, 0.95);
+        font-weight: 600;
+      }
+      .sub {
+        margin-top: 6px;
+        max-width: 42rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .nav-links a {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+      .nav-links a.primary {
+        border-color: rgba(45, 212, 191, 0.45);
+        background: rgba(45, 212, 191, 0.12);
+        color: #99f6e4;
+      }
+
+      /* 参考用例生成：整页 flex，主区可滚 */
+      .shell {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 52px - 72px);
+        min-height: 560px;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+      @media (max-width: 1099px) {
+        .shell {
+          height: auto;
+          min-height: unset;
+        }
+      }
+
+      .workspace {
+        flex: 1;
+        display: flex;
+        min-height: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* 左侧：配置与步骤（参考 generation 侧栏宽度） */
+      aside.left {
+        width: min(340px, 100%);
+        flex-shrink: 0;
+        border-right: 1px solid var(--border);
+        background: var(--panel-2);
+        overflow-y: auto;
+        padding: 16px;
+      }
+      @media (max-width: 1099px) {
+        .workspace {
+          flex-direction: column;
+        }
+        aside.left {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          max-height: 42vh;
+        }
+      }
+
+      .block {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px;
+        margin-bottom: 12px;
+        background: rgba(0, 0, 0, 0.15);
+      }
+      .block h2 {
+        margin: 0 0 8px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .block .hint {
+        font-size: 0.8125rem;
+        color: var(--faint);
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        background: rgba(45, 212, 191, 0.25);
+        color: #5eead4;
+        margin-right: 8px;
+      }
+      label.lbl {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--faint);
+        margin-top: 10px;
+      }
+      select,
+      textarea {
+        width: 100%;
+        margin-top: 6px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        padding: 10px 12px;
+        font-size: 0.875rem;
+      }
+      textarea {
+        min-height: 72px;
+        resize: vertical;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: none;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        cursor: default;
+      }
+      .btn-teal {
+        background: #0d9488;
+        color: #fff;
+      }
+      .btn-line {
+        background: transparent;
+        border: 1px solid rgba(16, 185, 129, 0.45);
+        color: #6ee7b7;
+        margin-top: 8px;
+      }
+
+      /* 中间：契约预览 — 大字 + 双列利用宽度 */
+      main.center {
+        flex: 1;
+        min-width: 0;
+        overflow-y: auto;
+        background: var(--main);
+        padding: 16px 18px 24px;
+      }
+      .center-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .center-head h2 {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .pill {
+        font-size: 0.8125rem;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .preview-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 900px) {
+        .preview-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (min-width: 1400px) {
+        .preview-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+      }
+
+      .contract-card {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        padding: 18px 18px 16px;
+        background: linear-gradient(165deg, rgba(30, 31, 46, 0.95), rgba(18, 19, 28, 0.98));
+      }
+      .contract-card .row-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+      }
+      .badge-p0 {
+        border-color: rgba(248, 113, 113, 0.45);
+        background: rgba(248, 113, 113, 0.12);
+        color: #fecaca;
+      }
+      .badge-p1 {
+        border-color: rgba(251, 191, 36, 0.45);
+        background: rgba(251, 191, 36, 0.1);
+        color: #fde68a;
+      }
+      .badge-draft {
+        border-color: rgba(161, 161, 170, 0.4);
+        color: var(--muted);
+      }
+      .contract-card h3 {
+        margin: 0;
+        font-size: var(--read-lg);
+        font-weight: 600;
+        color: #fafafa;
+        line-height: 1.35;
+      }
+      .contract-card .rule {
+        margin-top: 12px;
+        font-size: var(--read-base);
+        line-height: var(--read-line);
+        color: #d4d4d8;
+      }
+      .contract-card .boundary {
+        margin-top: 12px;
+        padding-left: 12px;
+        border-left: 3px solid rgba(45, 212, 191, 0.45);
+        font-size: 0.9375rem;
+        line-height: var(--read-line);
+        color: var(--muted);
+      }
+      .contract-card .meta {
+        margin-top: 12px;
+        font-size: 0.875rem;
+        color: var(--faint);
+      }
+      /* 单卡 QA 审批条（预览：无后端，仅布局） */
+      .qa-actions {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+      .qa-actions > span {
+        width: 100%;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #a78bfa;
+        margin-bottom: 2px;
+      }
+      .qa-actions button {
+        padding: 7px 11px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 0.8125rem;
+        cursor: pointer;
+      }
+      .qa-actions button:hover {
+        border-color: rgba(255, 255, 255, 0.22);
+        color: #e4e4e7;
+      }
+      .qa-actions button.qa-pass {
+        border-color: rgba(16, 185, 129, 0.45);
+        background: rgba(16, 185, 129, 0.12);
+        color: #6ee7b7;
+      }
+      .qa-actions button.qa-reject {
+        border-color: rgba(248, 113, 113, 0.4);
+        background: rgba(248, 113, 113, 0.08);
+        color: #fca5a5;
+      }
+      .qa-actions button.qa-warn {
+        border-color: rgba(251, 191, 36, 0.4);
+        color: #fde68a;
+      }
+
+      /* 右侧：归属、代码、已存列表摘要 */
+      aside.right {
+        width: min(300px, 100%);
+        flex-shrink: 0;
+        border-left: 1px solid var(--border);
+        background: var(--panel-2);
+        overflow-y: auto;
+        padding: 16px;
+      }
+      @media (max-width: 1099px) {
+        aside.right {
+          width: 100%;
+          border-left: none;
+          border-top: 1px solid var(--border);
+        }
+      }
+      aside.right h2 {
+        margin: 0 0 10px;
+        font-size: 0.8125rem;
+        color: #fde68a;
+      }
+      .check {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.875rem;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .list-mini {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .list-mini li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .list-mini strong {
+        color: #e4e4e7;
+        font-weight: 500;
+      }
+      footer.note {
+        padding: 12px 20px;
+        font-size: 0.8125rem;
+        color: var(--faint);
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      .info-pill {
+        margin-top: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(45, 212, 191, 0.22);
+        background: rgba(45, 212, 191, 0.06);
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .row-inline {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .row-inline select {
+        margin-top: 0;
+        flex: 1;
+        min-width: 0;
+      }
+      .btn-dash {
+        flex-shrink: 0;
+        margin-top: 0;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px dashed rgba(255, 255, 255, 0.22);
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.75rem;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-dash:hover {
+        border-color: rgba(167, 139, 250, 0.45);
+        color: #ddd6fe;
+      }
+      .new-module-box {
+        display: none;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        background: rgba(6, 78, 59, 0.2);
+      }
+      .new-module-box.open {
+        display: block;
+      }
+      .new-module-box p {
+        margin: 0 0 8px;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: #6ee7b7;
+      }
+      .new-module-box input {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+      .new-mod-actions {
+        display: flex;
+        gap: 8px;
+      }
+      .new-mod-actions button {
+        flex: 1;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: none;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-emerald {
+        background: #059669;
+        color: #fff;
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        border: 1px solid var(--border) !important;
+      }
+
+      .btn-toggle-manual {
+        width: 100%;
+        margin-top: 0;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+        color: #e4e4e7;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: left;
+      }
+      .btn-toggle-manual:hover {
+        border-color: rgba(45, 212, 191, 0.35);
+        color: #fff;
+      }
+      .btn-toggle-manual[aria-expanded="true"] {
+        border-color: rgba(45, 212, 191, 0.45);
+        background: rgba(45, 212, 191, 0.08);
+      }
+      .manual-panel {
+        display: none;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .manual-panel.open {
+        display: block;
+      }
+      .prio-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .prio-chip {
+        padding: 6px 14px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-size: 0.8125rem;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted);
+      }
+      .prio-chip.on {
+        border-color: rgba(251, 191, 36, 0.45);
+        background: rgba(251, 191, 36, 0.1);
+        color: #fde68a;
+      }
+      .verify-list label {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 8px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.8125rem;
+        color: var(--muted);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <strong>独立预览 HTML</strong> — 仅用于讨论布局与字号，不连接接口；正式实现前请勿当作产品页面。
+    </div>
+
+    <header class="top">
+      <div class="header-inner">
+        <div>
+          <div class="eyebrow">实验功能 · 布局稿</div>
+          <h1>质量契约（宽屏工作台）</h1>
+          <p class="sub">
+            思路对齐「测试用例生成」：<strong style="color: #d4d4d8">左侧</strong>放上传与提取操作，
+            <strong style="color: #d4d4d8">中间</strong>放大契约正文便于通读，宽屏下预览<strong style="color: #d4d4d8">双列</strong>排列；
+            <strong style="color: #d4d4d8">右侧</strong>固定归属、代码关联入口与已存列表摘要，减少纵向滚动。
+          </p>
+        </div>
+        <nav class="nav-links">
+          <a href="#">功能目录</a>
+          <a href="#" class="primary">契约库</a>
+          <a href="#">测试用例生成</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="shell">
+      <div class="workspace">
+        <aside class="left">
+          <div class="block">
+            <h2><span class="step-num">1</span>需求文件</h2>
+            <p class="hint">与用例生成相同的解析流程；此处仅示意按钮尺寸与层级。</p>
+            <button type="button" class="btn btn-teal" style="margin-top: 0">选择需求文件</button>
+            <p class="hint" style="margin-top: 10px; margin-bottom: 0">已添加 2 个文件 · 角色可改</p>
+          </div>
+          <div class="block">
+            <h2><span class="step-num">2</span>提取选项</h2>
+            <div class="info-pill">
+              质量契约<strong style="color: #e4e4e7">固定按全量、最细粒度</strong>交给模型提取（不再选详细度）；与用例生成的「深度」选项解耦。
+            </div>
+            <label class="lbl">关注重点（可选）</label>
+            <textarea placeholder="例如：掉落表权重、保底计数、支付幂等…"></textarea>
+            <label class="lbl">模型通道</label>
+            <select>
+              <option>Anthropic Claude（OpenAI 兼容）</option>
+              <option>OpenAI GPT</option>
+            </select>
+          </div>
+          <div class="block">
+            <h2><span class="step-num">3</span>生成与入库</h2>
+            <button type="button" class="btn btn-teal">AI 提取契约</button>
+            <button type="button" class="btn btn-line">将预览 4 条全部存为草稿</button>
+          </div>
+          <div class="block">
+            <h2><span class="step-num">补</span>单条补充</h2>
+            <p class="hint" style="margin-top: 0">默认折叠，不占垂直空间；展开后编辑并保存到当前归属模块。</p>
+            <button type="button" class="btn-toggle-manual" id="btn-manual" aria-expanded="false">
+              【手动补充契约（可选）】
+            </button>
+            <div class="manual-panel" id="manual-panel" hidden>
+              <label class="lbl" style="margin-top: 0">模块 / 场景名</label>
+              <input type="text" placeholder="例如：订单 · 优惠券叠加" style="width: 100%; margin-top: 6px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel); color: var(--text)" />
+              <label class="lbl">业务规则 <span style="color: #f87171">*</span></label>
+              <textarea rows="4" placeholder="描述系统应满足的规则…"></textarea>
+              <label class="lbl">边界 / 风险（可选）</label>
+              <textarea rows="2" placeholder="金额精度、并发…"></textarea>
+              <span class="lbl" style="margin-top: 10px; display: block">优先级</span>
+              <div class="prio-row">
+                <button type="button" class="prio-chip">P0</button>
+                <button type="button" class="prio-chip on">P1</button>
+                <button type="button" class="prio-chip">P2</button>
+              </div>
+              <span class="lbl" style="margin-top: 10px; display: block">推荐验证方式</span>
+              <div class="verify-list">
+                <label><input type="checkbox" checked /> 代码走查</label>
+                <label><input type="checkbox" checked /> 接口测试</label>
+                <label><input type="checkbox" /> UI 测试</label>
+              </div>
+              <button type="button" class="btn btn-teal" style="margin-top: 14px">保存本条手写</button>
+            </div>
+          </div>
+        </aside>
+
+        <main class="center">
+          <div class="center-head">
+            <h2>契约预览（阅读区）</h2>
+            <span class="pill">字号约 17px · 每卡含 QA 审批条（示意）</span>
+          </div>
+          <div class="preview-grid">
+            <article class="contract-card">
+              <div class="row-top">
+                <span class="badge badge-p1">P1</span>
+                <span class="badge badge-draft">草稿</span>
+              </div>
+              <h3>掉落系统 · 稀有度与保底</h3>
+              <p class="rule">
+                同一抽卡池内，连续未获得「传说」品质道具时，保底计数器单调递增；触发保底后计数器归零并重新累计。
+                玩家跨日登录不应重置保底进度。任何客户端展示的剩余保底次数须与服务端权威数据一致。
+              </p>
+              <p class="boundary">边界：权重总和不为 100%、并发开箱、回档后计数是否与日志对齐。</p>
+              <p class="meta">验证：代码走查、接口测试</p>
+              <div class="qa-actions">
+                <span>QA 审批</span>
+                <button type="button" class="qa-pass">通过</button>
+                <button type="button" class="qa-reject">驳回</button>
+                <button type="button" class="qa-warn">待澄清</button>
+                <button type="button">批注</button>
+                <button type="button">编辑</button>
+                <button type="button">转交</button>
+              </div>
+            </article>
+            <article class="contract-card">
+              <div class="row-top">
+                <span class="badge badge-p0">P0</span>
+                <span class="badge badge-draft">草稿</span>
+              </div>
+              <h3>支付回调 · 幂等与重复通知</h3>
+              <p class="rule">
+                第三方支付重复推送相同 out_trade_no 时，服务端须幂等处理：仅首条成功落账，后续返回成功但不重复加币。
+                订单状态由服务端状态机驱动，不得仅凭回调正文覆盖为成功。
+              </p>
+              <p class="boundary">边界：超时重试、乱序到达、验签失败时的可观测告警。</p>
+              <p class="meta">验证：接口测试、UI 测试</p>
+              <div class="qa-actions">
+                <span>QA 审批</span>
+                <button type="button" class="qa-pass">通过</button>
+                <button type="button" class="qa-reject">驳回</button>
+                <button type="button" class="qa-warn">待澄清</button>
+                <button type="button">批注</button>
+                <button type="button">编辑</button>
+                <button type="button">转交</button>
+              </div>
+            </article>
+            <article class="contract-card">
+              <div class="row-top">
+                <span class="badge badge-p1">P1</span>
+                <span class="badge badge-draft">草稿</span>
+              </div>
+              <h3>新手引导 · 可跳过与再进入</h3>
+              <p class="rule">
+                玩家在任意步骤点击「跳过」后，须在设置中提供「重新体验引导」入口；跳过不应导致永久丢失奖励领取资格（若配置为可后补）。
+              </p>
+              <p class="boundary">边界：断网中途退出、切账号、云存档合并。</p>
+              <p class="meta">验证：UI 测试</p>
+              <div class="qa-actions">
+                <span>QA 审批</span>
+                <button type="button" class="qa-pass">通过</button>
+                <button type="button" class="qa-reject">驳回</button>
+                <button type="button" class="qa-warn">待澄清</button>
+                <button type="button">批注</button>
+                <button type="button">编辑</button>
+                <button type="button">转交</button>
+              </div>
+            </article>
+            <article class="contract-card">
+              <div class="row-top">
+                <span class="badge badge-p1">P1</span>
+                <span class="badge badge-draft">草稿</span>
+              </div>
+              <h3>战斗数值 · Buff 叠加顺序</h3>
+              <p class="rule">
+                同类 Buff 叠加时须按配置表规定的「乘法 / 加法 / 取最大」策略计算；战斗内实时预览伤害数字须与结算日志一致（允许展示取整规则在帮助中说明）。
+              </p>
+              <p class="boundary">边界：Buff 过期帧与伤害结算帧竞态。</p>
+              <p class="meta">验证：代码走查</p>
+              <div class="qa-actions">
+                <span>QA 审批</span>
+                <button type="button" class="qa-pass">通过</button>
+                <button type="button" class="qa-reject">驳回</button>
+                <button type="button" class="qa-warn">待澄清</button>
+                <button type="button">批注</button>
+                <button type="button">编辑</button>
+                <button type="button">转交</button>
+              </div>
+            </article>
+          </div>
+        </main>
+
+        <aside class="right">
+          <div class="block">
+            <h2>归属（入库）</h2>
+            <label class="lbl">项目</label>
+            <select><option>代号：异星</option></select>
+            <label class="lbl">模块</label>
+            <div class="row-inline">
+              <select id="module-select">
+                <option value="m1">掉落系统</option>
+                <option value="m2">新手引导</option>
+              </select>
+              <button type="button" class="btn-dash" id="btn-new-module">＋ 新建模块</button>
+            </div>
+            <div class="new-module-box" id="new-module-box">
+              <p>新建模块</p>
+              <input type="text" id="new-module-name" placeholder="输入模块名称" />
+              <div class="new-mod-actions">
+                <button type="button" class="btn-emerald" id="btn-create-module">创建并选中</button>
+                <button type="button" class="btn-ghost" id="btn-cancel-module">取消</button>
+              </div>
+            </div>
+            <label class="check">
+              <input type="checkbox" />
+              <span>本次保存为 <strong style="color: #fde68a">已启用（active）</strong></span>
+            </label>
+            <p class="hint" style="margin-top: 12px; margin-bottom: 0">
+              单条手写保存入口在左侧「<strong style="color: #d4d4d8">【手动补充契约（可选）】</strong>」展开后。
+            </p>
+          </div>
+          <div class="block">
+            <h2 style="color: #c4b5fd">④ 代码仓库（可选）</h2>
+            <p class="hint">与用例生成共用 CodeChangePanel 区域，宽度收窄为摘要条占位。</p>
+            <button type="button" class="btn btn-line">关联代码…</button>
+          </div>
+          <div class="block">
+            <h2 style="color: #a1a1aa">⑦ 本模块已存</h2>
+            <ul class="list-mini">
+              <li><strong>优惠券叠加</strong> · 草稿</li>
+              <li><strong>退款原路</strong> · 已启用</li>
+              <li><strong>库存预占</strong> · 草稿</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <footer class="note">
+      本版预览变更：<strong style="color: #d4d4d8">①</strong> 去掉详细度；<strong style="color: #d4d4d8">②</strong> 手动补充折叠；
+      <strong style="color: #d4d4d8">③</strong> 新建模块演示脚本；
+      <strong style="color: #d4d4d8">④</strong> 每张预览卡底部增加 <strong style="color: #d4d4d8">QA 审批</strong> 动作条（通过 / 驳回 / 待澄清 / 批注 / 编辑 / 转交）— 仅为布局与文案占位，无接口。
+      仍对比线上契约页；若需不同按钮集合或状态机再改稿。
+    </footer>
+
+    <script>
+      ;(function () {
+        var btnManual = document.getElementById('btn-manual')
+        var panel = document.getElementById('manual-panel')
+        if (btnManual && panel) {
+          btnManual.addEventListener('click', function () {
+            var open = !panel.classList.contains('open')
+            panel.classList.toggle('open', open)
+            panel.hidden = !open
+            btnManual.setAttribute('aria-expanded', open ? 'true' : 'false')
+          })
+        }
+
+        var btnNew = document.getElementById('btn-new-module')
+        var box = document.getElementById('new-module-box')
+        var inp = document.getElementById('new-module-name')
+        var sel = document.getElementById('module-select')
+        var btnCreate = document.getElementById('btn-create-module')
+        var btnCancel = document.getElementById('btn-cancel-module')
+
+        function closeNewModule() {
+          if (!box) return
+          box.classList.remove('open')
+          if (inp) inp.value = ''
+          if (btnNew) btnNew.style.display = ''
+        }
+
+        if (btnNew && box) {
+          btnNew.addEventListener('click', function () {
+            box.classList.add('open')
+            btnNew.style.display = 'none'
+            if (inp) inp.focus()
+          })
+        }
+        if (btnCancel) btnCancel.addEventListener('click', closeNewModule)
+        if (btnCreate && sel && inp) {
+          btnCreate.addEventListener('click', function () {
+            var name = (inp.value || '').trim()
+            if (!name) {
+              alert('请输入模块名称（预览演示）')
+              return
+            }
+            var id = 'mock-' + Date.now()
+            var opt = document.createElement('option')
+            opt.value = id
+            opt.textContent = name
+            sel.appendChild(opt)
+            sel.value = id
+            closeNewModule()
+          })
+        }
+
+        document.querySelectorAll('.prio-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            document.querySelectorAll('.prio-chip').forEach(function (c) {
+              c.classList.remove('on')
+            })
+            chip.classList.add('on')
+          })
+        })
+      })()
+    </script>
+  </body>
+</html>

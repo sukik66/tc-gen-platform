@@ -1,0 +1,18 @@
+{
+  "files": [
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\PlayerStateMachine.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\PlayerMovementPipeline.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\PlayerCollisionStrategy.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\AlienStarInputAdapter.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\PlayerEntity.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\VoxelCollisionService.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Config\\AlienStarMovementConfig.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\AlienStarBootstrap.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\MovementInputAbsorbGate.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\GravityParams.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\OrbitCamera.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\CreatureRenderer.cs",
+    "C:\\Demo\\client_2\\Assets\\Voxel Play\\AlienStar\\Scripts\\PlanetManager.cs"
+  ],
+  "classes": ["PlayerStateMachine", "PlayerMovementPipeline", "PlayerCollisionStrategy", "PlayerEntity", "AlienStarInputAdapter"]
+}

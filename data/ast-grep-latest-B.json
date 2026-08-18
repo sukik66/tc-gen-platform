@@ -1,0 +1,76 @@
+{
+  "available": true,
+  "status": "enabled",
+  "files_scanned": 7,
+  "methods": [],
+  "calls": [],
+  "events": [],
+  "inheritance": [],
+  "custom_rules": [
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: StartSecondEditTutorial",
+      "severity": "warning",
+      "line": 417,
+      "text": "private void StartSecondEditTutorial() { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI/PlaneUITutorialPanel.cs"
+    },
+    {
+      "rule_id": "getcomponent-no-null-check",
+      "message": "GetComponent 缺null检查: mUITutorialPanel = Instantiate(...).GetComponent<PlaneUITutorialPanel>()",
+      "severity": "info",
+      "line": 47,
+      "text": "mUITutorialPanel = Instantiate(uiTutorialPanelABGameObject, TutorialRoot).GetComponent<PlaneUITutorialPanel>()",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/UIPanel/PlaneEditUI_Portrait.Tutorial.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnDisable",
+      "severity": "warning",
+      "line": 67,
+      "text": "private void OnDisable() { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI/AssistantPanel.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnExitTutorialArea",
+      "severity": "warning",
+      "line": 210,
+      "text": "private void OnExitTutorialArea(Collider2D collider) { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/Managers/PlaneEditorManager/PlaneEditorManager.Operate.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnDragCloneExitArea",
+      "severity": "warning",
+      "line": 396,
+      "text": "private void OnDragCloneExitArea(PlanePartSelItem cloneItem) { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/UIPanel/PlaneEditUI_Portrait.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnExit",
+      "severity": "warning",
+      "line": 151,
+      "text": "public async Task OnExit() { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/UIPanel/GameUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnPause",
+      "severity": "warning",
+      "line": 156,
+      "text": "public async Task OnPause() { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/UIPanel/GameUI.cs"
+    },
+    {
+      "rule_id": "empty-method-body",
+      "message": "空方法体: OnResume",
+      "severity": "warning",
+      "line": 161,
+      "text": "public async Task OnResume() { }",
+      "file": "C:/Demo/client/Assets/Scripts/ExternalClient/UI/UIPanel/GameUI.cs"
+    }
+  ],
+  "event_pairing": []
+}

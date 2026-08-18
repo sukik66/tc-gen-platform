@@ -1,0 +1,50 @@
+{
+  "name": "ai-test-platform",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:web": "vite --open",
+    "dev:api": "node server/index.js",
+    "dev:vite": "vite --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "start:api": "node server/index.js",
+    "snapshot:novice-tutorial": "node scripts/build-novice-tutorial-stream-request.mjs",
+    "selftest:snapshot-novice": "node scripts/selftest-snapshot-novice.mjs",
+    "smoke:llm-four": "node scripts/smoke-four-llm.mjs",
+    "probe:anthropic-models": "node scripts/probe-model123-anthropic.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/file-saver": "^2.0.7",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.12.0",
+    "markmap-lib": "^0.18.12",
+    "markmap-toolbar": "^0.18.12",
+    "markmap-view": "^0.18.12",
+    "node-cron": "^4.2.1",
+    "openai": "^6.33.0",
+    "pdfjs-dist": "^5.6.205",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.14.0",
+    "tesseract.js": "^5.1.1",
+    "xlsx": "^0.18.5"
+  }
+}

@@ -1,0 +1,330 @@
+[
+  {
+    "timestamp": "2026-05-06T13:02:57.645416+00:00",
+    "status": "degraded",
+    "files_requested": 13,
+    "files_scanned": 0,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-06T13:06:49.214629+00:00",
+    "status": "enabled",
+    "files_requested": 1,
+    "files_scanned": 1,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-07T06:38:24.276784+00:00",
+    "status": "enabled",
+    "files_requested": 14,
+    "files_scanned": 14,
+    "methods_found": 0,
+    "calls_found": 6
+  },
+  {
+    "timestamp": "2026-05-07T06:38:34.056979+00:00",
+    "status": "enabled",
+    "files_requested": 16,
+    "files_scanned": 16,
+    "methods_found": 0,
+    "calls_found": 2
+  },
+  {
+    "timestamp": "2026-05-07T06:40:09.503532+00:00",
+    "status": "enabled",
+    "files_requested": 16,
+    "files_scanned": 16,
+    "methods_found": 0,
+    "calls_found": 2
+  },
+  {
+    "timestamp": "2026-05-07T06:48:26.542569+00:00",
+    "status": "enabled",
+    "files_requested": 12,
+    "files_scanned": 12,
+    "methods_found": 0,
+    "calls_found": 7
+  },
+  {
+    "timestamp": "2026-05-07T07:05:25.301100+00:00",
+    "status": "enabled",
+    "files_requested": 5,
+    "files_scanned": 5,
+    "methods_found": 0,
+    "calls_found": 3
+  },
+  {
+    "timestamp": "2026-05-07T07:05:45.637076+00:00",
+    "status": "enabled",
+    "files_requested": 5,
+    "files_scanned": 5,
+    "methods_found": 0,
+    "calls_found": 3
+  },
+  {
+    "timestamp": "2026-05-08T03:12:45.185911+00:00",
+    "status": "enabled",
+    "files_requested": 5,
+    "files_scanned": 5,
+    "methods_found": 0,
+    "calls_found": 5
+  },
+  {
+    "timestamp": "2026-05-08T06:47:35.450480+00:00",
+    "status": "enabled",
+    "files_requested": 5,
+    "files_scanned": 5,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-08T06:47:58.521623+00:00",
+    "status": "enabled",
+    "files_requested": 5,
+    "files_scanned": 5,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-08T06:50:06.194916+00:00",
+    "status": "enabled",
+    "files_requested": 4,
+    "files_scanned": 4,
+    "methods_found": 0,
+    "calls_found": 3
+  },
+  {
+    "timestamp": "2026-05-08T09:49:46.936697+00:00",
+    "status": "enabled",
+    "files_requested": 1,
+    "files_scanned": 1,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-08T11:53:11.225082+00:00",
+    "status": "enabled",
+    "files_requested": 12,
+    "files_scanned": 12,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-09T09:59:04.890194+00:00",
+    "status": "enabled",
+    "files_requested": 13,
+    "files_scanned": 13,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-09T09:59:47.061142+00:00",
+    "status": "enabled",
+    "files_requested": 10,
+    "files_scanned": 10,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-09T10:00:03.737363+00:00",
+    "status": "enabled",
+    "files_requested": 13,
+    "files_scanned": 13,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-09T10:00:28.294458+00:00",
+    "status": "enabled",
+    "files_requested": 10,
+    "files_scanned": 10,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-09T11:58:09.591329+00:00",
+    "status": "enabled",
+    "files_requested": 20,
+    "files_scanned": 20,
+    "methods_found": 0,
+    "calls_found": 11
+  },
+  {
+    "timestamp": "2026-05-11T06:07:16.506356+00:00",
+    "status": "enabled",
+    "files_requested": 13,
+    "files_scanned": 13,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T06:09:36.539383+00:00",
+    "status": "enabled",
+    "files_requested": 26,
+    "files_scanned": 26,
+    "methods_found": 0,
+    "calls_found": 11
+  },
+  {
+    "timestamp": "2026-05-11T07:38:20.205894+00:00",
+    "status": "enabled",
+    "files_requested": 16,
+    "files_scanned": 16,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T07:39:49.986931+00:00",
+    "status": "enabled",
+    "files_requested": 2,
+    "files_scanned": 2,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T07:40:13.080909+00:00",
+    "status": "enabled",
+    "files_requested": 11,
+    "files_scanned": 11,
+    "methods_found": 0,
+    "calls_found": 10
+  },
+  {
+    "timestamp": "2026-05-11T07:40:57.721483+00:00",
+    "status": "enabled",
+    "files_requested": 11,
+    "files_scanned": 11,
+    "methods_found": 0,
+    "calls_found": 1
+  },
+  {
+    "timestamp": "2026-05-11T07:41:44.612938+00:00",
+    "status": "enabled",
+    "files_requested": 7,
+    "files_scanned": 7,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T09:05:32.753277+00:00",
+    "status": "enabled",
+    "files_requested": 24,
+    "files_scanned": 24,
+    "methods_found": 0,
+    "calls_found": 14
+  },
+  {
+    "timestamp": "2026-05-11T13:18:42.151916+00:00",
+    "status": "enabled",
+    "files_requested": 6,
+    "files_scanned": 6,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:20:57.242646+00:00",
+    "status": "enabled",
+    "files_requested": 15,
+    "files_scanned": 15,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:21:57.511461+00:00",
+    "status": "enabled",
+    "files_requested": 6,
+    "files_scanned": 6,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-11T13:32:34.393953+00:00",
+    "status": "enabled",
+    "files_requested": 23,
+    "files_scanned": 23,
+    "methods_found": 0,
+    "calls_found": 13
+  },
+  {
+    "timestamp": "2026-05-11T13:43:41.506973+00:00",
+    "status": "enabled",
+    "files_requested": 10,
+    "files_scanned": 10,
+    "methods_found": 0,
+    "calls_found": 8
+  },
+  {
+    "timestamp": "2026-05-11T13:44:29.983360+00:00",
+    "status": "enabled",
+    "files_requested": 10,
+    "files_scanned": 10,
+    "methods_found": 0,
+    "calls_found": 9
+  },
+  {
+    "timestamp": "2026-05-12T02:16:27.147472+00:00",
+    "status": "enabled",
+    "files_requested": 6,
+    "files_scanned": 6,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-12T03:00:17.295641+00:00",
+    "status": "enabled",
+    "files_requested": 22,
+    "files_scanned": 22,
+    "methods_found": 0,
+    "calls_found": 13
+  },
+  {
+    "timestamp": "2026-05-12T12:00:53.957486+00:00",
+    "status": "enabled",
+    "files_requested": 16,
+    "files_scanned": 16,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-13T05:13:28.133428+00:00",
+    "status": "enabled",
+    "files_requested": 10,
+    "files_scanned": 10,
+    "methods_found": 0,
+    "calls_found": 5
+  },
+  {
+    "timestamp": "2026-05-13T08:50:43.283878+00:00",
+    "status": "enabled",
+    "files_requested": 29,
+    "files_scanned": 29,
+    "methods_found": 0,
+    "calls_found": 0
+  },
+  {
+    "timestamp": "2026-05-13T11:15:19.215323+00:00",
+    "status": "enabled",
+    "files_requested": 57,
+    "files_scanned": 57,
+    "methods_found": 0,
+    "calls_found": 17
+  },
+  {
+    "timestamp": "2026-05-13T14:50:41.590450+00:00",
+    "status": "enabled",
+    "files_requested": 11,
+    "files_scanned": 11,
+    "methods_found": 0,
+    "calls_found": 2
+  },
+  {
+    "timestamp": "2026-06-16T02:34:15.096506+00:00",
+    "status": "enabled",
+    "files_requested": 47,
+    "files_scanned": 47,
+    "methods_found": 0,
+    "calls_found": 2
+  }
+]

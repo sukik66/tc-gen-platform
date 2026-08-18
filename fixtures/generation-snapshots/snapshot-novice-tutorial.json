@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "title": "新手教程 / 新手引导 — 增强流式生成复现快照",
+  "description": "对应用户在「测试用例生成」页选择用例库模块「新手教程d3」语境下、以 QA 超详细 + 多类型 + 参考用例 JSON 为主需求复刻的排障场景；大体积「关联代码」因本机仓库 id/路径不同，需用 CODE_CHANGES_JSON 注入。",
+  "caseLibrary": {
+    "projectId": "mnxblyp0s0t5uf",
+    "projectName": "代号：异星",
+    "moduleId": "mnydj70x26fqdn",
+    "moduleName": "新手教程d3",
+    "note": "data/case-library.json 中该模块当前可无挂接用例；实际回归以仓库根目录「新手用例.json」全文作为主/参考文档更稳定。"
+  },
+  "uiEquivalents": {
+    "depth": "qa",
+    "depthLabel": "QA测试（超详细）",
+    "selectedTypes": [
+      "功能测试",
+      "弱网测试",
+      "异常操作",
+      "协议安全",
+      "客户端性能",
+      "服务端性能",
+      "兼容适配",
+      "容灾容错",
+      "UI/UX体验",
+      "checklist"
+    ],
+    "focusText": "",
+    "documentPrimarySource": "src/fixtures/novice-tutorial-cases.json（与界面临时按钮同源）",
+    "documentRoleInRequest": "case_ref",
+    "codeChanges": "本地「智能检索」勾选仓库 + 关键词；体积大时易触发代理超时 / network error，可用 fixtures 旁路只测文档或设 SMART_SEARCH_MAX_FILES",
+    "ragQuery": "可选；未在默认生成体中开启"
+  },
+  "generateRequest": {
+    "npmScript": "snapshot:novice-tutorial",
+    "outputPath": "fixtures/generation-snapshots/novice-tutorial-stream-request.generated.json",
+    "optionalEnv": {
+      "CODE_CHANGES_JSON": "从本机导出的 CodeContextPayload JSON 路径（与侧栏「关联代码」结构一致）",
+      "LLM_PROVIDER": "anthropic | deepseek | openai | …",
+      "RAG_QUERY": "非空则注入 ragQuery"
+    },
+    "curlExample": "curl -N -H \"Content-Type: application/json\" -d @fixtures/generation-snapshots/novice-tutorial-stream-request.generated.json http://127.0.0.1:8787/api/generate-enhanced-stream"
+  }
+}

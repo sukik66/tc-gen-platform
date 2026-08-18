@@ -1,0 +1,123 @@
+{
+  "scan_dir": "C:/Demo/client_2/Assets/Voxel Play/AlienStar",
+  "updated_at": "2026-05-13T23:15:05+0800",
+  "file_count": 29,
+  "files": {
+    "Config/AlienStarCreatureRenderingConfig.cs": {
+      "mtime": 1778222567.2679937,
+      "size": 1978
+    },
+    "Config/AlienStarDeathConfig.cs": {
+      "mtime": 1778551168.0597813,
+      "size": 1125
+    },
+    "Config/AlienStarErosionCombatConfig.cs": {
+      "mtime": 1778654893.8883083,
+      "size": 1252
+    },
+    "Config/AlienStarErosionConfig.cs": {
+      "mtime": 1778551168.0623074,
+      "size": 2940
+    },
+    "Config/AlienStarMovementConfig.cs": {
+      "mtime": 1778222567.2589157,
+      "size": 1753
+    },
+    "Config/AlienStarOpacityConfig.cs": {
+      "mtime": 1778551168.0648,
+      "size": 1385
+    },
+    "Config/AlienStarPlanetConfig.cs": {
+      "mtime": 1778222567.2659817,
+      "size": 822
+    },
+    "Config/AlienStarPlayerCombatConfig.cs": {
+      "mtime": 1778654893.9169538,
+      "size": 1874
+    },
+    "Editor/AlienStarSetupWizard.cs": {
+      "mtime": 1778222567.2538362,
+      "size": 5114
+    },
+    "Scripts/AlienStarBootstrap.cs": {
+      "mtime": 1778654893.9408364,
+      "size": 12809
+    },
+    "Scripts/AlienStarInputAdapter.cs": {
+      "mtime": 1778222567.2725205,
+      "size": 1980
+    },
+    "Scripts/CombatArbiter.cs": {
+      "mtime": 1778654893.9823706,
+      "size": 1374
+    },
+    "Scripts/CreatureOpacity.cs": {
+      "mtime": 1778551168.0716295,
+      "size": 3704
+    },
+    "Scripts/CreatureRenderer.cs": {
+      "mtime": 1778551168.0697181,
+      "size": 13331
+    },
+    "Scripts/ErosionDeathVisual.cs": {
+      "mtime": 1778654894.0454433,
+      "size": 2858
+    },
+    "Scripts/ErosionEntity.cs": {
+      "mtime": 1778654893.9578533,
+      "size": 12831
+    },
+    "Scripts/ErosionManager.cs": {
+      "mtime": 1778654893.9793692,
+      "size": 4943
+    },
+    "Scripts/GravityParams.cs": {
+      "mtime": 1778222567.2755387,
+      "size": 932
+    },
+    "Scripts/MovementInputAbsorbGate.cs": {
+      "mtime": 1778551168.0673428,
+      "size": 2197
+    },
+    "Scripts/OrbitCamera.cs": {
+      "mtime": 1778222567.3125806,
+      "size": 6233
+    },
+    "Scripts/PlanetManager.cs": {
+      "mtime": 1778222567.3030343,
+      "size": 2308
+    },
+    "Scripts/PlayerAttackVisual.cs": {
+      "mtime": 1778654894.1334,
+      "size": 4349
+    },
+    "Scripts/PlayerCollisionStrategy.cs": {
+      "mtime": 1778222567.30505,
+      "size": 7541
+    },
+    "Scripts/PlayerCombatHandler.cs": {
+      "mtime": 1778654894.1999617,
+      "size": 4995
+    },
+    "Scripts/PlayerDeathHandler.cs": {
+      "mtime": 1778551168.0796618,
+      "size": 3625
+    },
+    "Scripts/PlayerEntity.cs": {
+      "mtime": 1778222567.2836454,
+      "size": 7907
+    },
+    "Scripts/PlayerMovementPipeline.cs": {
+      "mtime": 1778222567.2876697,
+      "size": 4674
+    },
+    "Scripts/PlayerStateMachine.cs": {
+      "mtime": 1778222567.2911758,
+      "size": 2673
+    },
+    "Scripts/VoxelCollisionService.cs": {
+      "mtime": 1778222567.3075647,
+      "size": 11291
+    }
+  }
+}

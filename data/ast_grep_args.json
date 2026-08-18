@@ -1,0 +1,16 @@
+{
+    "classes":  [
+                    "MainUITutorialPanel",
+                    "MoveTutorialPanel",
+                    "HoleMaskImage",
+                    "TutorialMask",
+                    "PlaneUITutorialPanel"
+                ],
+    "files":  [
+                  "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI/MainUITutorialPanel.cs",
+                  "C:/Demo/client/Assets/Scripts/Client/BattleUI/TutorialPanel/MoveTutorialPanel.cs",
+                  "C:/Demo/client/Assets/Scripts/ExternalClient/UI/HoleMaskImage.cs",
+                  "C:/Demo/client/Assets/Scripts/ExternalClient/Utils/TutorialMask.cs",
+                  "C:/Demo/client/Assets/Scripts/ExternalClient/UI/SubUIPanel/TutorialUI/PlaneUITutorialPanel.cs"
+              ]
+}

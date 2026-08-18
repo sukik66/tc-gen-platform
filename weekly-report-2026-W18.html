@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 测试平台 · 用例生成流程说明 · 2026 W18</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 14px;
+         color: #1f2329; background: #f5f6f7; }
+  .page { max-width: 980px; margin: 32px auto; padding: 0 20px 60px; }
+
+  /* header */
+  .header { background: linear-gradient(135deg,#1456f5 0%,#0b3dbe 100%);
+            color:#fff; border-radius:8px; padding:24px 32px; margin-bottom:24px; }
+  .header h1 { font-size:22px; font-weight:700; margin-bottom:8px; }
+  .header p  { font-size:13px; opacity:.85; line-height:1.7; }
+  .badge { display:inline-block; background:rgba(255,255,255,.18); border-radius:4px;
+           padding:2px 10px; font-size:12px; margin-right:6px; }
+
+  /* section */
+  .section { background:#fff; border-radius:8px; padding:24px 28px;
+             margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,.07); }
+  .section h2 { font-size:16px; font-weight:700; color:#1456f5; margin-bottom:16px;
+                border-left:4px solid #1456f5; padding-left:10px; }
+
+  /* flow */
+  .flow { display:flex; flex-direction:column; gap:0; }
+  .step { display:flex; align-items:flex-start; gap:14px; padding:12px 0;
+          border-bottom:1px solid #f0f0f0; }
+  .step:last-child { border-bottom:none; }
+  .num { flex-shrink:0; width:28px; height:28px; border-radius:50%;
+         background:#1456f5; color:#fff; font-size:12px; font-weight:700;
+         display:flex; align-items:center; justify-content:center; }
+  .num.new  { background:#0a7c59; }
+  .num.pipe { background:#6a1b9a; }
+  .step-body { flex:1; }
+  .step-title { font-weight:700; font-size:13px; margin-bottom:3px; }
+  .step-desc  { color:#555; line-height:1.65; font-size:13px; }
+  .tag { display:inline-block; font-size:11px; border-radius:3px; padding:1px 7px;
+         margin-left:5px; font-weight:600; vertical-align:middle; }
+  .t-new  { background:#e8f5e9; color:#2e7d32; }
+  .t-sse  { background:#e3f2fd; color:#1565c0; }
+  .t-con  { background:#fff3e0; color:#e65100; }
+  .t-rag  { background:#f3e5f5; color:#6a1b9a; }
+
+  /* 并发框 */
+  .parallel-box { border:2px dashed #9c27b0; border-radius:8px;
+                  padding:10px 14px; margin:4px 0 4px 42px; }
+  .parallel-label { font-size:11px; color:#9c27b0; font-weight:700; margin-bottom:6px; }
+
+  /* table */
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { background:#f0f4ff; color:#1456f5; font-weight:700; padding:8px 12px;
+       text-align:left; border:1px solid #dde3f5; }
+  td { padding:8px 12px; border:1px solid #e8eaf0; vertical-align:top; line-height:1.6; }
+  tr:nth-child(even) td { background:#fafbff; }
+  code { background:#f0f2f5; border-radius:3px; padding:1px 5px; font-size:12px;
+         font-family:Menlo,Consolas,monospace; }
+
+  /* change card */
+  .cards { display:flex; flex-direction:column; gap:12px; }
+  .card { border-left:4px solid #1456f5; padding:12px 16px;
+          background:#f8f9ff; border-radius:0 6px 6px 0; }
+  .card.green  { border-color:#0a7c59; background:#f0faf6; }
+  .card.purple { border-color:#6a1b9a; background:#faf0ff; }
+  .card.orange { border-color:#e65100; background:#fff8f0; }
+  .card h3 { font-size:13px; font-weight:700; margin-bottom:6px; }
+  .card h3 .ci { font-size:11px; font-weight:normal; opacity:.7; margin-left:6px; }
+  .lbl { font-size:11px; font-weight:700; border-radius:3px; padding:1px 5px;
+         margin-right:4px; display:inline-block; }
+  .lbl-what   { background:#e3f2fd; color:#1565c0; }
+  .lbl-why    { background:#f3e5f5; color:#6a1b9a; }
+  .lbl-effect { background:#e8f5e9; color:#2e7d32; }
+  .row { margin-bottom:5px; font-size:13px; line-height:1.6; }
+
+  /* footer */
+  .footer { font-size:12px; color:#999; text-align:center; margin-top:28px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>AI 测试平台 · 用例生成流程说明</h1>
+    <p>
+      <span class="badge">模块</span>测试用例生成 + 质量契约生成 &nbsp;|&nbsp;
+      <span class="badge">仓库</span>SuperAI / ai-test-platform &nbsp;|&nbsp;
+      <span class="badge">周次</span>2026 W18 周会（2026-04-30）
+    </p>
+    <p style="margin-top:8px;opacity:.75;font-size:12px;">
+      适用范围：用户上传需求文档 → AI 生成测试用例 / 质量契约草稿，
+      结果可存入用例库或契约库后续使用。
+    </p>
+  </div>
+
+  <!-- 一、生成流程 -->
+  <div class="section">
+    <h2>一、当前生成流程</h2>
+    <p style="color:#555;font-size:13px;margin-bottom:16px;">
+      基于多步 Agent Pipeline（本周新增），前端 SSE 实时推流。
+      共分三个大步骤，最终通过流式输出将用例逐条送回前端。
+    </p>
+
+    <div class="flow">
+
+      <div class="step">
+        <div class="num">①</div>
+        <div class="step-body">
+          <div class="step-title">前端输入组装
+            <span class="tag t-con">前端</span>
+          </div>
+          <div class="step-desc">
+            用户在 <code>TestCaseGenerationPage</code> 填写：需求文档（可多份）、关注点文本 <code>focusText</code>、
+            测试类型 <code>selectedTypes</code>、深度 <code>depth</code>、LLM 通道选择。
+            代码变更文件通过 <code>CodeChangePanel</code> 接入 VCS（Git/Perforce），
+            构成 <code>GeneratePayload</code> 发往后端。
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num new">②</div>
+        <div class="step-body">
+          <div class="step-title">Pipeline · Step 1 — 代码预分析
+            <span class="tag t-new">本周新增</span>
+          </div>
+          <div class="step-desc">
+            从代码变更文件中选取最相关的 <strong>前 12 个文件</strong>（按关键词评分排序），
+            按 <strong>并发 workers=3</strong> 批量调用 LLM 逐文件分析：
+          </div>
+        </div>
+      </div>
+
+      <!-- 并发区 -->
+      <div class="parallel-box">
+        <div class="parallel-label">⚡ 并发区（每批次独立 LLM 调用，concurrency=3）</div>
+        <div class="step" style="border:none;padding:6px 0">
+          <div class="num pipe" style="width:22px;height:22px;font-size:11px">并</div>
+          <div class="step-body">
+            <div class="step-title" style="font-size:12px">批次文件分析 <span class="tag t-new">新</span></div>
+            <div class="step-desc">
+              小文件合批（≤18,000 字符/批，≤5 文件/批），大文件单独调用。
+              每文件输出：文件职责、需求相关性、关键接口（≤8）、入参校验与异常分支、边界条件、风险点（1-3）。
+              单文件截断阈值：30,000 字符。单文件失败降级为 stub（"信息不足：xxx"），不阻断整体。
+              超时：240s/次（<code>PIPELINE_SINGLE_CALL_TIMEOUT_MS</code>）。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num new">③</div>
+        <div class="step-body">
+          <div class="step-title">Pipeline · Step 2 — 需求分析
+            <span class="tag t-new">本周新增</span>
+            <span class="tag t-rag">可接 RAG</span>
+          </div>
+          <div class="step-desc">
+            汇总 Step 1 的代码分析结论 + 需求文档（截断阈值 60,000 字符）+ 知识库检索（RAG context），
+            由 LLM 生成结构化需求分析报告：需求分解、缺失信息标注、测试风险识别。
+            若 Step 1 耗时超过 <code>STEP_2_SKIP_AFTER_MS</code>（默认 5 min）则跳过本步骤，
+            保证整体不超时。
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">④</div>
+        <div class="step-body">
+          <div class="step-title">Pipeline · Step 3 — 用例生成（流式）
+            <span class="tag t-sse">SSE 实时推流</span>
+          </div>
+          <div class="step-desc">
+            接收 Step 2 预消化的需求分析作为输入，调用 <code>server/prompt.js</code> 构建最终 Prompt，
+            通过 OpenAI-compatible 接口流式输出用例。
+            前端通过 <code>streamGenerateTestCases</code> 逐 delta 接收，支持 AbortController 随时取消。
+            支持推理模型（DeepSeek-Reasoner / V4-Pro）的 thinking 过程透传展示。
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">⑤</div>
+        <div class="step-body">
+          <div class="step-title">结果解析 & 入库
+            <span class="tag t-con">前端</span>
+          </div>
+          <div class="step-desc">
+            流结束后，解析得到 <code>TestCase[]</code>，展示在前端卡片列表。
+            用户可批量导入用例库（<code>ImportToLibraryModal</code>）或逐条编辑后保存。
+            生成会话状态通过 <code>generationSessionCache</code> 缓存，支持刷新后复原。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 二、质量契约生成流程 -->
+  <div class="section">
+    <h2>二、质量契约生成流程</h2>
+    <p style="color:#555;font-size:13px;margin-bottom:16px;">
+      质量契约是对功能模块「输入 → 行为 → 预期」的结构化描述，本周完成后端持久化与契约库页面。
+    </p>
+
+    <div class="flow">
+
+      <div class="step">
+        <div class="num">①</div>
+        <div class="step-body">
+          <div class="step-title">输入 — 项目/模块 + 需求文档 + 代码上下文</div>
+          <div class="step-desc">
+            契约必须绑定用例库中已有的 <code>projectId</code> + <code>moduleId</code>（后端 <code>validateProjectModule</code> 校验）。
+            支持上传需求文档并可附加关联代码文件（<code>contractCodeContextForReview.ts</code>）作为生成依据。
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num new">②</div>
+        <div class="step-body">
+          <div class="step-title">LLM 流式生成契约草稿
+            <span class="tag t-new">本周完善</span>
+            <span class="tag t-sse">SSE 流式</span>
+          </div>
+          <div class="step-desc">
+            调用 <code>openai-contracts.js</code> 或 <code>gemini-contracts.js</code> 生成契约草稿，
+            通过 <code>contractStreamParse.ts</code>（本周新增）实时解析流式 JSON，
+            前端边流边渲染契约卡片（given / when / then_must 三栏结构）。
+            <code>contractDraftStore.ts</code> 管理草稿状态与 IndexedDB 持久化。
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num new">③</div>
+        <div class="step-body">
+          <div class="step-title">契约草稿编辑 & 归档
+            <span class="tag t-new">本周新增契约库页面</span>
+          </div>
+          <div class="step-desc">
+            生成后在 <code>QualityContractsPage</code> 展示、编辑；
+            确认后通过 <code>POST /api/quality-contracts</code> 提交后端（<code>qualityContracts.js</code>）
+            存入 <code>data/quality-contracts.json</code>（原子写：先写 .tmp 再 rename）。
+            <code>ContractLibraryPage</code>（本周新增）提供跨会话的历史契约浏览与管理。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 三、质量契约（契约内容结构） -->
+  <div class="section">
+    <h2>三、质量契约内容结构（参考约束）</h2>
+    <p style="color:#555;font-size:13px;margin-bottom:16px;">
+      每条契约的数据结构约束与验收标准。
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:16%">字段</th>
+          <th style="width:28%">含义</th>
+          <th style="width:28%">约束</th>
+          <th style="width:28%">降级/验收</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>projectId</code><br><code>moduleId</code></td>
+          <td>归属项目与模块（与用例库对齐）</td>
+          <td>必须在 <code>case-library.json</code> 中已存在；后端硬校验，不存在直接报错</td>
+          <td>报错："项目不存在" / "模块不存在或不属于该项目"</td>
+        </tr>
+        <tr>
+          <td><code>given</code></td>
+          <td>前置条件描述</td>
+          <td>LLM 生成，非空字符串</td>
+          <td>流式解析失败时 stub 占位</td>
+        </tr>
+        <tr>
+          <td><code>when</code></td>
+          <td>触发动作描述</td>
+          <td>LLM 生成，非空字符串</td>
+          <td>同上</td>
+        </tr>
+        <tr>
+          <td><code>then_must</code></td>
+          <td>必须满足的预期结果</td>
+          <td>LLM 生成，数组（≥1 条）；格式校验由 <code>normalize-contracts.js</code> 处理</td>
+          <td><code>normalize</code> 兜底：将字符串 / 非标格式统一转为数组</td>
+        </tr>
+        <tr>
+          <td><code>id</code> / <code>createdAt</code></td>
+          <td>唯一标识与时间戳</td>
+          <td>后端 <code>randomUUID()</code> 生成，不可由前端传入</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>用例生成输入</td>
+          <td>documents / focusText / selectedTypes / depth</td>
+          <td>文档文本截断 60,000 字符；代码文件最多分析 12 个；单文件 30,000 字符截断</td>
+          <td>超限截断 + 日志标注，不报错，继续流程</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 四、本周调整与优化 -->
+  <div class="section">
+    <h2>四、本周调整与优化 <span style="font-size:13px;font-weight:normal;color:#888;">（来源：commit cbb6558，2026-04-28）</span></h2>
+
+    <div class="cards">
+
+      <div class="card purple">
+        <h3>① 新增多步 Agent 流水线 <code>pipeline.js</code><span class="ci">server/pipeline.js · 新文件 399 行</span></h3>
+        <div class="row"><span class="lbl lbl-what">改了什么</span>
+          将原来「单次 LLM 调用生成用例」拆分为三步 Pipeline：
+          代码预分析（每文件独立调用）→ 需求分析（结构化分解）→ 用例生成（流式输出）。
+          每步骤通过 <code>onProgress</code> 回调实时向前端推送 SSE 进度事件。
+        </div>
+        <div class="row"><span class="lbl lbl-why">为什么改</span>
+          原单次调用在代码量大、需求复杂时，LLM 上下文过长、输出质量不稳定；
+          拆步骤后每步输入精确，中间步骤失败可降级为 stub 继续走完，不让整体崩溃。
+        </div>
+        <div class="row"><span class="lbl lbl-effect">改完效果</span>
+          用例生成时前端可看到「正在分析 X/Y 文件」进度提示；
+          代码相关性低的文件自动过滤（最多 12 个最相关文件），减少无效 token 消耗。
+        </div>
+      </div>
+
+      <div class="card green">
+        <h3>② 质量契约体系完善<span class="ci">qualityContracts.js + ContractLibraryPage.tsx + contractStreamParse.ts · 共新增 ~670 行</span></h3>
+        <div class="row"><span class="lbl lbl-what">改了什么</span>
+          新增后端持久化模块 <code>qualityContracts.js</code>（JSON 文件原子写入）；
+          新增前端契约库页面 <code>ContractLibraryPage</code>（历史契约浏览/管理）；
+          新增流式解析器 <code>contractStreamParse.ts</code>（边流边渲染契约卡片）。
+        </div>
+        <div class="row"><span class="lbl lbl-why">为什么改</span>
+          之前契约只在当前会话内存在，刷新即丢失；
+          团队需要跨会话复用契约作为测试评审基准。
+        </div>
+        <div class="row"><span class="lbl lbl-effect">改完效果</span>
+          契约草稿可持久化存储并在契约库中统一管理；
+          流式渲染让用户在生成过程中即可逐条预览，不需等待全部生成完毕。
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>③ 知识库（RAG）模块简化重构<span class="ci">knowledgeStore.ts · 大幅精简</span></h3>
+        <div class="row"><span class="lbl lbl-what">改了什么</span>
+          <code>knowledgeStore.ts</code> 精简重构，去除冗余逻辑；
+          服务端 <code>knowledge.js</code>（277 行，新增）统一管理知识库检索接口，
+          与 Pipeline Step 2 集成（RAG context 传入需求分析步骤）。
+        </div>
+        <div class="row"><span class="lbl lbl-why">为什么改</span>
+          原知识库模块散落在前端，与 Pipeline 集成困难；
+          统一移至服务端后，Pipeline 各步骤可按需检索知识库而不需通过前端中转。
+        </div>
+        <div class="row"><span class="lbl lbl-effect">改完效果</span>
+          知识库上下文可作为 Step 2 需求分析的参考输入，提升需求理解准确性。
+        </div>
+      </div>
+
+      <div class="card orange">
+        <h3>④ 用例生成页 & 契约页交互优化<span class="ci">TestCaseGenerationPage.tsx / QualityContractsPage.tsx · 大幅改动</span></h3>
+        <div class="row"><span class="lbl lbl-what">改了什么</span>
+          用例生成页增加 Pipeline 进度展示（代码分析进度条、步骤状态提示）；
+          契约页（<code>QualityContractsPage</code>）497 行大改，支持流式渲染和草稿编辑；
+          新增 <code>inputSnapshotStore</code> 保存生成时的输入快照，支持复现上一次生成。
+        </div>
+        <div class="row"><span class="lbl lbl-why">为什么改</span>
+          多步 Pipeline 执行时间较长（尤其代码预分析步），用户需要可见的反馈；
+          输入快照避免用户每次手动重填参数。
+        </div>
+        <div class="row"><span class="lbl lbl-effect">改完效果</span>
+          用户可在生成过程中看到实时进度，操作感更流畅；
+          一键复用上次输入配置，减少重复操作成本。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    SuperAI / ai-test-platform &nbsp;·&nbsp; commit cbb6558 (2026-04-28) &nbsp;·&nbsp; 内容来源：代码结构分析
+  </div>
+
+</div>
+</body>
+</html>

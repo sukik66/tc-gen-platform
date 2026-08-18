@@ -1,0 +1,85 @@
+{
+  "available": true,
+  "status": "enabled",
+  "files_scanned": 10,
+  "methods": [],
+  "calls": [
+    {
+      "call": "TutorialUtil.GetTutorialUI(TutorialUIEnum.PlaneEditReplacePart)",
+      "line": 350,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\PlaneUITutorialPanel.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.GetTutorialUI(TutorialUIEnum.PlaneBackButton)",
+      "line": 406,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\TutorialUI\\PlaneUITutorialPanel.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.CheckPlaneEditCurTutorial()",
+      "line": 80,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\UIPanel\\PlaneEditUI_Portrait.Tutorial.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.FinishTutorial(TutorialUtil.PlaneTutorialStep)",
+      "line": 303,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel_Portrait.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.GetTutorialTotalProgressPlayerPrefabDataKey()",
+      "line": 111,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\UserDataManager\\UserData.PlayerInfo.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.FinishTutorial((TutorialStepEnum)progress)",
+      "line": 118,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\UserDataManager\\UserData.PlayerInfo.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.GetLocalTutorialProgress()",
+      "line": 430,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\TutorialManager\\TutorialManager.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "TutorialUtil.FinishTutorial(step)",
+      "line": 437,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\TutorialManager\\TutorialManager.cs",
+      "target_class": "TutorialUtil"
+    },
+    {
+      "call": "CPlanePartInfo.ToServerRotationZDegrees(rotateAngle)",
+      "line": 352,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\Managers\\PlaneEditorManager\\PlaneEditorManager.cs",
+      "target_class": "CPlanePartInfo"
+    }
+  ],
+  "events": [
+    {
+      "kind": "add_listener",
+      "text": "AddListener()",
+      "line": 74,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel_Portrait.cs"
+    },
+    {
+      "kind": "remove_listener",
+      "text": "RemoveListener()",
+      "line": 73,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel_Portrait.cs"
+    },
+    {
+      "kind": "remove_listener",
+      "text": "RemoveListener()",
+      "line": 356,
+      "file": "C:\\Demo\\client\\Assets\\Scripts\\ExternalClient\\UI\\SubUIPanel\\PlaneEditUI\\PlaneOperatePanel_Portrait.cs"
+    }
+  ],
+  "inheritance": [],
+  "custom_rules": [],
+  "event_pairing": []
+}

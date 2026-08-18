@@ -1,0 +1,7224 @@
+{
+  "nodes": {
+    "HoleMaskImage.cs": {
+      "classes": [
+        "HoleMaskImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Image"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": []
+    },
+    "PlanePartInfoPanel.cs": {
+      "classes": [
+        "PlanePartInfoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "Client.UI.Common",
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UI_Common_AssetItem.cs": {
+      "classes": [
+        "UI_Common_AssetItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Net"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "UI_Common_AssetsBar.cs": {
+      "classes": [
+        "UI_Common_AssetsBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AssetsLoadingUI.cs": {
+      "classes": [
+        "AssetsLoadingUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoSingleton<AssetsLoadingUI>"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "ReconnectPanel.cs": {
+      "classes": [
+        "ReconnectPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AutoBlurBackground.cs": {
+      "classes": [
+        "AutoBlurBackground"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AutoSetSizeWithCurrentAnchors.cs": {
+      "classes": [
+        "AutoSetSizeWithCurrentAnchors"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "Base_UICanvas.cs": {
+      "classes": [
+        "Base_UICanvas"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Collections.Generic",
+        "Common",
+        "UnityEngine.UI",
+        "Client"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BlurBackground.cs": {
+      "classes": [
+        "BlurBackground"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ButtonExtension.cs": {
+      "classes": [
+        "ButtonExtension"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IPointerUpHandler",
+        "IPointerExitHandler",
+        "IPointerClickHandler",
+        "MonoBehaviour",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.Events",
+        "UnityEngine",
+        "UnityEngine.EventSystems"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "CanvasEnum.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [],
+      "patterns": []
+    },
+    "ClickBlankToClose.cs": {
+      "classes": [
+        "ClickBlankToClose"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.Events",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Common"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ClickOutsideToClose.cs": {
+      "classes": [
+        "ClickOutsideToClose"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.EventSystems"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "DragClosePanel.cs": {
+      "classes": [
+        "DragClosePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IDragHandler",
+        "IEndDragHandler",
+        "IBeginDragHandler"
+      ],
+      "using": [
+        "DG.Tweening",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "System.Drawing",
+        "System",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "EmptyRaycast.cs": {
+      "classes": [
+        "EmptyRaycast"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MaskableGraphic"
+      ],
+      "using": [],
+      "patterns": []
+    },
+    "EnableOrDisableButtonController.cs": {
+      "classes": [
+        "EnableOrDisableButtonController",
+        "EnableOrDisableImage",
+        "EnableOrDisableGraphic",
+        "EnableOrDisableTextMeshProUGUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ExtendFilledImage.cs": {
+      "classes": [
+        "ExtendFilledImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Image"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "FireJoyStick.cs": {
+      "classes": [
+        "FireJoyStick"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IDragHandler",
+        "IPointerDownHandler",
+        "IPointerUpHandler"
+      ],
+      "using": [
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "GuideCutoutMaskController.cs": {
+      "classes": [
+        "GuideCutoutMaskController"
+      ],
+      "calls_out": [
+        "GuideCutoutMaskSupport.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "IPointerClickHandler",
+        "ICanvasRaycastFilter",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.Events",
+        "UnityEngine",
+        "UnityEngine.UI",
+        "UnityEngine.EventSystems"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "GuideCutoutMaskSupport.cs": {
+      "classes": [
+        "GuideCutoutMaskUtil",
+        "GuideCutoutMaskRaycastFilter"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "GuideCutoutMaskController.cs"
+      ],
+      "inherits": [
+        "ICanvasRaycastFilter",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "HPProcessBar.cs": {
+      "classes": [
+        "HpData",
+        "HPProcessBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "Common",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Network"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ImageEventTrigger.cs": {
+      "classes": [
+        "ImageEventTrigger"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IPointerUpHandler",
+        "IPointerClickHandler",
+        "IEndDragHandler",
+        "IBeginDragHandler",
+        "MonoBehaviour",
+        "IDragHandler",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "System",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Common"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ImageExtension.cs": {
+      "classes": [
+        "ImageExtension"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "InfiniteScroll.cs": {
+      "classes": [
+        "InfiniteScroll"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ISubPanel.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [],
+      "patterns": []
+    },
+    "IUIPanel.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "MoveJoyStick.cs": {
+      "classes": [
+        "MoveJoyStick"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IDragHandler",
+        "IPointerDownHandler",
+        "IPointerUpHandler"
+      ],
+      "using": [
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "NullArg.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [],
+      "patterns": []
+    },
+    "RadioButtonGroup.cs": {
+      "classes": [
+        "RadioButtonGroup"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "SACollector.cs": {
+      "classes": [
+        "SACollector"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "Gameplay.BattleMap",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "ScreenAdaptation.cs": {
+      "classes": [
+        "ScreenAdaptation"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "Gameplay.BattleMap",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ScreenSetting.cs": {
+      "classes": [
+        "ScreenSetting"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "ScrollbarExtension.cs": {
+      "classes": [
+        "ScrollbarExtension"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "TMPBubbleMaxWidthClamp.cs": {
+      "classes": [
+        "TMPBubbleMaxWidthClamp"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "TMP_UICommonCopyButton.cs": {
+      "classes": [
+        "TMP_UICommonCopyButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ToggleSwitch.cs": {
+      "classes": [
+        "ToggleSwitch"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "UIBattleHeadContainer.cs": {
+      "classes": [
+        "UIBattleHeadContainer"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "Spine.Unity",
+        "UnityEngine",
+        "Client.AB",
+        "System.Collections.Generic",
+        "Gameplay",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UICommonCopyButton.cs": {
+      "classes": [
+        "UICommonCopyButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "UIEffectEmptyRaycast.cs": {
+      "classes": [
+        "UIEffectEmptyRaycast"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerUpHandler",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Common"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIEffectImage.cs": {
+      "classes": [
+        "UIEffectImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerUpHandler",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Common"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIEffectRawImage.cs": {
+      "classes": [
+        "UIEffectRawImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerUpHandler",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Common"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIEnum.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [],
+      "patterns": []
+    },
+    "UIIndex.cs": {
+      "classes": [
+        "UIIndex"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIInputFieldContent.cs": {
+      "classes": [
+        "UIInputFieldContent"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections",
+        "System.Text.RegularExpressions"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIProcessBar.cs": {
+      "classes": [
+        "UIProcessBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "UIRoundedImage.cs": {
+      "classes": [
+        "UIRoundedImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Image"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "EventSystem"
+      ]
+    },
+    "UIRoundedRawImage.cs": {
+      "classes": [
+        "UIRoundedRawImage"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "RawImage"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Mosframe",
+        "System.Drawing",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "EventSystem"
+      ]
+    },
+    "UISlider.cs": {
+      "classes": [
+        "UISlider"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "UIToggleGroup.cs": {
+      "classes": [
+        "UIToggleGroup",
+        "ToggleEventDic"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Toggle>",
+        "ToggleGroup",
+        "SerializableDictionary<string"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "UIToggleItem.cs": {
+      "classes": [
+        "UIToggleItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "URLTextLink.cs": {
+      "classes": [
+        "URLTextLink"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LinkClickHandler"
+      ],
+      "using": [
+        "TMPro",
+        "Client",
+        "UnityEngine",
+        "UnityEngine.EventSystems"
+      ],
+      "patterns": []
+    },
+    "ExtendFilledImageEditor.cs": {
+      "classes": [
+        "ExtendFilledImageEditor",
+        "ExtendImageEditor"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ImageEditor",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEditor.UI",
+        "UnityEngine",
+        "Client.UI",
+        "UnityEngine.UI",
+        "UnityEditor",
+        "UnityEditor.AnimatedValues"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "BaseGeneralUIPanel.cs": {
+      "classes": [
+        "BaseGeneralUIPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "GeneralUI_CommonMask.cs": {
+      "classes": [
+        "GeneralUI_CommonMask"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUI_FPS.cs": {
+      "classes": [
+        "GeneralUI_FPS"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "GeneralUI_ItemDetailPanel.cs": {
+      "classes": [
+        "GeneralUI_ItemDetailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUI_MessageBox.cs": {
+      "classes": [
+        "GeneralUI_MessageBox"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUI_NounDescriptionPanel.cs": {
+      "classes": [
+        "GeneralUI_NounDescriptionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUI_PlanePartInfoPanel.cs": {
+      "classes": [
+        "GeneralUI_PlanePartInfoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.UI",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUI_RewardPanel.cs": {
+      "classes": [
+        "GeneralUI_RewardPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "GeneralUI_TextInput.cs": {
+      "classes": [
+        "GeneralUI_TextInput"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Client.ClientRegex"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "GeneralUI_TipPanel.cs": {
+      "classes": [
+        "GeneralUI_TipPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "GeneralUI_VersionText.cs": {
+      "classes": [
+        "GeneralUI_VersionText"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GeneralUI_VideoPanel.cs": {
+      "classes": [
+        "GeneralUI_VideoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseGeneralUIPanel"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "UnityEngine.Events",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.Component",
+        "SprotoType",
+        "UnityEngine.Video"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "ObjectPool"
+      ]
+    },
+    "BattleFieldProtocolDataItemUI.cs": {
+      "classes": [
+        "BattleFieldProtocolDataItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "GeneralUIController.CommonMask.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "UnityEngine",
+        "Common"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUIController.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.AB",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Gameplay.Component",
+        "Client"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GeneralUIController.FPS.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.AB",
+        "Common"
+      ],
+      "patterns": []
+    },
+    "GeneralUIController.Panel.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "Client.UI.GM",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "UnityEngine.EventSystems",
+        "Client.UI.BattleUI",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.AB",
+        "System.Collections.Generic",
+        "UnityEngine.Events",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Gameplay.Component",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "GeneralUIController.Sort.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "System.Collections.Generic"
+      ],
+      "patterns": []
+    },
+    "GeneralUIController.Tips.cs": {
+      "classes": [
+        "GeneralUIController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Client"
+      ],
+      "using": [
+        "UnityEngine",
+        "Common"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "ProtocolBattleFieldListPanel.cs": {
+      "classes": [
+        "ProtocolBattleFieldListPanel"
+      ],
+      "calls_out": [
+        "ProtocolDetailPanel.cs",
+        "ProtocolTestingToolPanel.cs"
+      ],
+      "called_by": [
+        "ProtocolDetailPanel.cs"
+      ],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Newtonsoft.Json",
+        "System.Linq",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Common",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Net",
+        "Gameplay.Component",
+        "System.Xml.Linq",
+        "Network"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ProtocolDataItemUI.cs": {
+      "classes": [
+        "ProtocolDataItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ProtocolDetailPanel.cs": {
+      "classes": [
+        "ProtocolDetailPanel"
+      ],
+      "calls_out": [
+        "ProtocolBattleFieldListPanel.cs",
+        "ProtocolListPanel.cs"
+      ],
+      "called_by": [
+        "ProtocolBattleFieldListPanel.cs",
+        "ProtocolListPanel.cs"
+      ],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Newtonsoft.Json",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ProtocolListPanel.cs": {
+      "classes": [
+        "ProtocolListPanel"
+      ],
+      "calls_out": [
+        "ProtocolDetailPanel.cs"
+      ],
+      "called_by": [
+        "ProtocolDetailPanel.cs"
+      ],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Linq",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ProtocolTestingToolPanel.cs": {
+      "classes": [
+        "ProtocolTestingToolPanel",
+        "ProtocolData",
+        "C2SProtocolData",
+        "S2CProtocolData",
+        "BattleFieldProtocolData",
+        "C2SBattleFieldProtocolData",
+        "S2CBattleFieldProtocolData"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "ProtocolBattleFieldListPanel.cs"
+      ],
+      "inherits": [
+        "BattleFieldProtocolData",
+        "MonoBehaviour",
+        "ProtocolData"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "Singleton"
+      ]
+    },
+    "ProtocolTipsPanel.cs": {
+      "classes": [
+        "ProtocolTipsPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "BaseItemUI.cs": {
+      "classes": [
+        "BaseItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "Gameplay.Manager"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ItemInfoPanel.cs": {
+      "classes": [
+        "ItemInfoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ItemOrPartItemUI.cs": {
+      "classes": [
+        "ItemOrPartItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseItemUI"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PartBaseItemUI.cs": {
+      "classes": [
+        "PartBaseItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseItemUI"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "RewardItemUI.cs": {
+      "classes": [
+        "RewardItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "StackingItemUI.cs": {
+      "classes": [
+        "StackingItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseItemUI"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "CircleGuide.cs": {
+      "classes": [
+        "CircleGuide"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "GuideBase"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "CircleMask.cs": {
+      "classes": [
+        "CircleMask"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Mask"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "GuideBase.cs": {
+      "classes": [
+        "GuideBase"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.Events",
+        "UnityEngine",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "SquareGuide.cs": {
+      "classes": [
+        "SquareGuide"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "GuideBase"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": []
+    },
+    "SquareMask.cs": {
+      "classes": [
+        "SquareMask"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "Mask"
+      ],
+      "using": [
+        "Unity.Mathematics",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "Common"
+      ],
+      "patterns": []
+    },
+    "NoviceGuideDialogTips.cs": {
+      "classes": [
+        "NoviceGuideDialogTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "NoviceGuideFingerTips.cs": {
+      "classes": [
+        "NoviceGuideFingerTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "NoviceGuideForceClickTips.cs": {
+      "classes": [
+        "NoviceGuideForceClickTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "ClientCommon",
+        "System",
+        "UnityEngine.UI",
+        "UnityEngine.Serialization"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "NoviceGuideSimpleTips.cs": {
+      "classes": [
+        "NoviceGuideSimpleTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "NoviceGuideTalkTips.cs": {
+      "classes": [
+        "NoviceGuideTalkTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "Client.Audio",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "NoviceGuideTips.cs": {
+      "classes": [
+        "NoviceGuideTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "Spine.Unity",
+        "UnityEngine",
+        "Client.Audio",
+        "System.Collections.Generic",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoAttributeData.cs": {
+      "classes": [
+        "PlanePartInfoAttributeData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine",
+        "Client.UI",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": []
+    },
+    "PlanePartInfoAttributeItemUI.cs": {
+      "classes": [
+        "PlanePartInfoAttributeItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Pbeans",
+        "Client"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoAttributePanel.cs": {
+      "classes": [
+        "PlanePartInfoAttributePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Linq",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "Gameplay.User",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "ObjectPool"
+      ]
+    },
+    "PlanePartInfoDescriptionPanel.cs": {
+      "classes": [
+        "PlanePartInfoDescriptionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoFeatureEffectItemUI.cs": {
+      "classes": [
+        "PlanePartInfoFeatureEffectItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoFeatureEffectRandomParamData.cs": {
+      "classes": [
+        "PlanePartInfoFeatureEffectRandomParamData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine",
+        "Client.UI",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "System.Collections"
+      ],
+      "patterns": []
+    },
+    "PlanePartInfoFeatureEffectRandomParamItemUI.cs": {
+      "classes": [
+        "PlanePartInfoFeatureEffectRandomParamItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoFeaturePanel.cs": {
+      "classes": [
+        "PlanePartInfoFeaturePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "Entitas",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoFightPanel.cs": {
+      "classes": [
+        "PlanePartInfoFightPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoSuitPanel.cs": {
+      "classes": [
+        "PlanePartInfoSuitPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartInfoTagPanel.cs": {
+      "classes": [
+        "PlanePartInfoTagPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartKeyWordItemUI.cs": {
+      "classes": [
+        "PlanePartKeyWordItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneHolder.cs": {
+      "classes": [
+        "PlaneHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneHolder.Event.cs": {
+      "classes": [
+        "PlaneHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Linq",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneLevelUpHolder.cs": {
+      "classes": [
+        "PlaneLevelUpHolder"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "PlaneSelItem.cs"
+      ],
+      "inherits": [
+        "PlaneHolder"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlaneWeaponHolder.cs": {
+      "classes": [
+        "PlaneWeaponHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "PlaneHolder"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "HintEventManager.cs": {
+      "classes": [
+        "HintEventManager",
+        "ListenerTuple"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoSingleton<HintEventManager>"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Text",
+        "System.Collections.Generic",
+        "System.Collections",
+        "Client"
+      ],
+      "patterns": []
+    },
+    "HintRedPointComponent.cs": {
+      "classes": [
+        "HintRedPointComponent"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "HintRedPointComponent_Dynamic.cs": {
+      "classes": [
+        "HintRedPointComponent_Dynamic"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SGTree.cs": {
+      "classes": [
+        "SGTree"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": []
+    },
+    "SGTreeNode.cs": {
+      "classes": [
+        "SGTreeNode"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": []
+    },
+    "ClickEffect_Click.cs": {
+      "classes": [
+        "ClickEffect_Click"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ScreenHandlerEffectController.cs": {
+      "classes": [
+        "ScreenHandlerEffectController"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "Client.Manager",
+        "System.Collections",
+        "System.Collections.Generic",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "Singleton"
+      ]
+    },
+    "AgeAppropriatePromptPanel.cs": {
+      "classes": [
+        "AgeAppropriatePromptPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MatchSuccessPanel_GameUI.cs": {
+      "classes": [
+        "MatchSuccessPanel_GameUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AITestPlaneItemUI.cs": {
+      "classes": [
+        "AITestPlaneItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System.Collections",
+        "Common.Math"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AITestPlayerGroupPanel.cs": {
+      "classes": [
+        "AITestPlayerGroupPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.UI",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Common.Math"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "ObjectPool"
+      ]
+    },
+    "GameAnnouncementButton.cs": {
+      "classes": [
+        "GameAnnouncementButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GameAnnouncementPanel.cs": {
+      "classes": [
+        "GameAnnouncementPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Luban",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "UnityEngine.Networking"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "GameAnnouncementPanel_AB.cs": {
+      "classes": [
+        "GameAnnouncementPanel_AB"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "UnityEngine.Networking",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GameAnnouncementTitleItemUI.cs": {
+      "classes": [
+        "GameAnnouncementTitleItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleGMItemUI.cs": {
+      "classes": [
+        "BattleGMItemUI"
+      ],
+      "calls_out": [
+        "GMClientHelper.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Common.Service",
+        "Gameplay.Service",
+        "Common",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.Pbeans",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleGMList.cs": {
+      "classes": [
+        "BattleGMList"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "Gameplay",
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleGMPanel.cs": {
+      "classes": [
+        "BattleGMPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "Common",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleProgressPanel.cs": {
+      "classes": [
+        "BattleProgressPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Common",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.Pbeans",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleStartPanel.cs": {
+      "classes": [
+        "BattleStartPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Common",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleWinPanel.cs": {
+      "classes": [
+        "BattleWinPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GMClientHelper.cs": {
+      "classes": [
+        "GMClientHelper"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "BattleGMItemUI.cs"
+      ],
+      "inherits": [],
+      "using": [
+        "System",
+        "System.Reflection"
+      ],
+      "patterns": []
+    },
+    "RoomIDTextPanel.cs": {
+      "classes": [
+        "RoomIDTextPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GMGroupButtonItemUI.cs": {
+      "classes": [
+        "GMGroupButtonItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GMGroupItemUI.cs": {
+      "classes": [
+        "GMGroupItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GMGroupPanel.cs": {
+      "classes": [
+        "GMGroupPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GMRecordPanel.cs": {
+      "classes": [
+        "GMRecordPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "GroupListPanel.cs": {
+      "classes": [
+        "GroupListPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "HangarToggle.cs": {
+      "classes": [
+        "HangarToggle"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "System.Collections",
+        "Gameplay.User",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneLevelUp.Data.cs": {
+      "classes": [
+        "PlaneLevelUpAttributeData",
+        "PlaneLevelUpCostData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay.Manager",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": []
+    },
+    "PlaneLevelUpPreviewPanel.cs": {
+      "classes": [
+        "PlaneLevelUpPreviewPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneLevelUpShowPanel.cs": {
+      "classes": [
+        "PlaneLevelUpShowPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay.Manager",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneSchemePanel_Portrait.cs": {
+      "classes": [
+        "PlaneSchemePanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AttributeChangeItemUI.cs": {
+      "classes": [
+        "AttributeChangeItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Gameplay.Manager",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneAttributeItem.cs": {
+      "classes": [
+        "PlaneAttributeItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneLevelUpCostItem.cs": {
+      "classes": [
+        "PlaneLevelUpCostItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Gameplay.Manager",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlaneLevelUpPropertyItem.cs": {
+      "classes": [
+        "PlaneLevelUpPropertyItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlaneSchemeSelItem.cs": {
+      "classes": [
+        "PlaneSchemeSelItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Linq",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "IPCTextLink.cs": {
+      "classes": [
+        "IPCTextLink"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LinkClickHandler"
+      ],
+      "using": [
+        "Client",
+        "UnityEngine",
+        "UnityEngine.EventSystems"
+      ],
+      "patterns": []
+    },
+    "LoginAccountPanel.cs": {
+      "classes": [
+        "LoginAccountPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Net"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "LoginUI_UserNameLogin.cs": {
+      "classes": [
+        "LoginUI_UserNameLogin"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.SDK",
+        "System.Collections.Generic",
+        "Client.ClientLogTool",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Net"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "MailInfoPanel.cs": {
+      "classes": [
+        "MailInfoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Data",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MailItemUI.cs": {
+      "classes": [
+        "MailItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Data",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MailListPanel.cs": {
+      "classes": [
+        "MailListPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AssetsBarItem_MainUI.cs": {
+      "classes": [
+        "AssetsBarItem_MainUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "AssetsBarPanel_MainUI.cs": {
+      "classes": [
+        "AssetsBarPanel_MainUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.User",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "ChapterItemUI.cs": {
+      "classes": [
+        "ChapterItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.Pbeans",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "ChapterListPanel.cs": {
+      "classes": [
+        "ChapterListPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ChapterPanel_MainPanel.cs": {
+      "classes": [
+        "ChapterPanel_MainPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.StarMap"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "HangarPanel_Portrait.cs": {
+      "classes": [
+        "HangarPanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Linq",
+        "Entitas",
+        "Client.Manager",
+        "Client.Pbeans",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Component",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MainPanel.cs": {
+      "classes": [
+        "MainPanel"
+      ],
+      "calls_out": [
+        "PlanePanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MainPanel_Portrait.cs": {
+      "classes": [
+        "MainPanel_Portrait"
+      ],
+      "calls_out": [
+        "PlanePanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.AB",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Client.StarMap"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "MainPanel_Portrait.Tutorial.cs": {
+      "classes": [
+        "MainPanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Client.StarMap",
+        "Client.UI.Tutorial"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "MainUI_SubUIController.cs": {
+      "classes": [
+        "MainUI_SubUIController",
+        "PanelSortData"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "BattleLevelDropItemUI.cs",
+        "PlaneSchemeInfoPanel_MainPanel.cs",
+        "WarehousePanel_Portrait.cs"
+      ],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay.User",
+        "Gameplay.Pbeans",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MapLevelInfoPanel_MainPanel.cs": {
+      "classes": [
+        "MapLevelInfoPanel_MainPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "ObjectPool"
+      ]
+    },
+    "PlaneSchemeInfoPanel_MainPanel.cs": {
+      "classes": [
+        "PlaneSchemeInfoPanel_MainPanel"
+      ],
+      "calls_out": [
+        "MainUI_SubUIController.cs"
+      ],
+      "called_by": [
+        "MainUI.cs"
+      ],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "RoomEntryButton.cs": {
+      "classes": [
+        "RoomEntryButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "AnnouncementEntryButton.cs": {
+      "classes": [
+        "AnnouncementEntryButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "BattleLevelDropItemUI.cs": {
+      "classes": [
+        "BattleLevelDropItemUI"
+      ],
+      "calls_out": [
+        "MainUI_SubUIController.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "System.IO.Ports"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleLevelDropRateItemUI.cs": {
+      "classes": [
+        "BattleLevelDropRateItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleLevelDropRatePanel.cs": {
+      "classes": [
+        "BattleLevelDropRatePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "BattleLevelRewardItemUI.cs": {
+      "classes": [
+        "BattleLevelRewardItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "QuestionnaireButton.cs": {
+      "classes": [
+        "QuestionnaireButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "UpdatePlaneButton.cs": {
+      "classes": [
+        "UpdatePlaneButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WechatButton.cs": {
+      "classes": [
+        "WechatButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "MapItemUI.cs": {
+      "classes": [
+        "MapItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MapPanel.cs": {
+      "classes": [
+        "MapPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "System",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePanel.cs": {
+      "classes": [
+        "PlanePanel"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "MainPanel.cs",
+        "MainPanel_Portrait.cs"
+      ],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "RoomBattlePanel.cs": {
+      "classes": [
+        "RoomBattlePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "RoomPage_Lobby.cs": {
+      "classes": [
+        "RoomPage_Lobby"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.UI",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "UnityEngine.Networking",
+        "System.IO"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "RoomPage_Room.cs": {
+      "classes": [
+        "RoomPage_Room"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.UI",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "DecompositionItemUI.cs": {
+      "classes": [
+        "DecompositionItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "DecompositionPanel_Portrait.cs": {
+      "classes": [
+        "DecompositionPanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.UI",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "System.IO.Ports"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "DecompositionResultItemUI.cs": {
+      "classes": [
+        "DecompositionResultItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlanePartRarityFilterUI.cs": {
+      "classes": [
+        "PlanePartRarityFilterUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "System.Security.Policy"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehousePanel_Portrait.cs": {
+      "classes": [
+        "WarehousePanel_Portrait"
+      ],
+      "calls_out": [
+        "MainUI_SubUIController.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "MatchSuccessPanel.cs": {
+      "classes": [
+        "MatchSuccessPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Common",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Component",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "AudioOptionPanel.cs": {
+      "classes": [
+        "AudioOptionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "RenamePanel.cs": {
+      "classes": [
+        "RenamePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text.RegularExpressions",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "Client.ClientRegex"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "SDKOptionPanel.cs": {
+      "classes": [
+        "SDKOptionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SoundSliderUI.cs": {
+      "classes": [
+        "SoundSliderUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "UserOptionPanel.cs": {
+      "classes": [
+        "UserOptionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PilotDetailPanel.cs": {
+      "classes": [
+        "PilotDetailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PilotEntryButton.cs": {
+      "classes": [
+        "PilotEntryButton"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.AB",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PilotItem.cs": {
+      "classes": [
+        "PilotItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "CPlanePartInfo.cs": {
+      "classes": [
+        "CPlanePartInfo"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "System.Linq",
+        "Client.Manager",
+        "Client.Pbeans",
+        "Client.AB",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "Gameplay.User",
+        "UnityEngine.Rendering"
+      ],
+      "patterns": [
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "PlaneBasicHolder.cs": {
+      "classes": [
+        "PlaneBasicHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Gameplay",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditCondition.cs": {
+      "classes": [
+        "PlaneEditCondition"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "DG.Tweening.Core",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "PlaneEditConditionPanel.cs": {
+      "classes": [
+        "PlaneEditConditionPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditConnDir.cs": {
+      "classes": [
+        "PlaneEditConnDir"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditEffect.cs": {
+      "classes": [
+        "PlaneEditEffect"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditEnum.cs": {
+      "classes": [],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "System.Threading.Tasks",
+        "System.Text",
+        "System.Collections.Generic",
+        "System.Linq"
+      ],
+      "patterns": [
+        "StateMachine"
+      ]
+    },
+    "PlaneEditHitGrid.cs": {
+      "classes": [
+        "PlaneEditHitGrid"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditIconTips.cs": {
+      "classes": [
+        "PlaneEditIconTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditorHolder.cs": {
+      "classes": [
+        "PlaneEditorHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Gameplay",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Pbeans",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditPanel.cs": {
+      "classes": [
+        "PlaneEditPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "FishNet.Utility.Extension",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneEditPanel_Portrait.cs": {
+      "classes": [
+        "PlaneEditPanel_Portrait"
+      ],
+      "calls_out": [
+        "PlanePartSelPanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "Unity.VisualScripting",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "System.Linq",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneInfoPanel.cs": {
+      "classes": [
+        "PlaneInfoPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneOperatePanel.cs": {
+      "classes": [
+        "PlaneOperatePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "UnityEngine.Rendering"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "PlaneOperatePanel_Portrait.cs": {
+      "classes": [
+        "PlaneOperatePanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "UnityEngine",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "UnityEngine.Rendering",
+        "Client.UI.Tutorial"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "PlanePartComponentFilterPanel.cs": {
+      "classes": [
+        "PlanePartComponentFilterPanel",
+        "TagToggleEntry"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartEdgeLight.cs": {
+      "classes": [
+        "PlanePartEdgeLight"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartFilterUtil.cs": {
+      "classes": [
+        "PlanePartFilterUtil"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "PlanePartSelPanel_Portrait.cs"
+      ],
+      "inherits": [],
+      "using": [
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": []
+    },
+    "PlanePartHolder.cs": {
+      "classes": [
+        "PlanePartHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartSelPanel.cs": {
+      "classes": [
+        "PlanePartSelPanel"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "PlaneEditPanel_Portrait.cs"
+      ],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartSelPanel_Portrait.cs": {
+      "classes": [
+        "PlanePartSelPanel_Portrait"
+      ],
+      "calls_out": [
+        "PlanePartFilterUtil.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Client.UI.Tutorial"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartSortFilterPanel.cs": {
+      "classes": [
+        "PlanePartSortFilterPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Data",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartTips.cs": {
+      "classes": [
+        "PlanePartTips"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Client.Pbeans",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartTipsPanel.cs": {
+      "classes": [
+        "PlanePartTipsPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartTipsPanel_Portrait.cs": {
+      "classes": [
+        "PlanePartTipsPanel_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartWeaponTypeList.cs": {
+      "classes": [
+        "PlanePartWeaponTypeList"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneSelPanel.cs": {
+      "classes": [
+        "PlaneSelPanel"
+      ],
+      "calls_out": [],
+      "called_by": [
+        "PlaneEditUI.cs",
+        "PlaneEditUI_Portrait.cs",
+        "PlaneLevelUpUI.cs"
+      ],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ScrollAutoScale.cs": {
+      "classes": [
+        "ScrollAutoScale"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlanePartItem.cs": {
+      "classes": [
+        "PlanePartItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "BaseItemUI"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Client.Effect"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlanePartSelItem.cs": {
+      "classes": [
+        "PlanePartSelItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.Data",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneSelItem.cs": {
+      "classes": [
+        "PlaneSelItem"
+      ],
+      "calls_out": [
+        "PlaneLevelUpHolder.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "SpriteBreathEffect.cs": {
+      "classes": [
+        "SpriteBreathEffect"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "SuitItem.cs": {
+      "classes": [
+        "SuitItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Text",
+        "System.Linq",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlanePartDecomposeData.cs": {
+      "classes": [
+        "DecomposeResultData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic"
+      ],
+      "patterns": []
+    },
+    "PlanePartDecomposeOperatePanel.cs": {
+      "classes": [
+        "PlanePartDecomposeOperatePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "PlanePartDecomposePanel.cs": {
+      "classes": [
+        "PlanePartDecomposePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "PPDecomposeItem.cs": {
+      "classes": [
+        "PPDecomposeItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "StateMachine"
+      ]
+    },
+    "PPDRarityFilterItem.cs": {
+      "classes": [
+        "PPDRarityFilterItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "StateMachine"
+      ]
+    },
+    "PPDResultItem.cs": {
+      "classes": [
+        "PPDResultItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "RankItemUI.cs": {
+      "classes": [
+        "RankItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "UIBehaviour",
+        "IDynamicScrollViewItem"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "UnityEngine.SocialPlatforms",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "Mosframe",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "UnityEngine.Rendering",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "RankPanel.cs": {
+      "classes": [
+        "RankPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Mosframe",
+        "System",
+        "UnityEngine.UI",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "DamageTypeItemUI_Settlement.cs": {
+      "classes": [
+        "DamageTypeItemUI_Settlement"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System.Collections",
+        "Gameplay.Pbeans"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementBattleDetailPanel.cs": {
+      "classes": [
+        "SettlementBattleDetailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementDataValueBar.cs": {
+      "classes": [
+        "SettlementDataValueBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementPlanePartDetailItemUI.cs": {
+      "classes": [
+        "SettlementPlanePartDetailItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType",
+        "System.IO.Ports"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "SettlementRewardItemUI.cs": {
+      "classes": [
+        "SettlementRewardItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementSuccessPanel.cs": {
+      "classes": [
+        "SettlementSuccessPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "Share.Utility",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Gameplay.Pbeans",
+        "System.Runtime.InteropServices.ComTypes",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SevendayRewardItemUI.cs": {
+      "classes": [
+        "SevendayRewardItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SevendayRewardItemUI_FinalReward.cs": {
+      "classes": [
+        "SevendayRewardItemUI_FinalReward"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "SevendayRewardItemUI"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "BattleLevelRewardItemUI_LoopScroll.cs": {
+      "classes": [
+        "BattleLevelRewardItemUI_LoopScroll"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "StarMapLevelPanel.cs": {
+      "classes": [
+        "StarMapLevelPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.StarMap"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "LoadUpdateFileTipPanel.cs": {
+      "classes": [
+        "LoadUpdateFileTipPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Threading.Tasks"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SDKFailPanel.cs": {
+      "classes": [
+        "SDKFailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "ServerConnectFailPanel.cs": {
+      "classes": [
+        "ServerConnectFailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "Client.Manager",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "StartUIProgressBar.cs": {
+      "classes": [
+        "StartUIProgressBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SuitItemUI.cs": {
+      "classes": [
+        "SuitItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "SuitPanel.cs": {
+      "classes": [
+        "SuitPanel",
+        "ClientSuitData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SuitPlanePartItemUI.cs": {
+      "classes": [
+        "SuitPlanePartItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SuitTipsPanel.cs": {
+      "classes": [
+        "SuitTipsPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "Gameplay",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour",
+        "ObjectPool"
+      ]
+    },
+    "AssistantPanel.cs": {
+      "classes": [
+        "AssistantPanel",
+        "AssistantPanelData"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour",
+        "IPointerDownHandler"
+      ],
+      "using": [
+        "TMPro",
+        "Unity.VisualScripting",
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "Client.UI.BattleUI",
+        "System.Collections.Generic",
+        "ClientCommon",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "MainUITutorialPanel.cs": {
+      "classes": [
+        "MainUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneTutorialUIElement.cs": {
+      "classes": [
+        "PlaneTutorialUIElement"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "PlaneUITutorialPanel.cs": {
+      "classes": [
+        "PlaneUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.UI.BattleUI",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "SettlementUITutorialPanel.cs": {
+      "classes": [
+        "SettlementUITutorialPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.UI.BattleUI",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "TutorialUIElement.cs": {
+      "classes": [
+        "TutorialUIElement"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections",
+        "System.Collections.Generic"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehouseItemDetailPanel.cs": {
+      "classes": [
+        "WarehouseItemDetailPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehouseItemUI.cs": {
+      "classes": [
+        "WarehouseItemUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "Gameplay",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "WarehousePanel.cs": {
+      "classes": [
+        "WarehousePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehouseSortFilterButtonPanel.cs": {
+      "classes": [
+        "WarehouseSortFilterButtonPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehouseUseItemPanel.cs": {
+      "classes": [
+        "WarehouseUseItemPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Net"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "ObjectPool"
+      ]
+    },
+    "WeaponClickArea.cs": {
+      "classes": [
+        "WeaponClickArea"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponClickAreaHolder.cs": {
+      "classes": [
+        "WeaponClickAreaHolder"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponListPanel.cs": {
+      "classes": [
+        "WeaponListPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponOperatePanel.cs": {
+      "classes": [
+        "WeaponOperatePanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "UnityEngine.EventSystems",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponPartInfo.cs": {
+      "classes": [
+        "WeaponPartInfo"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System.Collections",
+        "Gameplay.User",
+        "System.Collections.Generic",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponSet.cs": {
+      "classes": [
+        "WeaponSet"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "StateMachine"
+      ]
+    },
+    "WeaponSetPanel.cs": {
+      "classes": [
+        "WeaponSetPanel"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "ISubPanel",
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "UnityEngine.EventSystems",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Client.UI.Item",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponGroupItem.cs": {
+      "classes": [
+        "WeaponGroupItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WeaponInfoItem.cs": {
+      "classes": [
+        "WeaponInfoItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "LoopScrollCell"
+      ],
+      "using": [
+        "TMPro",
+        "System.Linq",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.Data",
+        "Gameplay.Manager",
+        "UnityEngine.UI",
+        "Gameplay",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "WeaponSetItem.cs": {
+      "classes": [
+        "WeaponSetItem"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "AITestUI.cs": {
+      "classes": [
+        "AITestUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Gameplay.ExportConfig",
+        "Share.Utility",
+        "Gameplay.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "UnityEditor",
+        "Common.Math",
+        "System.IO"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GameAnnouncementUI.cs": {
+      "classes": [
+        "GameAnnouncementUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "GameUI.cs": {
+      "classes": [
+        "GameUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "Share.Utility",
+        "Gameplay.Manager",
+        "FishNet.Transporting",
+        "Client.AB",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Gameplay.BattleMap",
+        "FishNet.Object",
+        "FishNet.Managing",
+        "Client.Effect"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "LoginUI.cs": {
+      "classes": [
+        "LoginUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.UI.GameAnnouncement",
+        "Newtonsoft.Json",
+        "Client.SDK",
+        "Client.Manager",
+        "Client.AB",
+        "System.Collections.Generic",
+        "Client.ClientLogTool",
+        "Common",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Net"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton",
+        "StateMachine"
+      ]
+    },
+    "LoginUI_NonHotFix.cs": {
+      "classes": [
+        "LoginUI_NonHotFix"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "Share.Utility",
+        "Client.UI.GameAnnouncement",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.AB",
+        "System.Collections.Generic",
+        "Client.ClientLogTool",
+        "System",
+        "Common",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "Net",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "StateMachine"
+      ]
+    },
+    "MailUI.cs": {
+      "classes": [
+        "MailUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.RedHintEvent",
+        "Gameplay.Component",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "MainUI.cs": {
+      "classes": [
+        "MainUI"
+      ],
+      "calls_out": [
+        "PlaneSchemeInfoPanel_MainPanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "DG.Tweening",
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.AB",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Gameplay.Component"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "MatchingUI.cs": {
+      "classes": [
+        "MatchingUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "Spine.Unity",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "OptionUI.cs": {
+      "classes": [
+        "OptionUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Client.Manager",
+        "UnityEngine.UI",
+        "Client.UI.Option"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PilotUI.cs": {
+      "classes": [
+        "PilotUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "PlaneEditUI.cs": {
+      "classes": [
+        "PlaneEditUI"
+      ],
+      "calls_out": [
+        "PlaneSelPanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.Pbeans",
+        "UnityEngine.UI",
+        "Gameplay.User"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "PlaneEditUI_Portrait.cs": {
+      "classes": [
+        "PlaneEditUI_Portrait"
+      ],
+      "calls_out": [
+        "PlaneSelPanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.Pbeans",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.StarMap"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "PlaneEditUI_Portrait.Tutorial.cs": {
+      "classes": [
+        "PlaneEditUI_Portrait"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.Pbeans",
+        "Client.Data",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.StarMap",
+        "Client.UI.Tutorial"
+      ],
+      "patterns": [
+        "Config"
+      ]
+    },
+    "PlaneLevelUpUI.cs": {
+      "classes": [
+        "PlaneLevelUpUI"
+      ],
+      "calls_out": [
+        "PlaneSelPanel.cs"
+      ],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "PlanePartDecomposeUI.cs": {
+      "classes": [
+        "PlanePartDecomposeUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "RankUI.cs": {
+      "classes": [
+        "RankUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "Mosframe",
+        "System",
+        "UnityEngine.UI",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "SettlementUI.cs": {
+      "classes": [
+        "SettlementUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine",
+        "Share.Utility",
+        "System.Threading.Tasks",
+        "Client.Systems",
+        "Client.Manager",
+        "Gameplay.Manager",
+        "Client.AB",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay",
+        "System.Collections",
+        "Gameplay.User",
+        "System.IO",
+        "Client.UI.Settlement",
+        "Client.UI.Tutorial",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "SevenDayLoginUI.cs": {
+      "classes": [
+        "SevenDayLoginUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "Client.Manager",
+        "Client.Pbeans",
+        "Client.Data",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "System.Collections",
+        "Gameplay.User",
+        "Client.RedHintEvent",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "StarMapUI.cs": {
+      "classes": [
+        "StarMapUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "Lean.Touch",
+        "UnityEngine",
+        "Client.UI",
+        "Client.StarMap",
+        "UnityEngine.EventSystems",
+        "Client.Manager",
+        "System.Collections.Generic",
+        "System",
+        "Gameplay",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "Client.UI.StarMap",
+        "Client"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem"
+      ]
+    },
+    "StartUI.cs": {
+      "classes": [
+        "StartUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "TMPro",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "System.Collections"
+      ],
+      "patterns": [
+        "Config",
+        "EventSystem",
+        "MonoBehaviour",
+        "Singleton"
+      ]
+    },
+    "StartUI_NonHotFix.cs": {
+      "classes": [
+        "StartUI_NonHotFix"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "System",
+        "UnityEngine.UI",
+        "UnityEngine",
+        "Share.Utility"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "WarehouseUI.cs": {
+      "classes": [
+        "WarehouseUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Manager",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "Client.UI.Item",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "EventSystem",
+        "Singleton"
+      ]
+    },
+    "WeaponUI.cs": {
+      "classes": [
+        "WeaponUI"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "IUIPanel",
+        "Base_UICanvas"
+      ],
+      "using": [
+        "UnityEngine",
+        "System.Threading.Tasks",
+        "Client.Pbeans",
+        "System.Collections.Generic",
+        "System",
+        "UnityEngine.UI",
+        "Gameplay.User",
+        "System.Collections",
+        "SprotoType"
+      ],
+      "patterns": [
+        "Config",
+        "Singleton"
+      ]
+    },
+    "IOSRectFitSafeArea.cs": {
+      "classes": [
+        "IOSRectFitSafeArea"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "IOSRectFit_BlackBar.cs": {
+      "classes": [
+        "IOSRectFit_BlackBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    },
+    "IOSRectFit_BottomBlackBar.cs": {
+      "classes": [
+        "IOSRectFit_BottomBlackBar"
+      ],
+      "calls_out": [],
+      "called_by": [],
+      "inherits": [
+        "MonoBehaviour"
+      ],
+      "using": [
+        "UnityEngine.UI",
+        "UnityEngine"
+      ],
+      "patterns": [
+        "Config",
+        "MonoBehaviour"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "GuideCutoutMaskController.cs",
+      "to": "GuideCutoutMaskSupport.cs",
+      "type": "calls",
+      "via_class": "GuideCutoutMaskUtil"
+    },
+    {
+      "from": "ProtocolBattleFieldListPanel.cs",
+      "to": "ProtocolDetailPanel.cs",
+      "type": "calls",
+      "via_class": "ProtocolDetailPanel"
+    },
+    {
+      "from": "ProtocolBattleFieldListPanel.cs",
+      "to": "ProtocolTestingToolPanel.cs",
+      "type": "calls",
+      "via_class": "ProtocolTestingToolPanel"
+    },
+    {
+      "from": "ProtocolDetailPanel.cs",
+      "to": "ProtocolBattleFieldListPanel.cs",
+      "type": "calls",
+      "via_class": "ProtocolBattleFieldListPanel"
+    },
+    {
+      "from": "ProtocolDetailPanel.cs",
+      "to": "ProtocolListPanel.cs",
+      "type": "calls",
+      "via_class": "ProtocolListPanel"
+    },
+    {
+      "from": "ProtocolListPanel.cs",
+      "to": "ProtocolDetailPanel.cs",
+      "type": "calls",
+      "via_class": "ProtocolDetailPanel"
+    },
+    {
+      "from": "BattleGMItemUI.cs",
+      "to": "GMClientHelper.cs",
+      "type": "calls",
+      "via_class": "GMClientHelper"
+    },
+    {
+      "from": "MainPanel.cs",
+      "to": "PlanePanel.cs",
+      "type": "calls",
+      "via_class": "PlanePanel"
+    },
+    {
+      "from": "MainPanel_Portrait.cs",
+      "to": "PlanePanel.cs",
+      "type": "calls",
+      "via_class": "PlanePanel"
+    },
+    {
+      "from": "PlaneSchemeInfoPanel_MainPanel.cs",
+      "to": "MainUI_SubUIController.cs",
+      "type": "calls",
+      "via_class": "MainUI_SubUIController"
+    },
+    {
+      "from": "BattleLevelDropItemUI.cs",
+      "to": "MainUI_SubUIController.cs",
+      "type": "calls",
+      "via_class": "MainUI_SubUIController"
+    },
+    {
+      "from": "WarehousePanel_Portrait.cs",
+      "to": "MainUI_SubUIController.cs",
+      "type": "calls",
+      "via_class": "MainUI_SubUIController"
+    },
+    {
+      "from": "PlaneEditPanel_Portrait.cs",
+      "to": "PlanePartSelPanel.cs",
+      "type": "calls",
+      "via_class": "PlanePartSelPanel"
+    },
+    {
+      "from": "PlanePartSelPanel_Portrait.cs",
+      "to": "PlanePartFilterUtil.cs",
+      "type": "calls",
+      "via_class": "PlanePartFilterUtil"
+    },
+    {
+      "from": "PlaneSelItem.cs",
+      "to": "PlaneLevelUpHolder.cs",
+      "type": "calls",
+      "via_class": "PlaneLevelUpHolder"
+    },
+    {
+      "from": "MainUI.cs",
+      "to": "PlaneSchemeInfoPanel_MainPanel.cs",
+      "type": "calls",
+      "via_class": "PlaneSchemeInfoPanel_MainPanel"
+    },
+    {
+      "from": "PlaneEditUI.cs",
+      "to": "PlaneSelPanel.cs",
+      "type": "calls",
+      "via_class": "PlaneSelPanel"
+    },
+    {
+      "from": "PlaneEditUI_Portrait.cs",
+      "to": "PlaneSelPanel.cs",
+      "type": "calls",
+      "via_class": "PlaneSelPanel"
+    },
+    {
+      "from": "PlaneLevelUpUI.cs",
+      "to": "PlaneSelPanel.cs",
+      "type": "calls",
+      "via_class": "PlaneSelPanel"
+    }
+  ],
+  "class_to_file": {
+    "HoleMaskImage": "HoleMaskImage.cs",
+    "PlanePartInfoPanel": "PlanePartInfoPanel.cs",
+    "UI_Common_AssetItem": "UI_Common_AssetItem.cs",
+    "UI_Common_AssetsBar": "UI_Common_AssetsBar.cs",
+    "AssetsLoadingUI": "AssetsLoadingUI.cs",
+    "ReconnectPanel": "ReconnectPanel.cs",
+    "AutoBlurBackground": "AutoBlurBackground.cs",
+    "AutoSetSizeWithCurrentAnchors": "AutoSetSizeWithCurrentAnchors.cs",
+    "Base_UICanvas": "Base_UICanvas.cs",
+    "BlurBackground": "BlurBackground.cs",
+    "ButtonExtension": "ButtonExtension.cs",
+    "ClickBlankToClose": "ClickBlankToClose.cs",
+    "ClickOutsideToClose": "ClickOutsideToClose.cs",
+    "DragClosePanel": "DragClosePanel.cs",
+    "EmptyRaycast": "EmptyRaycast.cs",
+    "EnableOrDisableButtonController": "EnableOrDisableButtonController.cs",
+    "EnableOrDisableImage": "EnableOrDisableButtonController.cs",
+    "EnableOrDisableGraphic": "EnableOrDisableButtonController.cs",
+    "EnableOrDisableTextMeshProUGUI": "EnableOrDisableButtonController.cs",
+    "ExtendFilledImage": "ExtendFilledImage.cs",
+    "FireJoyStick": "FireJoyStick.cs",
+    "GuideCutoutMaskController": "GuideCutoutMaskController.cs",
+    "GuideCutoutMaskUtil": "GuideCutoutMaskSupport.cs",
+    "GuideCutoutMaskRaycastFilter": "GuideCutoutMaskSupport.cs",
+    "HpData": "HPProcessBar.cs",
+    "HPProcessBar": "HPProcessBar.cs",
+    "ImageEventTrigger": "ImageEventTrigger.cs",
+    "ImageExtension": "ImageExtension.cs",
+    "InfiniteScroll": "InfiniteScroll.cs",
+    "MoveJoyStick": "MoveJoyStick.cs",
+    "RadioButtonGroup": "RadioButtonGroup.cs",
+    "SACollector": "SACollector.cs",
+    "ScreenAdaptation": "ScreenAdaptation.cs",
+    "ScreenSetting": "ScreenSetting.cs",
+    "ScrollbarExtension": "ScrollbarExtension.cs",
+    "TMPBubbleMaxWidthClamp": "TMPBubbleMaxWidthClamp.cs",
+    "TMP_UICommonCopyButton": "TMP_UICommonCopyButton.cs",
+    "ToggleSwitch": "ToggleSwitch.cs",
+    "UIBattleHeadContainer": "UIBattleHeadContainer.cs",
+    "UICommonCopyButton": "UICommonCopyButton.cs",
+    "UIEffectEmptyRaycast": "UIEffectEmptyRaycast.cs",
+    "UIEffectImage": "UIEffectImage.cs",
+    "UIEffectRawImage": "UIEffectRawImage.cs",
+    "UIIndex": "UIIndex.cs",
+    "UIInputFieldContent": "UIInputFieldContent.cs",
+    "UIProcessBar": "UIProcessBar.cs",
+    "UIRoundedImage": "UIRoundedImage.cs",
+    "UIRoundedRawImage": "UIRoundedRawImage.cs",
+    "UISlider": "UISlider.cs",
+    "UIToggleGroup": "UIToggleGroup.cs",
+    "ToggleEventDic": "UIToggleGroup.cs",
+    "UIToggleItem": "UIToggleItem.cs",
+    "URLTextLink": "URLTextLink.cs",
+    "ExtendFilledImageEditor": "ExtendFilledImageEditor.cs",
+    "ExtendImageEditor": "ExtendFilledImageEditor.cs",
+    "BaseGeneralUIPanel": "BaseGeneralUIPanel.cs",
+    "GeneralUI_CommonMask": "GeneralUI_CommonMask.cs",
+    "GeneralUI_FPS": "GeneralUI_FPS.cs",
+    "GeneralUI_ItemDetailPanel": "GeneralUI_ItemDetailPanel.cs",
+    "GeneralUI_MessageBox": "GeneralUI_MessageBox.cs",
+    "GeneralUI_NounDescriptionPanel": "GeneralUI_NounDescriptionPanel.cs",
+    "GeneralUI_PlanePartInfoPanel": "GeneralUI_PlanePartInfoPanel.cs",
+    "GeneralUI_RewardPanel": "GeneralUI_RewardPanel.cs",
+    "GeneralUI_TextInput": "GeneralUI_TextInput.cs",
+    "GeneralUI_TipPanel": "GeneralUI_TipPanel.cs",
+    "GeneralUI_VersionText": "GeneralUI_VersionText.cs",
+    "GeneralUI_VideoPanel": "GeneralUI_VideoPanel.cs",
+    "BattleFieldProtocolDataItemUI": "BattleFieldProtocolDataItemUI.cs",
+    "GeneralUIController": "GeneralUIController.Tips.cs",
+    "ProtocolBattleFieldListPanel": "ProtocolBattleFieldListPanel.cs",
+    "ProtocolDataItemUI": "ProtocolDataItemUI.cs",
+    "ProtocolDetailPanel": "ProtocolDetailPanel.cs",
+    "ProtocolListPanel": "ProtocolListPanel.cs",
+    "ProtocolTestingToolPanel": "ProtocolTestingToolPanel.cs",
+    "ProtocolData": "ProtocolTestingToolPanel.cs",
+    "C2SProtocolData": "ProtocolTestingToolPanel.cs",
+    "S2CProtocolData": "ProtocolTestingToolPanel.cs",
+    "BattleFieldProtocolData": "ProtocolTestingToolPanel.cs",
+    "C2SBattleFieldProtocolData": "ProtocolTestingToolPanel.cs",
+    "S2CBattleFieldProtocolData": "ProtocolTestingToolPanel.cs",
+    "ProtocolTipsPanel": "ProtocolTipsPanel.cs",
+    "BaseItemUI": "BaseItemUI.cs",
+    "ItemInfoPanel": "ItemInfoPanel.cs",
+    "ItemOrPartItemUI": "ItemOrPartItemUI.cs",
+    "PartBaseItemUI": "PartBaseItemUI.cs",
+    "RewardItemUI": "RewardItemUI.cs",
+    "StackingItemUI": "StackingItemUI.cs",
+    "CircleGuide": "CircleGuide.cs",
+    "CircleMask": "CircleMask.cs",
+    "GuideBase": "GuideBase.cs",
+    "SquareGuide": "SquareGuide.cs",
+    "SquareMask": "SquareMask.cs",
+    "NoviceGuideDialogTips": "NoviceGuideDialogTips.cs",
+    "NoviceGuideFingerTips": "NoviceGuideFingerTips.cs",
+    "NoviceGuideForceClickTips": "NoviceGuideForceClickTips.cs",
+    "NoviceGuideSimpleTips": "NoviceGuideSimpleTips.cs",
+    "NoviceGuideTalkTips": "NoviceGuideTalkTips.cs",
+    "NoviceGuideTips": "NoviceGuideTips.cs",
+    "PlanePartInfoAttributeData": "PlanePartInfoAttributeData.cs",
+    "PlanePartInfoAttributeItemUI": "PlanePartInfoAttributeItemUI.cs",
+    "PlanePartInfoAttributePanel": "PlanePartInfoAttributePanel.cs",
+    "PlanePartInfoDescriptionPanel": "PlanePartInfoDescriptionPanel.cs",
+    "PlanePartInfoFeatureEffectItemUI": "PlanePartInfoFeatureEffectItemUI.cs",
+    "PlanePartInfoFeatureEffectRandomParamData": "PlanePartInfoFeatureEffectRandomParamData.cs",
+    "PlanePartInfoFeatureEffectRandomParamItemUI": "PlanePartInfoFeatureEffectRandomParamItemUI.cs",
+    "PlanePartInfoFeaturePanel": "PlanePartInfoFeaturePanel.cs",
+    "PlanePartInfoFightPanel": "PlanePartInfoFightPanel.cs",
+    "PlanePartInfoSuitPanel": "PlanePartInfoSuitPanel.cs",
+    "PlanePartInfoTagPanel": "PlanePartInfoTagPanel.cs",
+    "PlanePartKeyWordItemUI": "PlanePartKeyWordItemUI.cs",
+    "PlaneHolder": "PlaneHolder.Event.cs",
+    "PlaneLevelUpHolder": "PlaneLevelUpHolder.cs",
+    "PlaneWeaponHolder": "PlaneWeaponHolder.cs",
+    "HintEventManager": "HintEventManager.cs",
+    "ListenerTuple": "HintEventManager.cs",
+    "HintRedPointComponent": "HintRedPointComponent.cs",
+    "HintRedPointComponent_Dynamic": "HintRedPointComponent_Dynamic.cs",
+    "SGTree": "SGTree.cs",
+    "SGTreeNode": "SGTreeNode.cs",
+    "ClickEffect_Click": "ClickEffect_Click.cs",
+    "ScreenHandlerEffectController": "ScreenHandlerEffectController.cs",
+    "AgeAppropriatePromptPanel": "AgeAppropriatePromptPanel.cs",
+    "MatchSuccessPanel_GameUI": "MatchSuccessPanel_GameUI.cs",
+    "AITestPlaneItemUI": "AITestPlaneItemUI.cs",
+    "AITestPlayerGroupPanel": "AITestPlayerGroupPanel.cs",
+    "GameAnnouncementButton": "GameAnnouncementButton.cs",
+    "GameAnnouncementPanel": "GameAnnouncementPanel.cs",
+    "GameAnnouncementPanel_AB": "GameAnnouncementPanel_AB.cs",
+    "GameAnnouncementTitleItemUI": "GameAnnouncementTitleItemUI.cs",
+    "BattleGMItemUI": "BattleGMItemUI.cs",
+    "BattleGMList": "BattleGMList.cs",
+    "BattleGMPanel": "BattleGMPanel.cs",
+    "BattleProgressPanel": "BattleProgressPanel.cs",
+    "BattleStartPanel": "BattleStartPanel.cs",
+    "BattleWinPanel": "BattleWinPanel.cs",
+    "GMClientHelper": "GMClientHelper.cs",
+    "RoomIDTextPanel": "RoomIDTextPanel.cs",
+    "GMGroupButtonItemUI": "GMGroupButtonItemUI.cs",
+    "GMGroupItemUI": "GMGroupItemUI.cs",
+    "GMGroupPanel": "GMGroupPanel.cs",
+    "GMRecordPanel": "GMRecordPanel.cs",
+    "GroupListPanel": "GroupListPanel.cs",
+    "HangarToggle": "HangarToggle.cs",
+    "PlaneLevelUpAttributeData": "PlaneLevelUp.Data.cs",
+    "PlaneLevelUpCostData": "PlaneLevelUp.Data.cs",
+    "PlaneLevelUpPreviewPanel": "PlaneLevelUpPreviewPanel.cs",
+    "PlaneLevelUpShowPanel": "PlaneLevelUpShowPanel.cs",
+    "PlaneSchemePanel_Portrait": "PlaneSchemePanel_Portrait.cs",
+    "AttributeChangeItemUI": "AttributeChangeItemUI.cs",
+    "PlaneAttributeItem": "PlaneAttributeItem.cs",
+    "PlaneLevelUpCostItem": "PlaneLevelUpCostItem.cs",
+    "PlaneLevelUpPropertyItem": "PlaneLevelUpPropertyItem.cs",
+    "PlaneSchemeSelItem": "PlaneSchemeSelItem.cs",
+    "IPCTextLink": "IPCTextLink.cs",
+    "LoginAccountPanel": "LoginAccountPanel.cs",
+    "LoginUI_UserNameLogin": "LoginUI_UserNameLogin.cs",
+    "MailInfoPanel": "MailInfoPanel.cs",
+    "MailItemUI": "MailItemUI.cs",
+    "MailListPanel": "MailListPanel.cs",
+    "AssetsBarItem_MainUI": "AssetsBarItem_MainUI.cs",
+    "AssetsBarPanel_MainUI": "AssetsBarPanel_MainUI.cs",
+    "ChapterItemUI": "ChapterItemUI.cs",
+    "ChapterListPanel": "ChapterListPanel.cs",
+    "ChapterPanel_MainPanel": "ChapterPanel_MainPanel.cs",
+    "HangarPanel_Portrait": "HangarPanel_Portrait.cs",
+    "MainPanel": "MainPanel.cs",
+    "MainPanel_Portrait": "MainPanel_Portrait.Tutorial.cs",
+    "MainUI_SubUIController": "MainUI_SubUIController.cs",
+    "PanelSortData": "MainUI_SubUIController.cs",
+    "MapLevelInfoPanel_MainPanel": "MapLevelInfoPanel_MainPanel.cs",
+    "PlaneSchemeInfoPanel_MainPanel": "PlaneSchemeInfoPanel_MainPanel.cs",
+    "RoomEntryButton": "RoomEntryButton.cs",
+    "AnnouncementEntryButton": "AnnouncementEntryButton.cs",
+    "BattleLevelDropItemUI": "BattleLevelDropItemUI.cs",
+    "BattleLevelDropRateItemUI": "BattleLevelDropRateItemUI.cs",
+    "BattleLevelDropRatePanel": "BattleLevelDropRatePanel.cs",
+    "BattleLevelRewardItemUI": "BattleLevelRewardItemUI.cs",
+    "QuestionnaireButton": "QuestionnaireButton.cs",
+    "UpdatePlaneButton": "UpdatePlaneButton.cs",
+    "WechatButton": "WechatButton.cs",
+    "MapItemUI": "MapItemUI.cs",
+    "MapPanel": "MapPanel.cs",
+    "PlanePanel": "PlanePanel.cs",
+    "RoomBattlePanel": "RoomBattlePanel.cs",
+    "RoomPage_Lobby": "RoomPage_Lobby.cs",
+    "RoomPage_Room": "RoomPage_Room.cs",
+    "DecompositionItemUI": "DecompositionItemUI.cs",
+    "DecompositionPanel_Portrait": "DecompositionPanel_Portrait.cs",
+    "DecompositionResultItemUI": "DecompositionResultItemUI.cs",
+    "PlanePartRarityFilterUI": "PlanePartRarityFilterUI.cs",
+    "WarehousePanel_Portrait": "WarehousePanel_Portrait.cs",
+    "MatchSuccessPanel": "MatchSuccessPanel.cs",
+    "AudioOptionPanel": "AudioOptionPanel.cs",
+    "RenamePanel": "RenamePanel.cs",
+    "SDKOptionPanel": "SDKOptionPanel.cs",
+    "SoundSliderUI": "SoundSliderUI.cs",
+    "UserOptionPanel": "UserOptionPanel.cs",
+    "PilotDetailPanel": "PilotDetailPanel.cs",
+    "PilotEntryButton": "PilotEntryButton.cs",
+    "PilotItem": "PilotItem.cs",
+    "CPlanePartInfo": "CPlanePartInfo.cs",
+    "PlaneBasicHolder": "PlaneBasicHolder.cs",
+    "PlaneEditCondition": "PlaneEditCondition.cs",
+    "PlaneEditConditionPanel": "PlaneEditConditionPanel.cs",
+    "PlaneEditConnDir": "PlaneEditConnDir.cs",
+    "PlaneEditEffect": "PlaneEditEffect.cs",
+    "PlaneEditHitGrid": "PlaneEditHitGrid.cs",
+    "PlaneEditIconTips": "PlaneEditIconTips.cs",
+    "PlaneEditorHolder": "PlaneEditorHolder.cs",
+    "PlaneEditPanel": "PlaneEditPanel.cs",
+    "PlaneEditPanel_Portrait": "PlaneEditPanel_Portrait.cs",
+    "PlaneInfoPanel": "PlaneInfoPanel.cs",
+    "PlaneOperatePanel": "PlaneOperatePanel.cs",
+    "PlaneOperatePanel_Portrait": "PlaneOperatePanel_Portrait.cs",
+    "PlanePartComponentFilterPanel": "PlanePartComponentFilterPanel.cs",
+    "TagToggleEntry": "PlanePartComponentFilterPanel.cs",
+    "PlanePartEdgeLight": "PlanePartEdgeLight.cs",
+    "PlanePartFilterUtil": "PlanePartFilterUtil.cs",
+    "PlanePartHolder": "PlanePartHolder.cs",
+    "PlanePartSelPanel": "PlanePartSelPanel.cs",
+    "PlanePartSelPanel_Portrait": "PlanePartSelPanel_Portrait.cs",
+    "PlanePartSortFilterPanel": "PlanePartSortFilterPanel.cs",
+    "PlanePartTips": "PlanePartTips.cs",
+    "PlanePartTipsPanel": "PlanePartTipsPanel.cs",
+    "PlanePartTipsPanel_Portrait": "PlanePartTipsPanel_Portrait.cs",
+    "PlanePartWeaponTypeList": "PlanePartWeaponTypeList.cs",
+    "PlaneSelPanel": "PlaneSelPanel.cs",
+    "ScrollAutoScale": "ScrollAutoScale.cs",
+    "PlanePartItem": "PlanePartItem.cs",
+    "PlanePartSelItem": "PlanePartSelItem.cs",
+    "PlaneSelItem": "PlaneSelItem.cs",
+    "SpriteBreathEffect": "SpriteBreathEffect.cs",
+    "SuitItem": "SuitItem.cs",
+    "DecomposeResultData": "PlanePartDecomposeData.cs",
+    "PlanePartDecomposeOperatePanel": "PlanePartDecomposeOperatePanel.cs",
+    "PlanePartDecomposePanel": "PlanePartDecomposePanel.cs",
+    "PPDecomposeItem": "PPDecomposeItem.cs",
+    "PPDRarityFilterItem": "PPDRarityFilterItem.cs",
+    "PPDResultItem": "PPDResultItem.cs",
+    "RankItemUI": "RankItemUI.cs",
+    "RankPanel": "RankPanel.cs",
+    "DamageTypeItemUI_Settlement": "DamageTypeItemUI_Settlement.cs",
+    "SettlementBattleDetailPanel": "SettlementBattleDetailPanel.cs",
+    "SettlementDataValueBar": "SettlementDataValueBar.cs",
+    "SettlementPlanePartDetailItemUI": "SettlementPlanePartDetailItemUI.cs",
+    "SettlementRewardItemUI": "SettlementRewardItemUI.cs",
+    "SettlementSuccessPanel": "SettlementSuccessPanel.cs",
+    "SevendayRewardItemUI": "SevendayRewardItemUI.cs",
+    "SevendayRewardItemUI_FinalReward": "SevendayRewardItemUI_FinalReward.cs",
+    "BattleLevelRewardItemUI_LoopScroll": "BattleLevelRewardItemUI_LoopScroll.cs",
+    "StarMapLevelPanel": "StarMapLevelPanel.cs",
+    "LoadUpdateFileTipPanel": "LoadUpdateFileTipPanel.cs",
+    "SDKFailPanel": "SDKFailPanel.cs",
+    "ServerConnectFailPanel": "ServerConnectFailPanel.cs",
+    "StartUIProgressBar": "StartUIProgressBar.cs",
+    "SuitItemUI": "SuitItemUI.cs",
+    "SuitPanel": "SuitPanel.cs",
+    "ClientSuitData": "SuitPanel.cs",
+    "SuitPlanePartItemUI": "SuitPlanePartItemUI.cs",
+    "SuitTipsPanel": "SuitTipsPanel.cs",
+    "AssistantPanel": "AssistantPanel.cs",
+    "AssistantPanelData": "AssistantPanel.cs",
+    "MainUITutorialPanel": "MainUITutorialPanel.cs",
+    "PlaneTutorialUIElement": "PlaneTutorialUIElement.cs",
+    "PlaneUITutorialPanel": "PlaneUITutorialPanel.cs",
+    "SettlementUITutorialPanel": "SettlementUITutorialPanel.cs",
+    "TutorialUIElement": "TutorialUIElement.cs",
+    "WarehouseItemDetailPanel": "WarehouseItemDetailPanel.cs",
+    "WarehouseItemUI": "WarehouseItemUI.cs",
+    "WarehousePanel": "WarehousePanel.cs",
+    "WarehouseSortFilterButtonPanel": "WarehouseSortFilterButtonPanel.cs",
+    "WarehouseUseItemPanel": "WarehouseUseItemPanel.cs",
+    "WeaponClickArea": "WeaponClickArea.cs",
+    "WeaponClickAreaHolder": "WeaponClickAreaHolder.cs",
+    "WeaponListPanel": "WeaponListPanel.cs",
+    "WeaponOperatePanel": "WeaponOperatePanel.cs",
+    "WeaponPartInfo": "WeaponPartInfo.cs",
+    "WeaponSet": "WeaponSet.cs",
+    "WeaponSetPanel": "WeaponSetPanel.cs",
+    "WeaponGroupItem": "WeaponGroupItem.cs",
+    "WeaponInfoItem": "WeaponInfoItem.cs",
+    "WeaponSetItem": "WeaponSetItem.cs",
+    "AITestUI": "AITestUI.cs",
+    "GameAnnouncementUI": "GameAnnouncementUI.cs",
+    "GameUI": "GameUI.cs",
+    "LoginUI": "LoginUI.cs",
+    "LoginUI_NonHotFix": "LoginUI_NonHotFix.cs",
+    "MailUI": "MailUI.cs",
+    "MainUI": "MainUI.cs",
+    "MatchingUI": "MatchingUI.cs",
+    "OptionUI": "OptionUI.cs",
+    "PilotUI": "PilotUI.cs",
+    "PlaneEditUI": "PlaneEditUI.cs",
+    "PlaneEditUI_Portrait": "PlaneEditUI_Portrait.Tutorial.cs",
+    "PlaneLevelUpUI": "PlaneLevelUpUI.cs",
+    "PlanePartDecomposeUI": "PlanePartDecomposeUI.cs",
+    "RankUI": "RankUI.cs",
+    "SettlementUI": "SettlementUI.cs",
+    "SevenDayLoginUI": "SevenDayLoginUI.cs",
+    "StarMapUI": "StarMapUI.cs",
+    "StartUI": "StartUI.cs",
+    "StartUI_NonHotFix": "StartUI_NonHotFix.cs",
+    "WarehouseUI": "WarehouseUI.cs",
+    "WeaponUI": "WeaponUI.cs",
+    "IOSRectFitSafeArea": "IOSRectFitSafeArea.cs",
+    "IOSRectFit_BlackBar": "IOSRectFit_BlackBar.cs",
+    "IOSRectFit_BottomBlackBar": "IOSRectFit_BottomBlackBar.cs"
+  },
+  "scan_dir": "C:/Demo/client/Assets/Scripts/ExternalClient/UI",
+  "updated_at": "2026-05-11T20:51:27+0800",
+  "total_files": 302,
+  "graphed_files": 302,
+  "total_edges": 19,
+  "scan_ms": 437
+}
