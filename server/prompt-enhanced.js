@@ -299,6 +299,7 @@ const ENHANCED_DOC_FLOOR = 32_000
  * @param {string} [params.requirementAnalysis] Step 2 需求分析结论（pipeline 模式）
  * @param {boolean} [params.pipelineMode] 是否为 pipeline 模式（代码已预分析）
  * @param {object} [params.testPlan] 结构化 REQ/TP 覆盖计划
+ * @param {string} [params.skillsContext] 用户选择的 Skill 内容
  * @param {'fresh'|'append'} [params.generationMode] 生成模式；append 表示在已有用例基础上追加下一批
  * @param {object[]} [params.existingCases] 已有用例摘要，用于追加批次避重
  * @param {{ min?: number, max?: number }} [params.batchTarget] 追加批次目标条数
@@ -489,6 +490,12 @@ export function buildEnhancedUserContent(params) {
     parts.push(params.ragContext.trim().slice(0, ragUse))
     parts.push('')
     parts.push('请参考以上知识库信息，关注历史风险点和已知问题，在用例设计中融入相关场景。')
+  }
+
+  if (params.skillsContext?.trim()) {
+    parts.push('')
+    parts.push('--- 用户选择的 Skill 规范（必须遵循；仅作为方法与输出约束，不得编造需求事实）---')
+    parts.push(params.skillsContext.trim().slice(0, 60_000))
   }
 
   return parts.join('\n')

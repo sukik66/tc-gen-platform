@@ -13,6 +13,7 @@ import { CaseTypeTag } from '../components/CaseTypeTag'
 import { TestCaseMindmapView } from '../components/TestCaseMindmapView'
 import { RuntimeConfigModal } from '../components/RuntimeConfigModal'
 import { LlmProviderSelect } from '../components/LlmProviderSelect'
+import { listSkills, type SkillSummary } from '../api/skills'
 
 const apiBase = import.meta.env.VITE_API_BASE_URL ?? ''
 /** 末次用例变更后空闲多久再自动 POST 修订摘要（毫秒）。断续编辑可拉大；点「API 生成」前会强制 flush 一轮。 */
@@ -183,6 +184,8 @@ export function TestCaseGenerationPage() {
   const [promptContextHint, setPromptContextHint] = useState<string | null>(null)
   const [testPlan, setTestPlan] = useState<TestPlanLedger | null>(null)
   const [testPlanCollapsed, setTestPlanCollapsed] = useState(false)
+  const [skills, setSkills] = useState<SkillSummary[]>([])
+  const [selectedSkillIds, setSelectedSkillIds] = useState<string[]>([])
   const cardClickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -260,6 +263,10 @@ export function TestCaseGenerationPage() {
 
   useEffect(() => {
     fetchRagHealth().then(h => setRagOk(h.ok)).catch(() => setRagOk(false))
+  }, [])
+
+  useEffect(() => {
+    listSkills().then(setSkills).catch(() => setSkills([]))
   }, [])
 
   /** 文案派生：随 useLlmProvider 状态变化，更新顶部状态条。 */
@@ -450,6 +457,7 @@ export function TestCaseGenerationPage() {
         timezone: APP_TIMEZONE,
         llmProvider: llmSelected,
         llmModel: llmModelSelected || undefined,
+        skillIds: selectedSkillIds,
         codeChanges: codeChanges ?? undefined,
         usePipeline: true,
         autoCoverage: true,
@@ -951,6 +959,24 @@ export function TestCaseGenerationPage() {
                 disabled={generating}
                 label="供应商"
               />
+            </section>
+
+            <section className="mt-5 border-t border-white/10 pt-5" data-testid="generation-skill-picker">
+              <div className="mb-2 flex items-center justify-between gap-3">
+                <h2 className="text-sm font-semibold text-zinc-200">生成 Skill</h2>
+                <Link to="/skills" className="text-[10px] text-violet-300 hover:text-violet-200">管理 Skill</Link>
+              </div>
+              {skills.length === 0 ? (
+                <p className="text-[11px] leading-relaxed text-zinc-500">暂无已保存 Skill，可先去 Skill 管理上传。</p>
+              ) : (
+                <div className="space-y-2">
+                  {skills.map((skill) => {
+                    const checked = selectedSkillIds.includes(skill.id)
+                    return <label key={skill.id} className={`flex cursor-pointer items-start gap-2 rounded-lg border px-2.5 py-2 transition ${checked ? 'border-violet-400/40 bg-violet-400/10' : 'border-white/10 bg-white/[0.02] hover:border-white/20'}`}><input type="checkbox" checked={checked} disabled={generating} onChange={() => setSelectedSkillIds((prev) => checked ? prev.filter((id) => id !== skill.id) : [...prev, skill.id])} className="mt-0.5 accent-violet-500" /><span className="min-w-0"><span className="block truncate text-xs text-zinc-200">{skill.name}</span><span className="block text-[10px] text-zinc-500">{skill.fileCount} 个文件{skill.hasSkillMd ? ' · 含 SKILL.md' : ''}</span></span></label>
+                  })}
+                </div>
+              )}
+              {selectedSkillIds.length > 0 && <div className="mt-2 text-[10px] text-violet-300">已选择 {selectedSkillIds.length} 个 Skill，生成时会应用其规范。</div>}
             </section>
 
           </div>

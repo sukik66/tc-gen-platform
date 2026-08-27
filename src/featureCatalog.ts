@@ -19,6 +19,12 @@ export const FEATURE_CATALOG: FeatureCatalogItem[] = [
     status: 'available',
   },
   {
+    path: '/skills',
+    title: 'Skill 方法库',
+    blurb: '管理团队生成规范与方法文件，在用例生成时按需应用。',
+    status: 'available',
+  },
+  {
     path: '/contracts',
     title: '质量契约',
     blurb: '上传需求由 AI 提取契约预览，确认后入库；或手写规则。与用例库共用项目/模块，草稿与已启用态写入服务端 JSON。',

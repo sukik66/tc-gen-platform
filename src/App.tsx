@@ -5,6 +5,8 @@ import { ReservedFeaturePage } from './pages/ReservedFeaturePage'
 import { TestCaseGenerationPage } from './pages/TestCaseGenerationPage'
 import { CaseLibraryPage } from './pages/CaseLibraryPage'
 import { SettingsPage } from './pages/SettingsPage'
+import { SkillsPage } from './pages/SkillsPage'
+import { SkillDetailPage } from './pages/SkillDetailPage'
 import { migrateIdbToBackend } from './lib/migrateIdb'
 
 export function App() {
@@ -19,6 +21,8 @@ export function App() {
         <Route path="/contract-library" element={<ReservedFeaturePage />} />
         <Route path="/case-library" element={<CaseLibraryPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/skills/:id" element={<SkillDetailPage />} />
         {/* 知识库暂闭（TKT-20260428-006）：路由复用 ReservedFeaturePage，KnowledgePage 文件保留以备重启 */}
         <Route path="/knowledge" element={<ReservedFeaturePage />} />
         <Route path="/smart-test" element={<ReservedFeaturePage />} />

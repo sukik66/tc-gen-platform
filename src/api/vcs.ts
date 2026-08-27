@@ -419,6 +419,7 @@ export interface EnhancedGeneratePayload {
   autoRound?: number
   reuseTestPlan?: TestPlanLedger
   targetTestPointIds?: string[]
+  skillIds?: string[]
 }
 
 export interface PipelineProgressInfo {

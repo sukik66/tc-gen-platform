@@ -14,6 +14,7 @@ dist-ssr
 test-artifacts
 .tmp-ui/
 server/data/custom-providers.json
+server/data/skills/
 *.local
 .env
 .env.*.local

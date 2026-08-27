@@ -59,6 +59,7 @@ import {
 import { logLlmDebug, safeBaseUrlLabel } from './llm/debug-llm.js'
 import { setLastOpenAiCompatibleMeta, getLastOpenAiCompatibleMeta } from './llm/llmLastMeta.js'
 import { ensureEnvFile, getLocalConfig, saveLocalConfig } from './localConfig.js'
+import { deleteSkill, getSkillDetail, listSkills, readSkillContext, readSkillFile, saveSkill } from './skills.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 /** 调试会话 NDJSON：workspace 根目录 debug-17c700.log */
@@ -124,6 +125,38 @@ app.get('/api/health', (req, res) => {
 
 app.get('/api/llm-providers', (_req, res) => {
   res.json(listLlmProviderOptions())
+})
+
+app.get('/api/skills', (_req, res) => {
+  res.json({ skills: listSkills() })
+})
+
+app.get('/api/skills/:id', (req, res) => {
+  const skill = getSkillDetail(req.params.id)
+  res.status(skill ? 200 : 404).json(skill || { error: 'Skill 不存在' })
+})
+
+app.get('/api/skills/:id/file', (req, res) => {
+  try {
+    const file = readSkillFile(req.params.id, req.query.path)
+    res.status(file ? 200 : 404).json(file || { error: 'Skill 文件不存在' })
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : '读取 Skill 文件失败' })
+  }
+})
+
+app.post('/api/skills', (req, res) => {
+  try {
+    res.status(201).json({ skill: saveSkill(req.body || {}) })
+  } catch (e) {
+    if (e?.code === 'SKILL_EXISTS') return res.status(409).json({ error: e.message, existing: e.existing })
+    res.status(400).json({ error: e instanceof Error ? e.message : 'Skill 保存失败' })
+  }
+})
+
+app.delete('/api/skills/:id', (req, res) => {
+  const removed = deleteSkill(req.params.id)
+  res.status(removed ? 200 : 404).json(removed ? { ok: true } : { error: 'Skill 不存在' })
 })
 
 app.get('/api/custom-providers', (_req, res) => {
@@ -1597,6 +1630,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       autoCoverage,
       targetTestPointIds,
       autoRound,
+      skillIds,
     } = req.body || {}
 
     if (!Array.isArray(documents) || documents.length === 0) {
@@ -1613,6 +1647,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
     const lockedTestPlan = reuseTestPlan && typeof reuseTestPlan === 'object'
       ? normalizeTestPlan(reuseTestPlan)
       : null
+    const skillsContext = readSkillContext(skillIds)
     const mode = generationMode === 'append' ? 'append' : 'fresh'
     const existingCaseBriefs = Array.isArray(existingCases)
       ? existingCases.slice(-180).map(tc => ({
@@ -1676,6 +1711,10 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
     }
 
     await Promise.allSettled(tasks)
+    const pipelineRagContext = [
+      ragContext,
+      skillsContext ? `## User-selected Skill guidance\n${skillsContext}` : '',
+    ].filter(Boolean).join('\n\n')
 
     /* --- SSE 流式输出（提前开启，pipeline 阶段即可发送进度）--- */
     req.socket.setTimeout(0)
@@ -1710,6 +1749,9 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
     }
     if (ragContext) {
       sendSSE('meta', { type: 'rag_context', length: ragContext.length })
+    }
+    if (skillsContext) {
+      sendSSE('meta', { type: 'skills_context', count: Array.isArray(skillIds) ? skillIds.length : 0, length: skillsContext.length })
     }
 
     /* --- Pipeline: 代码预分析 + 需求分析（多步 Agent）--- */
@@ -1746,7 +1788,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
           codeFiles,
           documents: docs,
           documentText: docText,
-          ragContext,
+          ragContext: pipelineRagContext,
           requirementHint,
           selectedTypes: types,
           depth: dep,
@@ -1824,6 +1866,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       maxTotalChars: MAX_TOTAL_CHARS,
       codeChangeSummary: pipelineResult.pipelineUsed ? pipelineResult.codeAnalysisSummary : codeChangeSummary,
       ragContext,
+      skillsContext,
       requirementAnalysis: pipelineResult.requirementAnalysis,
       testPlan: promptTestPlan,
       pipelineMode: pipelineResult.pipelineUsed,
