@@ -22,12 +22,12 @@ function buildMessages(params) {
   ]
 }
 
-function makeClient({ apiKey, baseURL, model }) {
+function makeClient({ apiKey, baseURL, model, defaultHeaders, timeoutMs: customTimeoutMs }) {
   if (!apiKey) throw new Error('缺少 API Key')
   if (!baseURL) throw new Error('缺少 Base URL')
   if (!model) throw new Error('缺少模型名')
-  const timeoutMs = Number(process.env.LLM_CONTRACTS_TIMEOUT_MS) || 900_000
-  return new OpenAI({ apiKey, baseURL, timeout: timeoutMs })
+  const timeoutMs = customTimeoutMs || Number(process.env.LLM_CONTRACTS_TIMEOUT_MS) || 900_000
+  return new OpenAI({ apiKey, baseURL, defaultHeaders, timeout: timeoutMs })
 }
 
 function isLikelyJsonModeUnsupported(e) {
@@ -42,6 +42,10 @@ function isLikelyJsonModeUnsupported(e) {
  * @param {AbortSignal} [signal]
  */
 export async function* streamContractsWithOpenAICompatible(opts, params, signal) {
+  if (opts.streaming === false) {
+    yield { kind: 'content', text: await generateContractsWithOpenAICompatible(opts, params) }
+    return
+  }
   const client = makeClient(opts)
   const messages = buildMessages(params)
   const approxPromptChars = messages.reduce((n, m) => n + String(m.content || '').length, 0)

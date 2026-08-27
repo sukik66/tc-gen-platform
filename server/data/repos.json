@@ -5,7 +5,7 @@
     "type": "plastic",
     "path": "C:\\Demo\\client",
     "branch": "",
-    "updatedAt": "2026-04-13T09:57:24.967Z",
+    "updatedAt": "2026-08-19T08:20:02.251Z",
     "createdAt": "2026-04-13T09:57:24.967Z"
   },
   {
@@ -34,5 +34,14 @@
     "branch": "",
     "updatedAt": "2026-04-13T09:57:24.977Z",
     "createdAt": "2026-04-13T09:57:24.977Z"
+  },
+  {
+    "id": "Client",
+    "name": "D2-Client",
+    "type": "git",
+    "path": "D:\\D2\\client",
+    "branch": "",
+    "updatedAt": "2026-08-19T07:21:12.449Z",
+    "createdAt": "2026-08-19T07:21:12.449Z"
   }
 ]

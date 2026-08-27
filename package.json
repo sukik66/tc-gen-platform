@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -n api,web -c blue,magenta \"npm run dev:api\" \"npm run dev:web\"",
     "dev:web": "vite --open",
-    "dev:api": "node server/index.js",
+    "dev:api": "node scripts/start-api.mjs",
     "dev:vite": "vite --open",
     "build": "tsc && vite build",
     "preview": "vite preview",

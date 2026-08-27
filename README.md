@@ -70,6 +70,9 @@ npm run dev
 1. 确认使用 **`npm run dev`**（同时起 API + 前端），而不是只运行 **`npm run dev:vite`**。  
 2. 查看终端是否打印 **`[ai-test-platform API] http://127.0.0.1:…`**；若 API 行未出现或进程立刻退出，检查端口占用或 `.env`。  
 3. 修改 **`API_PORT`** 后需重启 dev；`vite.config.ts` 会从同目录 `.env` 读取该端口并代理 `/api`。
+4. 如果看到「配置请求失败（404）」且终端提示 API 进程退出，通常是 `API_PORT` 被其它服务占用（例如旧的 Python `server.py`）。停止占用该端口的进程，或同时修改 `.env` 的 `API_PORT` 与 Vite 配置后重启 `npm run dev`。新版 `dev:api` 会在启动时直接报告端口冲突原因。
+5. 如果模型预检提示 `EACCES` /「本机拒绝 Node 进程建立出站连接」，说明 API 已正常启动，但 Windows 防火墙或终端安全软件拦截了 `node.exe` 的出站连接。请允许 `C:\Program Files\nodejs\node.exe` 访问供应商地址；公司内网地址还需要保持 VPN 连接。PowerShell 能返回 `401 Unauthorized` 只能证明网关可达，不代表 Node 进程已被放行。
+6. `npm run dev` 不会再静默复用已经运行的旧 API。若终端提示已有本项目 API 和 PID，请先停止该 PID 后重新启动，确保前端与 API 来自同一次运行且继承当前终端的网络权限。
 
 ## 技术栈
 

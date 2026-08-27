@@ -23,7 +23,12 @@ const PROVIDERS = [
 
 const EDITABLE_ENV_KEYS = new Set([
   'LLM_PROVIDER',
+  'KNOWLEDGE_PROVIDER',
   'LIGHTRAG_URL',
+  'LLM_WIKI_URL',
+  'LLM_WIKI_QUERY_PATH',
+  'LLM_WIKI_HEALTH_PATH',
+  'LLM_WIKI_API_KEY',
   'PLASTIC_CM_PATH',
   'METHODOLOGY_FILE',
   'DEBUG_INGEST_URL',
@@ -90,7 +95,8 @@ function updateEnvFile(updates) {
     next.push('', '# Managed from the Settings page', ...missing)
   }
 
-  fs.writeFileSync(ENV_FILE, `${next.join('\n').replace(/\n*$/, '')}\n`, 'utf8')
+  const output = `${next.join('\n').replace(/\n*$/, '')}\n`
+  if (output !== existing) fs.writeFileSync(ENV_FILE, output, 'utf8')
 }
 
 export function ensureEnvFile() {
@@ -116,7 +122,12 @@ export function getLocalConfig() {
     path: ENV_FILE,
     llmProvider: safeValue(values.LLM_PROVIDER) || 'openai',
     providers,
+    knowledgeProvider: safeValue(values.KNOWLEDGE_PROVIDER) === 'llm-wiki' ? 'llm-wiki' : 'lightrag',
     lightRagUrl: safeValue(values.LIGHTRAG_URL) || 'http://127.0.0.1:6002',
+    llmWikiUrl: safeValue(values.LLM_WIKI_URL) || 'http://127.0.0.1:3000',
+    llmWikiQueryPath: safeValue(values.LLM_WIKI_QUERY_PATH) || '/api/search',
+    llmWikiHealthPath: safeValue(values.LLM_WIKI_HEALTH_PATH) || '/api/health',
+    llmWikiApiKey: redactSecret(values.LLM_WIKI_API_KEY),
     plasticCmPath: normalizeWindowsPath(values.PLASTIC_CM_PATH) || 'C:\\Program Files\\PlasticSCM5\\client\\cm.exe',
     methodologyPath,
     methodologyExists: fs.existsSync(methodologyPath),
@@ -134,7 +145,12 @@ export function saveLocalConfig(input = {}) {
   }
 
   add('LLM_PROVIDER', input.llmProvider)
+  add('KNOWLEDGE_PROVIDER', input.knowledgeProvider)
   add('LIGHTRAG_URL', input.lightRagUrl, { preserveEmpty: true })
+  add('LLM_WIKI_URL', input.llmWikiUrl, { preserveEmpty: true })
+  add('LLM_WIKI_QUERY_PATH', input.llmWikiQueryPath, { preserveEmpty: true })
+  add('LLM_WIKI_HEALTH_PATH', input.llmWikiHealthPath, { preserveEmpty: true })
+  add('LLM_WIKI_API_KEY', input.llmWikiApiKey)
   add('PLASTIC_CM_PATH', input.plasticCmPath, { preserveEmpty: true })
   add('METHODOLOGY_FILE', input.methodologyPath, { preserveEmpty: true })
   add('DEBUG_INGEST_URL', input.debugIngestUrl, { preserveEmpty: true })
@@ -151,6 +167,11 @@ export function saveLocalConfig(input = {}) {
   }
 
   ensureEnvFile()
-  if (Object.keys(updates).length) updateEnvFile(updates)
+  if (Object.keys(updates).length) {
+    updateEnvFile(updates)
+    // Provider resolution reads process.env per request, so model and RAG settings
+    // can take effect immediately without restarting the local API process.
+    Object.assign(process.env, updates)
+  }
   return getLocalConfig()
 }

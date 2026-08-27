@@ -28,7 +28,7 @@ const FOCUS_BORDER: Record<LlmProviderSelectVariant, string> = {
  *   const llm = useLlmProvider()
  *   <LlmProviderSelect state={llm} variant="teal" disabled={busy} />
  *
- * 多 model 行为：仅当当前 provider 的 availableModels.length >= 2 时显示 model 子下拉。
+ * Provider 就绪且存在模型时始终显示模型下拉；单模型通道显示唯一选项。
  */
 export function LlmProviderSelect(props: LlmProviderSelectProps) {
   const {
@@ -50,7 +50,10 @@ export function LlmProviderSelect(props: LlmProviderSelectProps) {
 
   const focus = FOCUS_BORDER[variant]
   const availableModels = current?.availableModels ?? []
-  const showModelSelect = Boolean(current?.ready) && availableModels.length >= 2
+  const modelOptions = availableModels.length > 0
+    ? availableModels
+    : current?.model ? [current.model] : []
+  const showModelSelect = Boolean(current?.ready) && modelOptions.length > 0
 
   return (
     <div className="text-xs text-zinc-400">
@@ -60,6 +63,8 @@ export function LlmProviderSelect(props: LlmProviderSelectProps) {
           value={selectedProvider}
           onChange={(e) => setProvider(e.target.value)}
           disabled={disabled || providers.length === 0}
+          aria-label={label}
+          data-testid="llm-provider-select"
           className={`mt-1 block w-full rounded-lg border border-white/15 bg-[#14151f] px-2 py-1.5 text-xs text-zinc-200 outline-none ${focus}`}
         >
           {providers.length === 0 ? (
@@ -78,15 +83,16 @@ export function LlmProviderSelect(props: LlmProviderSelectProps) {
 
       {showModelSelect && (
         <label className="mt-2 block">
-          <span className="text-[10px] text-zinc-500">该通道支持多个模型</span>
+          <span>模型</span>
           <select
             value={selectedModel || current?.model || ''}
             onChange={(e) => setModel(e.target.value)}
             disabled={disabled}
             aria-label="选择该通道下的具体模型"
+            data-testid="llm-model-select"
             className={`mt-1 block w-full rounded-lg border border-white/15 bg-[#14151f] px-2 py-1.5 text-xs text-zinc-200 outline-none ${focus}`}
           >
-            {availableModels.map((m) => (
+            {modelOptions.map((m) => (
               <option key={m} value={m}>
                 {m}
                 {m === current?.model ? '（默认）' : ''}
@@ -94,16 +100,6 @@ export function LlmProviderSelect(props: LlmProviderSelectProps) {
             ))}
           </select>
         </label>
-      )}
-
-      {/* 当前通道就绪但仅有单一 model 时，仍展示一行只读说明，保持信息一致 */}
-      {showHints && current?.ready && availableModels.length < 2 && current.model && (
-        <p className="mt-2 text-[10px] text-zinc-500">
-          模型：<code className="text-zinc-300">{current.model}</code>
-          <span className="ml-1 text-zinc-600">
-            （单一 model；如需多模型可在 .env 中配 {String(current.id).toUpperCase()}_MODELS=xxx,yyy）
-          </span>
-        </p>
       )}
 
       {showHints && providers.length === 0 && apiServerUp === false && (

@@ -62,6 +62,9 @@ export const SYSTEM_PROMPT = `你是一个顶级的测试架构师，拥有扎�
    - steps: 字符串数组，按执行顺序，每项为一步操作描述（不要再加序号前缀）
    - expected: 预期结果，完整句子
    - remarks: 备注，没有则 ""
+   - sourceReqIds: 字符串数组，关联的 REQ ID；没有覆盖计划时为 []
+   - testPointIds: 字符串数组，关联的 TP ID；没有覆盖计划时为 []
+   - designMethod: 字符串，采用的主要设计方法；没有覆盖计划时为 ""
 4. 用例数量与详细程度需符合用户选择的「详细程度」：开发自测偏主路径与常见异常；策划验收仅核心闭环；QA 需更全的边界、异常、兼容与安全类场景（在文档有依据时）。
 5. 文档未提及的内容不要编造业务细节；可基于常识补充**通用**测试维度（如空输入、权限缺失）但须在 remarks 中简要说明「文档未明确」。
 6. 语言：全部为简体中文。
@@ -125,6 +128,27 @@ export function getDepthGenerationSpec(depth) {
   }
 }
 
+export function getEffectiveGenerationSpec(depth, caseTarget) {
+  const base = getDepthGenerationSpec(depth)
+  const requestedMin = Number(caseTarget?.min)
+  const requestedMax = Number(caseTarget?.max)
+  if (!Number.isFinite(requestedMin) || requestedMin <= 0) return base
+
+  const minCases = Math.max(1, Math.min(48, Math.floor(requestedMin)))
+  const stretchMax = Math.max(
+    minCases,
+    Math.min(48, Number.isFinite(requestedMax) ? Math.floor(requestedMax) : minCases * 2),
+  )
+  return {
+    ...base,
+    minCases,
+    stretchMax,
+    perStepHint: '本批只处理指定测试点；每个目标测试点生成 1～2 条有明确差异的可执行用例。',
+    typeDistHint: '严格跟随目标测试点的 coverageType 与 designMethod，不额外扩展到本批之外。',
+    codePerClassHint: '代码证据仅用于落实当前目标测试点，不按类额外扩充用例。',
+  }
+}
+
 /** 用户消息中注入的「数量策略」块（增强版与普通版均可复用） */
 export function formatDepthCountStrategyBlock(depth) {
   const s = getDepthGenerationSpec(depth)
@@ -138,8 +162,8 @@ export function formatDepthCountStrategyBlock(depth) {
 }
 
 /** 增强生成末尾 JSON 约束（与 depth 一致） */
-export function buildEnhancedJsonTail(depth) {
-  const s = getDepthGenerationSpec(depth)
+export function buildEnhancedJsonTail(depth, caseTarget) {
+  const s = getEffectiveGenerationSpec(depth, caseTarget)
   return `\n\n请严格输出 JSON 对象，键为 "cases"，值为用例数组。cases 数组长度不少于 ${s.minCases} 条（需求复杂时建议 ${s.minCases}～${s.stretchMax} 条）；异常、边界、专项等非纯主流程用例合计不少于约 ${s.nonMainMinPct}%。不要输出其它文字。`
 }
 

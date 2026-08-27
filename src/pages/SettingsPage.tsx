@@ -122,7 +122,7 @@ export function SettingsPage() {
       const next = await saveLocalConfig(toPayload(draft))
       setConfig(next)
       setDraft(toDraft(next))
-      setNotice({ tone: 'success', text: '配置已保存到本地 .env。重启 API 后新配置生效。' })
+      setNotice({ tone: 'success', text: '配置已保存。模型与知识库设置已生效；API 端口变更需重启服务。' })
     } catch (error) {
       setNotice({ tone: 'error', text: error instanceof Error ? error.message : '保存配置失败' })
     } finally {

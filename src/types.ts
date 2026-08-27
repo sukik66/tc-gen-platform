@@ -42,6 +42,9 @@ export interface TestCase {
   steps: string[]
   expected: string
   remarks: string
+  sourceReqIds?: string[]
+  testPointIds?: string[]
+  designMethod?: string
 }
 
 export type CoverageStatus = 'uncovered' | 'planned' | 'covered' | 'gap'
@@ -67,6 +70,8 @@ export interface TestPointLedgerItem {
   title: string
   sourceReqIds: string[]
   coverageType: string
+  designMethod: string
+  designBasis: string
   priority: Priority
   isInformationGap: boolean
   agentStage: 'test_point_planning'
@@ -85,6 +90,9 @@ export interface TestPlanLedger {
     uncoveredReqIds: string[]
     informationGapReqIds: string[]
     informationGapTestPointIds: string[]
+    coveredTestPointIds?: string[]
+    uncoveredTestPointIds?: string[]
+    coverageRate?: number
   }
 }
 

@@ -3,6 +3,8 @@
  * 官方 Base URL / 模型名以各云文档为准，此处为常用默认值，可通过环境变量覆盖。
  */
 
+import { getCustomProvider, listCustomProviders, resolveCustomProvider } from './customProviders.js'
+
 export const GEMINI_PROVIDER = 'gemini'
 
 /**
@@ -188,10 +190,11 @@ export function inferSharedContextWindowTokens(model) {
 export function effectiveMaxCompletionTokens(providerId, model, configuredMax, approxPromptChars) {
   const pid = String(providerId || '').trim().toLowerCase()
   const cfg = OPENAI_COMPATIBLE[pid]
-  const mode = cfg?.tokenBudget || 'completion_independent'
+  const custom = getCustomProvider(pid)
+  const mode = custom ? 'shared_context_window' : (cfg?.tokenBudget || 'completion_independent')
   if (mode !== 'shared_context_window') return configuredMax
 
-  const contextTotal = inferSharedContextWindowTokens(model)
+  const contextTotal = custom?.contextWindow || inferSharedContextWindowTokens(model)
   const roughPromptTokens = Math.ceil(Math.max(0, approxPromptChars) / 2)
   const reserved = 128
   const capByContext = contextTotal - roughPromptTokens - reserved
@@ -211,9 +214,10 @@ export function throwIfPromptExceedsSharedContext(
 ) {
   const pid = String(providerId || '').trim().toLowerCase()
   const cfg = OPENAI_COMPATIBLE[pid]
-  if (!cfg || (cfg.tokenBudget || 'completion_independent') !== 'shared_context_window') return
+  const custom = getCustomProvider(pid)
+  if (!custom && (!cfg || (cfg.tokenBudget || 'completion_independent') !== 'shared_context_window')) return
 
-  const ctx = inferSharedContextWindowTokens(model)
+  const ctx = custom?.contextWindow || inferSharedContextWindowTokens(model)
   const roughInHigh = Math.ceil(Math.max(0, approxPromptChars) / 1.8)
   if (roughInHigh + minCompletionTokens <= ctx) return
 
@@ -230,9 +234,9 @@ export function throwIfPromptExceedsSharedContext(
     }
     return '请将 .env 中 KIMI_MODEL 改为 kimi-k2.6、moonshot-v1-32k 或 moonshot-v1-128k，或减少上传文档/关闭「代码变更」等以缩短上下文。'
   })()
-  const hint = pid === 'kimi' ? kimiHint : '请换用更大上下文的模型，或缩短输入。'
+  const hint = pid === 'kimi' ? kimiHint : custom ? '请在运行配置中调大该 Provider 的上下文窗口，或缩短输入。' : '请换用更大上下文的模型，或缩短输入。'
   throw new Error(
-    `「${cfg.label}」当前模型总上下文约 ${ctx} tokens（按模型名推断），估算输入约 ${roughInHigh}+ tokens，已超过可用空间（需保留至少 ${minCompletionTokens} tokens 用于生成）。${hint}`,
+    `「${custom?.name || cfg?.label || pid}」当前模型总上下文约 ${ctx} tokens，估算输入约 ${roughInHigh}+ tokens，已超过可用空间（需保留至少 ${minCompletionTokens} tokens 用于生成）。${hint}`,
   )
 }
 
@@ -251,13 +255,15 @@ export const ALL_LLM_PROVIDERS = [
 
 export function isKnownLlmProvider(id) {
   const p = String(id || '').trim().toLowerCase()
-  return ALL_LLM_PROVIDERS.includes(p)
+  return ALL_LLM_PROVIDERS.includes(p) || Boolean(getCustomProvider(p))
 }
 
 export function providerDisplayLabel(id) {
   const p = String(id || '').trim().toLowerCase()
   if (p === GEMINI_PROVIDER) return 'Google Gemini'
   if (p === MOCK_PROVIDER) return 'Mock（模拟数据）'
+  const custom = getCustomProvider(p)
+  if (custom) return custom.name
   return OPENAI_COMPATIBLE[p]?.label ?? p
 }
 
@@ -286,10 +292,11 @@ export function normalizeOpenAiStyleBaseURL(providerId, raw) {
 /** 供前端展示：各通道是否已在 .env 配好密钥 */
 export function listLlmProviderOptions() {
   const envDefault = (process.env.LLM_PROVIDER || 'openai').trim().toLowerCase()
-  const serverDefaultProvider = ALL_LLM_PROVIDERS.includes(envDefault)
+  const allProviderIds = [...ALL_LLM_PROVIDERS, ...listCustomProviders({ includeSecrets: true }).map((item) => item.id)]
+  const serverDefaultProvider = allProviderIds.includes(envDefault)
     ? envDefault
     : 'openai'
-  const providers = ALL_LLM_PROVIDERS.map((pid) => {
+  const providers = allProviderIds.map((pid) => {
     const h = healthForProvider(pid)
     const base = {
       id: pid,
@@ -311,6 +318,17 @@ export function listLlmProviderOptions() {
         if (list.length > 1) base.availableModels = list
       }
     }
+    const custom = getCustomProvider(pid)
+    if (custom) {
+      base.model = custom.model
+      const models = Array.isArray(custom.models) && custom.models.length
+        ? custom.models
+        : custom.model ? [custom.model] : []
+      base.availableModels = models.length ? models : undefined
+      base.tokenBudget = 'shared_context_window'
+      base.sharedContextTokens = custom.contextWindow
+      base.custom = true
+    }
     return base
   })
   return { serverDefaultProvider, providers }
@@ -323,6 +341,8 @@ export function listLlmProviderOptions() {
  */
 export function resolveOpenAiCompatible(id, modelOverride) {
   const key = String(id || '').trim().toLowerCase()
+  const custom = resolveCustomProvider(key, modelOverride)
+  if (custom) return custom
   const cfg = OPENAI_COMPATIBLE[key]
   if (!cfg) {
     return {

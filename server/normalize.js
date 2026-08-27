@@ -43,6 +43,9 @@ export function normalizeCases(parsed) {
       steps,
       expected: String(item.expected || ''),
       remarks: String(item.remarks || ''),
+      sourceReqIds: Array.isArray(item.sourceReqIds) ? item.sourceReqIds.map(String).filter(Boolean) : [],
+      testPointIds: Array.isArray(item.testPointIds) ? item.testPointIds.map(String).filter(Boolean) : [],
+      designMethod: String(item.designMethod || ''),
     }
   })
 }

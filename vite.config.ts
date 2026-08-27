@@ -20,7 +20,9 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
       /** 避免用例库 JSON 写入触发整页热重载（易被误认为「点确定刷新了」） */
       watch: {
-        ignored: ['**/data/**'],
+        // Runtime settings are applied by the API process immediately. Watching
+        // its persistence files would restart Vite and discard the current UI state.
+        ignored: ['**/data/**', '**/.env', '**/.env.*'],
       },
       proxy: {
         '/api': {

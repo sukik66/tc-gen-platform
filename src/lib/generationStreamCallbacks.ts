@@ -1,5 +1,5 @@
 import type { MutableRefObject } from 'react'
-import type { TestCase } from '../types'
+import type { TestCase, TestPlanLedger } from '../types'
 import type { GenerationSessionRecord } from './generationSessionCache'
 import { appendGenerationSessionSnapshot } from './generationSessionCache'
 
@@ -15,6 +15,8 @@ export interface GenerationExtra {
     shortJsonRetry?: boolean
     provider?: string
   }
+  testPlan?: TestPlanLedger | null
+  completionNotice?: string
 }
 
 export interface StreamGenerationDeps {
@@ -28,6 +30,7 @@ export interface StreamGenerationDeps {
   setProgressInfo: (v: { chars: number; estimatedCases: number; elapsedSec: number } | null) => void
   abortRef: MutableRefObject<AbortController | null>
   setInterruptMsg: (v: string | null) => void
+  setGenerationNotice: (v: string | null) => void
   setGenerateError: (v: string | null) => void
   truncateInterruptReason: (reason: string | undefined, max?: number) => string
   /** 任意一次生成收尾成功时清空（如体量黄条） */
@@ -58,19 +61,28 @@ function finishStreamUi(deps: StreamGenerationDeps, withProgress: boolean) {
 }
 
 /** 仅在「解析不完整 / 曾触发短输出重试」等客观信号时提示，不用固定条数评判质量 */
-function formatStructuralRiskMsg(
+export function formatStructuralRiskMsg(
   qh: NonNullable<GenerationExtra['qualityHints']>,
   batchLen: number,
+  testPlan?: TestPlanLedger | null,
 ): string {
   const parts: string[] = []
   if (qh.partialJson) {
-    parts.push('返回 JSON 可能未完整（部分解析），请留意是否被截断或 max_tokens / 网关限制。')
+    parts.push(`模型输出在结尾处未完整，本批已保留 ${qh.actualCases ?? batchLen} 条可解析用例，未完整的尾部内容未纳入结果。`)
+    const uncoveredCount = testPlan?.coverage.uncoveredTestPointIds?.length
+    if (typeof uncoveredCount === 'number') {
+      parts.push(
+        uncoveredCount > 0
+          ? `覆盖检查仍有 ${uncoveredCount} 个测试点未覆盖，可点击“补充未覆盖用例”继续生成。`
+          : '覆盖检查未发现未覆盖测试点，可继续使用当前结果。',
+      )
+    }
   }
   if (qh.shortJsonRetry) {
-    parts.push('本次曾自动触发「去掉 JSON 模式」短输出重试。')
+    parts.push('模型首次返回内容不可用，系统已自动重试并保留重试结果。')
   }
   parts.push(
-    `本批追加 ${qh.actualCases ?? batchLen} 条；模型原始输出约 ${qh.rawChars ?? '?'} 字符；通道：${qh.provider ?? '未知'}。`,
+    `技术信息：通道 ${qh.provider ?? '未知'}，模型原始输出约 ${qh.rawChars ?? '?'} 字符。`,
   )
   return parts.join('')
 }
@@ -84,19 +96,24 @@ export function createEnhancedOnDone(deps: StreamGenerationDeps) {
     const qh = extra?.qualityHints
     let qualityMsg = ''
     if (qh && (qh.partialJson || qh.shortJsonRetry)) {
-      qualityMsg = formatStructuralRiskMsg(qh, batch.length)
+      qualityMsg = formatStructuralRiskMsg(qh, batch.length, extra?.testPlan)
     }
+    const notice = [qualityMsg, extra?.completionNotice]
+      .filter((message): message is string => Boolean(message?.trim()))
+      .join('\n\n')
+    deps.setGenerationNotice(null)
     if (extra?.interrupted) {
       const im = `生成被中断（${deps.truncateInterruptReason(extra.interruptReason)}），已保留 ${batch.length} 条已生成用例${extra.partial ? '（部分用例可能不完整）' : ''}`
       deps.setInterruptMsg(qualityMsg ? `${qualityMsg}\n\n${im}` : im)
-    } else if (qualityMsg) {
-      deps.setInterruptMsg(qualityMsg)
+    } else if (notice) {
+      deps.setGenerationNotice(notice)
     }
   }
 }
 
 export function createEnhancedOnError(deps: StreamGenerationDeps) {
   return (msg: string, raw?: string) => {
+    deps.setGenerationNotice(null)
     deps.setGenerateError(
       raw ? `${msg}\n\n（模型输出片段，便于排查 JSON）\n${String(raw).slice(0, 1200)}` : msg,
     )

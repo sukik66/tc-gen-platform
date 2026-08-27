@@ -8,8 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+__pycache__/
 dist
 dist-ssr
+test-artifacts
+.tmp-ui/
+server/data/custom-providers.json
 *.local
 .env
 .env.*.local

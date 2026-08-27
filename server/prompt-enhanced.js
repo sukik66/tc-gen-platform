@@ -5,15 +5,15 @@
 import {
   SYSTEM_PROMPT,
   buildUserContent,
-  getDepthGenerationSpec,
+  getEffectiveGenerationSpec,
   buildEnhancedJsonTail,
 } from './prompt.js'
 
 /**
  * @param {string} [depth] dev | planning | qa
  */
-export function buildEnhancedSystemPrompt(depth) {
-  const s = getDepthGenerationSpec(depth)
+export function buildEnhancedSystemPrompt(depth, caseTarget) {
+  const s = getEffectiveGenerationSpec(depth, caseTarget)
   return `${SYSTEM_PROMPT}
 
 8. **代码上下文分析**（⚠️ 仅当用户消息中出现「--- 项目源码」区块且内容非空时生效；否则本条全部忽略）：
@@ -64,9 +64,10 @@ export function buildTestPlanMessages(params) {
   const focusText = String(params.focusText || '').trim()
   const selectedTypes = Array.isArray(params.selectedTypes) ? params.selectedTypes.join('、') : '功能测试'
   const depth = String(params.depth || 'qa')
+  const planningContext = String(params.planningContext || '').trim().slice(0, 28_000)
 
   const system = `你是资深测试架构师，负责把需求材料拆成可审计的测试计划账本。
-最高优先级：诚实。未知不说、绝不捏造；所有条目仅基于当前需求材料。
+最高优先级：诚实。未知不说、绝不捏造；所有条目仅基于当前需求材料与提供的上下文证据。
 只输出合法 JSON，不要 Markdown，不要解释。`
 
   const user = `请基于需求材料生成 REQ 需求账本与 TP 测试点账本。
@@ -101,6 +102,8 @@ ${focusText ? `- 生成重点：${focusText}` : ''}
       "title": "测试点标题",
       "sourceReqIds": ["REQ-001"],
       "coverageType": "主流程|异常|边界|状态|兼容|安全|信息不足",
+      "designMethod": "等价类|边界值|判定表|状态迁移|场景法|错误推测",
+      "designBasis": "采用该方法的具体输入域、边界或条件组合",
       "priority": "P0|P1|P2",
       "isInformationGap": false,
       "agentStage": "test_point_planning",
@@ -125,7 +128,11 @@ ${focusText ? `- 生成重点：${focusText}` : ''}
 3. 如果需求信息不足，创建 type="gap" 的 REQ，并创建 isInformationGap=true 的 TP，明确 gaps。
 4. ID 必须稳定递增：REQ-001、REQ-002；TP-001、TP-002。
 5. 保留完整 Agent 编排扩展字段：agentStage、sourceEvidence、coverageStatus、caseIds、gaps。
-6. 不要为了凑数量编造需求。需求很大时优先覆盖所有模块和关键分支，保持条目轻量。
+6. 测试点必须落实行业标准设计方法：有输入域时划分有效/无效等价类；有数值、长度、次数、时间等有序域时覆盖边界值及邻域；多个条件共同决定结果时使用判定表覆盖关键组合。
+7. designMethod 与 designBasis 必须写清采用的方法和具体依据，不能只写空泛标签。
+8. 不要为了凑数量编造需求。需求很大时优先覆盖所有模块和关键分支，保持条目轻量。
+
+${planningContext ? `补充上下文证据（代码分析、知识库与需求分析结论，仅用于补充当前需求的测试风险）：\n${planningContext}\n` : ''}
 
 需求材料：
 ${docText}`
@@ -241,6 +248,8 @@ ${JSON.stringify(batchReqItems, null, 2)}
       "title": "测试点标题",
       "sourceReqIds": ["REQ-001"],
       "coverageType": "主流程|异常|边界|状态|兼容|安全|信息不足",
+      "designMethod": "等价类|边界值|判定表|状态迁移|场景法|错误推测",
+      "designBasis": "采用该方法的具体输入域、边界或条件组合",
       "priority": "P0|P1|P2",
       "isInformationGap": false,
       "agentStage": "test_point_planning",
@@ -257,7 +266,9 @@ ${JSON.stringify(batchReqItems, null, 2)}
 2. 每个非 module 且非 gap 的本批 REQ 至少生成 1 个 TP；关键分支可生成多个 TP。
 3. TP.sourceReqIds 只能引用本批 REQ 的 id；不得引用不存在的 REQ。
 4. 如果本批 REQ 信息不足，生成 isInformationGap=true 的 TP，并明确 gaps。
-5. id 可从 TP-001 开始；服务端会统一重编号。`
+5. 有输入域时使用等价类；有数值、长度、次数、时间等有序域时覆盖边界值及邻域；多个条件共同决定结果时使用判定表覆盖关键组合。
+6. designMethod 与 designBasis 必须写清采用的方法和具体依据，不能只写空泛标签。
+7. id 可从 TP-001 开始；服务端会统一重编号。`
 
   return [
     { role: 'system', content: system },
@@ -287,6 +298,7 @@ const ENHANCED_DOC_FLOOR = 32_000
  * @param {string} [params.ragContext] 知识库检索上下文
  * @param {string} [params.requirementAnalysis] Step 2 需求分析结论（pipeline 模式）
  * @param {boolean} [params.pipelineMode] 是否为 pipeline 模式（代码已预分析）
+ * @param {object} [params.testPlan] 结构化 REQ/TP 覆盖计划
  * @param {'fresh'|'append'} [params.generationMode] 生成模式；append 表示在已有用例基础上追加下一批
  * @param {object[]} [params.existingCases] 已有用例摘要，用于追加批次避重
  * @param {{ min?: number, max?: number }} [params.batchTarget] 追加批次目标条数
@@ -294,7 +306,7 @@ const ENHANCED_DOC_FLOOR = 32_000
 export function buildEnhancedUserContent(params) {
   const maxTotalChars = params.maxTotalChars ?? 120_000
   const depth = params.depth
-  const s = getDepthGenerationSpec(depth)
+  const s = getEffectiveGenerationSpec(depth, params.caseTarget)
   const hasCode = Boolean(params.codeChangeSummary?.trim())
   const hasRag = Boolean(params.ragContext?.trim())
 
@@ -354,16 +366,30 @@ export function buildEnhancedUserContent(params) {
   const existingCases = Array.isArray(params.existingCases)
     ? params.existingCases
       .map((tc) => ({
+        id: String(tc?.id || '').trim(),
         module: String(tc?.module || '').trim(),
         subModule: String(tc?.subModule || '').trim(),
         summary: String(tc?.summary || '').trim(),
         expected: String(tc?.expected || '').trim(),
         priority: String(tc?.priority || '').trim(),
         caseType: String(tc?.caseType || '').trim(),
+        sourceReqIds: Array.isArray(tc?.sourceReqIds) ? tc.sourceReqIds.map(String).filter(Boolean) : [],
+        testPointIds: Array.isArray(tc?.testPointIds) ? tc.testPointIds.map(String).filter(Boolean) : [],
+        designMethod: String(tc?.designMethod || '').trim(),
       }))
       .filter((tc) => tc.summary || tc.expected)
       .slice(0, 180)
     : []
+  const targetTestPointIds = Array.isArray(params.targetTestPointIds)
+    ? [...new Set(params.targetTestPointIds.map(String).map((id) => id.trim().toUpperCase()).filter(Boolean))]
+    : []
+  if (targetTestPointIds.length > 0) {
+    parts.push('')
+    parts.push('--- 自动覆盖批次（本段优先级高于前述通用数量建议）---')
+    parts.push(`本批只允许覆盖以下测试点：${targetTestPointIds.join('、')}。`)
+    parts.push(`本批输出 ${s.minCases}～${s.stretchMax} 条用例；每条 testPointIds 必须至少包含一个上述 ID，不得生成其它测试点的用例。`)
+    parts.push('优先保证每个目标测试点至少有一条完整、可执行、可判定的用例，再为边界值或判定表补充必要组合。')
+  }
   if (params.generationMode === 'append' && existingCases.length > 0) {
     const targetMin = Number.isFinite(Number(params.batchTarget?.min)) ? Number(params.batchTarget.min) : 30
     const targetMax = Number.isFinite(Number(params.batchTarget?.max)) ? Number(params.batchTarget.max) : 60
@@ -375,9 +401,44 @@ export function buildEnhancedUserContent(params) {
     parts.push('')
     parts.push('本批追加要求：')
     parts.push('- 禁止生成与已有 summary、expected 高度相似的用例；若测试点相同但步骤略变，也视为重复。')
+    parts.push('- 已有用例带 testPointIds 时，只补充尚未被这些 ID 覆盖的测试点；已覆盖测试点不要重复生成。')
     parts.push('- 优先补已有用例未覆盖的模块、子模块、异常分支、边界值、兼容/中断恢复、资源与 UI 验证、权限/非法操作、信息不足占位。')
     parts.push('- 若需求或代码证据不足，按诚实性原则输出「信息不足」占位用例，而不是编造细节。')
     parts.push('- 每条新增用例仍必须能溯源到需求文档、需求深度分析、代码预分析或知识库上下文。')
+  }
+
+  if (params.testPlan?.testPoints?.length) {
+    const compactPlan = {
+      reqItems: (params.testPlan.reqItems || []).map((req) => ({
+        id: req.id,
+        type: req.type,
+        title: req.title,
+        module: req.module,
+        source: req.source,
+        gaps: req.gaps,
+      })),
+      testPoints: params.testPlan.testPoints.map((tp) => ({
+        id: tp.id,
+        title: tp.title,
+        sourceReqIds: tp.sourceReqIds,
+        coverageType: tp.coverageType,
+        designMethod: tp.designMethod,
+        designBasis: tp.designBasis,
+        priority: tp.priority,
+        isInformationGap: tp.isInformationGap,
+        sourceEvidence: tp.sourceEvidence,
+        gaps: tp.gaps,
+      })),
+    }
+    parts.push('')
+    parts.push('--- 已确认的需求与测试点覆盖计划（最终用例必须以此为主索引）---')
+    parts.push(JSON.stringify(compactPlan, null, 2))
+    parts.push('')
+    parts.push('覆盖计划执行要求：')
+    parts.push('- 每条非信息不足 TP 至少生成一条可执行用例；不得跳过 TP，也不得生成无法关联到 TP 的无依据用例。')
+    parts.push('- 每条用例必须返回 sourceReqIds、testPointIds、designMethod；ID 必须来自上方账本。')
+    parts.push('- 等价类、边界值和判定表等方法必须真正体现在测试数据、条件组合、步骤和预期中，但 summary/description/remarks 不展示方法术语。')
+    parts.push('- 信息不足 TP 生成对应占位用例，禁止补写未提供的业务规则。')
   }
 
   if (params.requirementAnalysis?.trim()) {

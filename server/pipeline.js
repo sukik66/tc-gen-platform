@@ -16,6 +16,8 @@
  */
 import OpenAI from 'openai'
 import { resolveOpenAiCompatible } from './llm/providers.js'
+import { buildTestPlanMessages } from './prompt-enhanced.js'
+import { normalizeTestPlan, parseTestPlanJson } from './test-plan-ledger.js'
 
 const SINGLE_CALL_TIMEOUT_MS = Number(process.env.PIPELINE_SINGLE_CALL_TIMEOUT_MS) || 240_000
 const MAX_FILES_TO_ANALYZE = 12
@@ -31,7 +33,7 @@ function makeClient(provider, modelOverride) {
   return {
     client: new OpenAI({ apiKey: r.apiKey, baseURL: r.baseURL, timeout: SINGLE_CALL_TIMEOUT_MS }),
     model: r.model,
-    maxTokens: Math.min(r.maxTokens || 4096, 4096),
+    maxTokens: Math.min(r.maxTokens || 8192, 8192),
   }
 }
 
@@ -330,16 +332,72 @@ ${ragContext ? `## 知识库参考\n${ragContext}\n` : ''}
   }
 }
 
+export async function planTestCoverage(provider, params, opts = {}) {
+  const { onProgress, signal, model } = opts
+  onProgress?.({ step: 'coverage_planning', status: 'start' })
+
+  const planningContext = [
+    params.requirementAnalysis ? `## 需求分析结论\n${params.requirementAnalysis.slice(0, 14_000)}` : '',
+    params.codeAnalysisSummary ? `## 代码分析结论\n${params.codeAnalysisSummary.slice(0, 10_000)}` : '',
+    params.ragContext ? `## 知识库证据\n${params.ragContext.slice(0, 6_000)}` : '',
+  ].filter(Boolean).join('\n\n')
+
+  try {
+    const messages = buildTestPlanMessages({
+      documents: params.documents,
+      focusText: params.focusText,
+      selectedTypes: params.selectedTypes,
+      depth: params.depth,
+      timezone: params.timezone,
+      maxTotalChars: 72_000,
+      planningContext,
+    })
+    const raw = await llmCall(provider, messages, { maxTokens: 7000, signal, model })
+    const parsed = parseTestPlanJson(raw)
+    if (!parsed) throw new Error('覆盖计划 JSON 解析失败')
+    const testPlan = normalizeTestPlan(parsed)
+    if (testPlan.reqItems.length === 0 || testPlan.testPoints.length === 0) {
+      throw new Error('覆盖计划未生成有效的 REQ/TP 条目')
+    }
+    onProgress?.({
+      step: 'coverage_planning',
+      status: 'done',
+      reqTotal: testPlan.coverage.reqTotal,
+      testPointTotal: testPlan.coverage.testPointTotal,
+      uncoveredReqCount: testPlan.coverage.uncoveredReqIds.length,
+    })
+    return { testPlan, ok: true }
+  } catch (e) {
+    if (signal?.aborted) throw e
+    const message = e instanceof Error ? e.message : String(e)
+    onProgress?.({ step: 'coverage_planning', status: 'error', error: message })
+    return { testPlan: null, ok: false }
+  }
+}
+
 // ─── 流水线编排 ────────────────────────────────────────────────
 
 export async function runPipeline(params) {
-  const { provider, model, codeFiles, documentText, ragContext, requirementHint, opts = {} } = params
+  const {
+    provider,
+    model,
+    codeFiles,
+    documents,
+    documentText,
+    ragContext,
+    requirementHint,
+    selectedTypes,
+    depth,
+    timezone,
+    opts = {},
+  } = params
   const { onProgress, signal } = opts
 
   const pipelineStart = Date.now()
 
   let codeAnalysisSummary = ''
   let requirementAnalysis = ''
+  let testPlan = null
 
   if (codeFiles?.length > 0) {
     try {
@@ -388,12 +446,29 @@ export async function runPipeline(params) {
     }
   }
 
+  if (!signal?.aborted && Array.isArray(documents) && documents.length > 0) {
+    const planned = await planTestCoverage(provider, {
+      documents,
+      focusText: requirementHint,
+      selectedTypes,
+      depth,
+      timezone,
+      requirementAnalysis,
+      codeAnalysisSummary,
+      ragContext,
+    }, { onProgress, signal, model })
+    if (planned.ok) testPlan = planned.testPlan
+  } else {
+    onProgress?.({ step: 'coverage_planning', status: 'skipped' })
+  }
+
   const totalSec = ((Date.now() - pipelineStart) / 1000).toFixed(1)
   console.log(`[pipeline] 完成，总耗时 ${totalSec}s，代码分析=${codeAnalysisSummary.length}字符，需求分析=${requirementAnalysis.length}字符`)
 
   return {
     codeAnalysisSummary,
     requirementAnalysis,
-    pipelineUsed: Boolean(codeAnalysisSummary || requirementAnalysis),
+    testPlan,
+    pipelineUsed: Boolean(codeAnalysisSummary || requirementAnalysis || testPlan),
   }
 }

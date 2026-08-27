@@ -19,7 +19,12 @@ export interface LocalConfig {
   path: string
   llmProvider: string
   providers: LocalProviderConfig[]
+  knowledgeProvider: 'lightrag' | 'llm-wiki'
   lightRagUrl: string
+  llmWikiUrl: string
+  llmWikiQueryPath: string
+  llmWikiHealthPath: string
+  llmWikiApiKey: SecretStatus
   plasticCmPath: string
   methodologyPath: string
   methodologyExists: boolean
@@ -33,6 +38,11 @@ export interface LocalConfigPayload {
   llmProvider: string
   apiPort: string
   lightRagUrl: string
+  knowledgeProvider?: 'lightrag' | 'llm-wiki'
+  llmWikiUrl?: string
+  llmWikiQueryPath?: string
+  llmWikiHealthPath?: string
+  llmWikiApiKey?: string
   plasticCmPath: string
   methodologyPath: string
   providers: Array<{
@@ -46,7 +56,15 @@ export interface LocalConfigPayload {
 
 async function readResponse(response: Response): Promise<LocalConfig> {
   const body = await response.json().catch(() => ({}))
-  if (!response.ok) throw new Error(String(body.error || `配置请求失败（${response.status}）`))
+  if (!response.ok) {
+    const detail = String(body.error || '')
+    if (response.status === 404) {
+      throw new Error(
+        '配置请求失败（404）：当前 API 端口可能被其它服务占用。请停止占用 8787 的服务后重启 npm run dev，或修改 .env 的 API_PORT。',
+      )
+    }
+    throw new Error(detail || `配置请求失败（${response.status}）`)
+  }
   return body as LocalConfig
 }
 

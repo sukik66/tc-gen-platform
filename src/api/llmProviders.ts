@@ -17,11 +17,71 @@ export interface LlmProviderOption {
   tokenBudget?: 'completion_independent' | 'shared_context_window'
   /** tokenBudget 为 shared 时：按模型名推断的总上下文 token 上限 */
   sharedContextTokens?: number
+  custom?: boolean
 }
 
 export interface LlmProviderListResponse {
   serverDefaultProvider: string
   providers: LlmProviderOption[]
+}
+
+export interface CustomProviderConfig {
+  id: string
+  name: string
+  enabled: boolean
+  apiMode: 'openai' | 'anthropic'
+  endpoint: string
+  apiKey: { configured: boolean; preview: string } | string
+  model: string
+  models?: string[]
+  contextWindow: number
+  streaming: boolean
+  customHeaders: string
+  timeoutMinutes: number
+  reasoning: 'auto' | 'on' | 'off'
+  createdAt?: string
+  updatedAt?: string
+}
+
+export type CustomProviderDraft = Omit<CustomProviderConfig, 'apiKey' | 'models'> & {
+  apiKey: string
+  apiKeyStatus?: { configured: boolean; preview: string }
+  models: string[]
+}
+
+async function providerResponse(response: Response) {
+  const body = await response.json().catch(() => ({}))
+  if (!response.ok) throw new Error(String(body.error || `Provider 请求失败（${response.status}）`))
+  return body
+}
+
+export async function fetchCustomProviders(): Promise<CustomProviderConfig[]> {
+  return providerResponse(await fetch(`${apiBase}/api/custom-providers`))
+}
+
+export async function saveCustomProvider(provider: CustomProviderDraft): Promise<CustomProviderConfig> {
+  return providerResponse(await fetch(`${apiBase}/api/custom-providers`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(provider),
+  }))
+}
+
+export async function discoverCustomProviderModels(provider: Pick<CustomProviderDraft, 'id' | 'endpoint' | 'apiKey' | 'apiMode' | 'customHeaders'>): Promise<string[]> {
+  const body = await providerResponse(await fetch(`${apiBase}/api/custom-providers/discover-models`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(provider),
+  }))
+  return Array.isArray(body.models) ? body.models : []
+}
+
+export async function deleteCustomProvider(id: string): Promise<void> {
+  await providerResponse(await fetch(`${apiBase}/api/custom-providers/${encodeURIComponent(id)}`, { method: 'DELETE' }))
+}
+
+export async function testCustomProvider(id: string): Promise<{ ok: boolean; latencyMs: number; model: string; reply: string }> {
+  return providerResponse(await fetch(`${apiBase}/api/custom-providers/${encodeURIComponent(id)}/test`, { method: 'POST' }))
 }
 
 export async function fetchLlmProviderList(

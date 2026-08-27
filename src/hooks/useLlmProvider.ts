@@ -27,6 +27,8 @@ export interface UseLlmProviderResult {
   setProvider: (id: string) => void
   /** 切换 model：自动持久化（与 provider 关联） */
   setModel: (model: string) => void
+  /** 重新读取服务端通道配置；配置弹窗保存后用于即时刷新。 */
+  refresh: () => Promise<void>
 }
 
 /**
@@ -42,8 +44,8 @@ export function useLlmProvider(): UseLlmProviderResult {
   const [serverDefaultProvider, setServerDefault] = useState<string>('')
   const [apiServerUp, setApiServerUp] = useState<boolean | null>(null)
 
-  useEffect(() => {
-    void fetchLlmProviderList().then((data) => {
+  const refresh = useCallback(async () => {
+    const data = await fetchLlmProviderList()
       if (!data) {
         setApiServerUp(false)
         setProviders([])
@@ -71,8 +73,11 @@ export function useLlmProvider(): UseLlmProviderResult {
       const storedModel = readStoredLlmModel(pick) || ''
       const initialModel = allow.includes(storedModel) ? storedModel : (cur?.model ?? '')
       setSelectedModelState(initialModel)
-    })
   }, [])
+
+  useEffect(() => {
+    void refresh()
+  }, [refresh])
 
   const setProvider = useCallback(
     (id: string) => {
@@ -112,5 +117,6 @@ export function useLlmProvider(): UseLlmProviderResult {
     isReady,
     setProvider,
     setModel,
+    refresh,
   }
 }

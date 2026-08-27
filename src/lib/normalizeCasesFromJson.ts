@@ -180,6 +180,9 @@ export function normalizeCasesFromJson(parsed: unknown): TestCase[] {
       steps,
       expected: String(o.expected || ''),
       remarks: String(o.remarks || ''),
+      sourceReqIds: Array.isArray(o.sourceReqIds) ? o.sourceReqIds.map(String).filter(Boolean) : [],
+      testPointIds: Array.isArray(o.testPointIds) ? o.testPointIds.map(String).filter(Boolean) : [],
+      designMethod: String(o.designMethod || ''),
     }
   })
 }

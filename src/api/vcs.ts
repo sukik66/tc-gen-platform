@@ -6,6 +6,14 @@ import type { TestPlanLedger } from '../types'
 
 const apiBase = import.meta.env.VITE_API_BASE_URL ?? ''
 
+async function fetchRepoApi(input: RequestInfo | URL, init: RequestInit | undefined, action: string): Promise<Response> {
+  try {
+    return await fetch(input, init)
+  } catch {
+    throw new Error(`${action}失败：无法连接 API 服务，请确认 npm run dev 已启动并刷新页面`)
+  }
+}
+
 /* ========== 仓库配置 ========== */
 
 export interface RepoConfig {
@@ -19,17 +27,17 @@ export interface RepoConfig {
 }
 
 export async function fetchRepos(): Promise<RepoConfig[]> {
-  const res = await fetch(`${apiBase}/api/repos`)
+  const res = await fetchRepoApi(`${apiBase}/api/repos`, undefined, '获取仓库列表')
   if (!res.ok) throw new Error('获取仓库列表失败')
   return res.json()
 }
 
 export async function saveRepo(repo: Partial<RepoConfig> & { id: string; path: string }): Promise<RepoConfig> {
-  const res = await fetch(`${apiBase}/api/repos`, {
+  const res = await fetchRepoApi(`${apiBase}/api/repos`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(repo),
-  })
+  }, '保存仓库')
   if (!res.ok) {
     const d = await res.json().catch(() => ({}))
     throw new Error(d.error || '保存仓库失败')
@@ -38,7 +46,11 @@ export async function saveRepo(repo: Partial<RepoConfig> & { id: string; path: s
 }
 
 export async function deleteRepo(id: string): Promise<void> {
-  await fetch(`${apiBase}/api/repos/${id}`, { method: 'DELETE' })
+  const res = await fetchRepoApi(`${apiBase}/api/repos/${encodeURIComponent(id)}`, { method: 'DELETE' }, '删除仓库')
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error(body.error || '删除仓库失败')
+  }
 }
 
 export async function initDefaultRepos(): Promise<RepoConfig[]> {
@@ -156,9 +168,32 @@ export async function listDirs(repoId: string, subDir = ''): Promise<string[]> {
 
 /* ========== RAG ========== */
 
-export async function fetchRagHealth(): Promise<{ ok: boolean; error?: string }> {
+export async function fetchRagHealth(options?: string | {
+  url?: string
+  provider?: 'lightrag' | 'llm-wiki'
+  queryPath?: string
+  healthPath?: string
+  apiKey?: string
+}): Promise<{ ok: boolean; error?: string }> {
   try {
-    const res = await fetch(`${apiBase}/api/rag/health`)
+    if (typeof options === 'object' && options.apiKey) {
+      const res = await fetch(`${apiBase}/api/rag/health-test`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(options),
+      })
+      return res.json()
+    }
+    const params = new URLSearchParams()
+    if (typeof options === 'string') params.set('url', options.trim())
+    else if (options) {
+      if (options.url?.trim()) params.set('url', options.url.trim())
+      if (options.provider) params.set('provider', options.provider)
+      if (options.queryPath?.trim()) params.set('queryPath', options.queryPath.trim())
+      if (options.healthPath?.trim()) params.set('healthPath', options.healthPath.trim())
+    }
+    const query = params.toString()
+    const res = await fetch(`${apiBase}/api/rag/health${query ? `?${query}` : ''}`)
     return res.json()
   } catch {
     return { ok: false, error: '无法连接 RAG 服务' }
@@ -368,14 +403,22 @@ export interface EnhancedGeneratePayload {
   usePipeline?: boolean
   generationMode?: 'fresh' | 'append'
   existingCases?: {
+    id?: string
     module?: string
     subModule?: string
     summary?: string
     expected?: string
     priority?: string
     caseType?: string
+    sourceReqIds?: string[]
+    testPointIds?: string[]
+    designMethod?: string
   }[]
   batchTarget?: { min?: number; max?: number }
+  autoCoverage?: boolean
+  autoRound?: number
+  reuseTestPlan?: TestPlanLedger
+  targetTestPointIds?: string[]
 }
 
 export interface PipelineProgressInfo {
@@ -387,6 +430,14 @@ export interface PipelineProgressInfo {
   totalFiles?: number
   successCount?: number
   error?: string
+  reqTotal?: number
+  testPointTotal?: number
+  uncoveredReqCount?: number
+  coverageRate?: number
+  uncoveredTestPointCount?: number
+  round?: number
+  remainingTestPointCount?: number
+  targetTestPointIds?: string[]
 }
 
 export interface EnhancedStreamCallbacks {
@@ -397,6 +448,7 @@ export interface EnhancedStreamCallbacks {
   onProgress?: (info: { chars: number; estimatedCases: number; elapsedSec: number }) => void
   /** 多步 Agent 流水线进度事件 */
   onPipelineProgress?: (info: PipelineProgressInfo) => void
+  onCoveragePlan?: (plan: TestPlanLedger) => void
   /** 推理模型（如 DeepSeek-Reasoner / V4-Pro）的思考过程进度；totalChars 为本次累计 reasoning 字符数 */
   onThinking?: (info: { text: string; totalChars: number }) => void
   onDelta: (text: string) => void
@@ -413,6 +465,8 @@ export interface EnhancedStreamCallbacks {
         shortJsonRetry?: boolean
         provider?: string
       }
+      testPlan?: TestPlanLedger | null
+      completionNotice?: string
     },
   ) => void
   onError: (msg: string, raw?: string) => void
@@ -478,6 +532,9 @@ export function streamEnhancedGenerate(
           case 'pipeline_progress':
             callbacks.onPipelineProgress?.(data as unknown as PipelineProgressInfo)
             break
+          case 'coverage_plan':
+            callbacks.onCoveragePlan?.(data.plan as TestPlanLedger)
+            break
           case 'progress':
             callbacks.onProgress?.(data as { chars: number; estimatedCases: number; elapsedSec: number })
             break
@@ -503,6 +560,7 @@ export function streamEnhancedGenerate(
                     provider?: string
                   }
                 | undefined,
+              testPlan: data.testPlan as TestPlanLedger | null | undefined,
             })
             break
           case 'error':

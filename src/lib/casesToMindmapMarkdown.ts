@@ -26,7 +26,7 @@ export function buildTestCasesMindmapMarkdown(cases: TestCase[]): string {
       '',
       '## （暂无数据）',
       '',
-      '### 请上传文档并生成，或使用侧栏 Cursor 辅助追加用例',
+      '### 请上传文档并生成测试用例',
     ].join('\n')
   }
 

@@ -5,6 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { generateWithGemini, streamWithGemini } from './llm/gemini.js'
+import OpenAI from 'openai'
 import { generateWithOpenAICompatible, streamWithOpenAICompatible } from './llm/openai.js'
 import {
   GEMINI_PROVIDER,
@@ -16,6 +17,7 @@ import {
   resolveOpenAiCompatible,
 } from './llm/providers.js'
 import { normalizeCases } from './normalize.js'
+import { extractCompleteCaseObjects } from './partial-case-parser.js'
 import { tryParseContractsResponse, parseCompleteContractObjectsFromPartialStream } from './normalize-contracts.js'
 import { generateContractsWithOpenAICompatible, streamContractsWithOpenAICompatible } from './llm/openai-contracts.js'
 import { generateContractsWithGemini } from './llm/gemini-contracts.js'
@@ -31,6 +33,7 @@ import {
   bumpStats,
 } from './vcs/rule-proposal-generator.js'
 import { appendRevisionLog, diffCasesForLog } from './caseRevisionLog.js'
+import { describeCustomProviderConnectionError, discoverCustomProviderModels, getCustomProvider, listCustomProviders, removeCustomProvider, saveCustomProvider } from './llm/customProviders.js'
 import { getAllRepos, getRepo, upsertRepo, deleteRepo, initDefaultRepos } from './vcs/repos.js'
 import * as plastic from './vcs/plastic.js'
 import * as git from './vcs/git.js'
@@ -46,6 +49,13 @@ import {
 import { startScheduler, stopScheduler, runDailyScan, getLastScanResult } from './scheduler/dailyScan.js'
 import { gatherCodeContext, smartSearch, scanDirectory, listSubDirs, extractKeywords } from './vcs/code-context.js'
 import { runPipeline } from './pipeline.js'
+import {
+  applyCasesToTestPlan,
+  focusTestPlanForGeneration,
+  normalizeTestPlan,
+  parseTestPlanJson,
+  renumberTestPoints,
+} from './test-plan-ledger.js'
 import { logLlmDebug, safeBaseUrlLabel } from './llm/debug-llm.js'
 import { setLastOpenAiCompatibleMeta, getLastOpenAiCompatibleMeta } from './llm/llmLastMeta.js'
 import { ensureEnvFile, getLocalConfig, saveLocalConfig } from './localConfig.js'
@@ -109,11 +119,71 @@ app.get('/api/health', (req, res) => {
     ? q
     : (process.env.LLM_PROVIDER || 'openai').trim().toLowerCase()
   const h = healthForProvider(provider)
-  return res.json(h)
+  return res.json({ ...h, service: 'ai-test-platform-api', pid: process.pid })
 })
 
 app.get('/api/llm-providers', (_req, res) => {
   res.json(listLlmProviderOptions())
+})
+
+app.get('/api/custom-providers', (_req, res) => {
+  res.json(listCustomProviders())
+})
+
+app.post('/api/custom-providers/discover-models', async (req, res) => {
+  try {
+    const input = req.body || {}
+    const existing = input.id ? getCustomProvider(input.id) : null
+    const models = await discoverCustomProviderModels({
+      ...input,
+      apiKey: String(input.apiKey || '').trim() || existing?.apiKey || '',
+    })
+    res.json({ models })
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : '获取模型失败' })
+  }
+})
+
+app.post('/api/custom-providers', (req, res) => {
+  try {
+    res.json(saveCustomProvider(req.body || {}))
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : '保存 Provider 失败' })
+  }
+})
+
+app.delete('/api/custom-providers/:id', (req, res) => {
+  const removed = removeCustomProvider(req.params.id)
+  res.status(removed ? 200 : 404).json(removed ? { ok: true } : { error: 'Provider 不存在' })
+})
+
+app.post('/api/custom-providers/:id/test', async (req, res) => {
+  let provider = null
+  try {
+    provider = getCustomProvider(req.params.id)
+    if (!provider) return res.status(404).json({ error: 'Provider 不存在' })
+    const resolved = resolveOpenAiCompatible(provider.id)
+    if (!resolved.ok) return res.status(400).json({ error: resolved.hint })
+    const client = new OpenAI({
+      apiKey: resolved.apiKey,
+      baseURL: resolved.baseURL,
+      defaultHeaders: resolved.defaultHeaders,
+      timeout: Math.min(resolved.timeoutMs || 30_000, 30_000),
+    })
+    const startedAt = Date.now()
+    const result = await client.chat.completions.create({
+      model: resolved.model,
+      messages: [{ role: 'user', content: 'Reply with OK.' }],
+      max_tokens: 8,
+      stream: false,
+    })
+    res.json({ ok: true, latencyMs: Date.now() - startedAt, model: resolved.model, reply: result.choices?.[0]?.message?.content || '' })
+  } catch (e) {
+    const message = provider
+      ? describeCustomProviderConnectionError(e, provider.endpoint)
+      : (e instanceof Error ? e.message : '连接测试失败')
+    res.status(400).json({ error: message })
+  }
 })
 
 /** 最近一次 OpenAI 兼容调用的排障摘要（无密钥）；生成用例后才有数据 */
@@ -192,7 +262,7 @@ app.post('/api/generate-test-plan', async (req, res) => {
         throwIfPromptExceedsSharedContext(provider, r.model, approxPromptChars)
         const maxTokens = effectiveMaxCompletionTokens(provider, r.model, r.maxTokens || 8192, approxPromptChars)
         const OpenAI = (await import('openai')).default
-        const openai = new OpenAI({ apiKey: r.apiKey, baseURL: r.baseURL, timeout: TEST_PLAN_CLIENT_TIMEOUT_MS })
+        const openai = new OpenAI({ apiKey: r.apiKey, baseURL: r.baseURL, defaultHeaders: r.defaultHeaders, timeout: r.timeoutMs || TEST_PLAN_CLIENT_TIMEOUT_MS })
         const createPlan = (useJson) => openai.chat.completions.create(
           {
             model: r.model,
@@ -212,7 +282,7 @@ app.post('/api/generate-test-plan', async (req, res) => {
         }
         rawText = completion.choices[0]?.message?.content || ''
       }
-      const parsed = parseLlmJsonObject(rawText)
+      const parsed = parseTestPlanJson(rawText)
       if (!parsed) {
         const finish = completion?.choices?.[0]?.finish_reason
         const hint = finish === 'length'
@@ -425,7 +495,7 @@ app.post('/api/generate-test-plan-stream', async (req, res) => {
       throwIfPromptExceedsSharedContext(provider, r.model, approxPromptChars)
       const maxTokens = effectiveMaxCompletionTokens(provider, r.model, r.maxTokens || 8192, approxPromptChars)
       const OpenAI = (await import('openai')).default
-      const openai = new OpenAI({ apiKey: r.apiKey, baseURL: r.baseURL, timeout: STREAM_CLIENT_TIMEOUT_MS })
+      const openai = new OpenAI({ apiKey: r.apiKey, baseURL: r.baseURL, defaultHeaders: r.defaultHeaders, timeout: r.timeoutMs || STREAM_CLIENT_TIMEOUT_MS })
       const createStream = async (useJson, extraSignal) => openai.chat.completions.create(
         {
           model: r.model,
@@ -500,7 +570,7 @@ app.post('/api/generate-test-plan-stream', async (req, res) => {
     }
 
     if (ac.signal.aborted) { cleanupAndEnd(); return }
-    const parsed = parseLlmJsonObject(fullText)
+    const parsed = parseTestPlanJson(fullText)
     if (!parsed) {
       sendSSE('parse_error', { error: '测试点 JSON 解析失败', raw: fullText.slice(0, 2000) })
       console.warn(`[test-plan-stream] parse_error id=${requestId} outputChars=${fullText.length}`)
@@ -582,6 +652,9 @@ app.post('/api/generate-test-cases', async (req, res) => {
           model: r.model,
           maxTokens: r.maxTokens,
           providerId: r.id,
+          defaultHeaders: r.defaultHeaders,
+          timeoutMs: r.timeoutMs,
+          streaming: r.streaming,
         },
         genParams,
       )
@@ -650,6 +723,9 @@ app.post('/api/generate-contracts', async (req, res) => {
           model: r.model,
           maxTokens: r.maxTokens,
           providerId: r.id,
+          defaultHeaders: r.defaultHeaders,
+          timeoutMs: r.timeoutMs,
+          streaming: r.streaming,
         },
         genParams,
       )
@@ -772,6 +848,9 @@ app.post('/api/generate-contracts-stream', async (req, res) => {
             model: r.model,
             maxTokens: r.maxTokens,
             providerId: r.id,
+            defaultHeaders: r.defaultHeaders,
+            timeoutMs: r.timeoutMs,
+            streaming: r.streaming,
           },
           genParams,
           ac.signal,
@@ -946,6 +1025,8 @@ app.post('/api/contract-code-review', async (req, res) => {
           model: r.model,
           maxTokens: r.maxTokens,
           providerId: r.id,
+          defaultHeaders: r.defaultHeaders,
+          timeoutMs: r.timeoutMs,
         },
         enrichedParams,
         agentCtx,
@@ -986,6 +1067,8 @@ app.post('/api/contract-code-review', async (req, res) => {
               baseURL: r.baseURL,
               model: r.model,
               providerId: r.id,
+              defaultHeaders: r.defaultHeaders,
+              timeoutMs: r.timeoutMs,
               // Pass 2 maxTokens 默认 4096（不强制 8192，避免不必要的 token 浪费；与 Q1 不矛盾：Q1 锚定主走查端点）
             },
           })
@@ -1201,6 +1284,9 @@ app.post('/api/generate-test-cases-stream', async (req, res) => {
             model: r.model,
             maxTokens: r.maxTokens,
             providerId: r.id,
+            defaultHeaders: r.defaultHeaders,
+            timeoutMs: r.timeoutMs,
+            streaming: r.streaming,
           },
           genParams,
           ac.signal,
@@ -1462,8 +1548,24 @@ app.post('/api/code-context/list-dirs', (req, res) => {
 
 /* ========== LightRAG 知识检索 API ========== */
 
-app.get('/api/rag/health', async (_req, res) => {
-  const h = await ragHealth()
+app.get('/api/rag/health', async (req, res) => {
+  const url = typeof req.query.url === 'string' ? req.query.url.slice(0, 2048) : undefined
+  const provider = req.query.provider === 'llm-wiki' ? 'llm-wiki' : req.query.provider === 'lightrag' ? 'lightrag' : undefined
+  const queryPath = typeof req.query.queryPath === 'string' ? req.query.queryPath.slice(0, 512) : undefined
+  const healthPath = typeof req.query.healthPath === 'string' ? req.query.healthPath.slice(0, 512) : undefined
+  const h = await ragHealth({ url, provider, queryPath, healthPath })
+  res.json(h)
+})
+
+app.post('/api/rag/health-test', async (req, res) => {
+  const body = req.body || {}
+  const h = await ragHealth({
+    provider: body.provider === 'llm-wiki' ? 'llm-wiki' : body.provider === 'lightrag' ? 'lightrag' : undefined,
+    url: typeof body.url === 'string' ? body.url.slice(0, 2048) : undefined,
+    queryPath: typeof body.queryPath === 'string' ? body.queryPath.slice(0, 512) : undefined,
+    healthPath: typeof body.healthPath === 'string' ? body.healthPath.slice(0, 512) : undefined,
+    apiKey: typeof body.apiKey === 'string' ? body.apiKey.slice(0, 8192) : undefined,
+  })
   res.json(h)
 })
 
@@ -1491,6 +1593,10 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       generationMode,
       existingCases,
       batchTarget,
+      reuseTestPlan,
+      autoCoverage,
+      targetTestPointIds,
+      autoRound,
     } = req.body || {}
 
     if (!Array.isArray(documents) || documents.length === 0) {
@@ -1504,15 +1610,22 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       text: String(d.text || ''),
       role: typeof d.role === 'string' && d.role.trim() ? d.role.trim() : undefined,
     }))
+    const lockedTestPlan = reuseTestPlan && typeof reuseTestPlan === 'object'
+      ? normalizeTestPlan(reuseTestPlan)
+      : null
     const mode = generationMode === 'append' ? 'append' : 'fresh'
     const existingCaseBriefs = Array.isArray(existingCases)
       ? existingCases.slice(-180).map(tc => ({
+        id: String(tc?.id || '').slice(0, 40),
         module: String(tc?.module || '').slice(0, 80),
         subModule: String(tc?.subModule || '').slice(0, 80),
         summary: String(tc?.summary || '').slice(0, 220),
         expected: String(tc?.expected || '').slice(0, 260),
         priority: String(tc?.priority || '').slice(0, 20),
         caseType: String(tc?.caseType || '').slice(0, 40),
+        sourceReqIds: Array.isArray(tc?.sourceReqIds) ? tc.sourceReqIds.map(String).slice(0, 12) : [],
+        testPointIds: Array.isArray(tc?.testPointIds) ? tc.testPointIds.map(String).slice(0, 12) : [],
+        designMethod: String(tc?.designMethod || '').slice(0, 40),
       })).filter(tc => tc.summary || tc.expected)
       : []
     const batchMin = Math.min(Math.max(Number(batchTarget?.min) || 30, 10), 100)
@@ -1537,7 +1650,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
 
     let codeChangeSummary = ''
     let rawCodeFiles = []
-    if (codeChanges && codeChanges.mode && Array.isArray(codeChanges.repos) && codeChanges.repos.length > 0) {
+    if (!lockedTestPlan && codeChanges && codeChanges.mode && Array.isArray(codeChanges.repos) && codeChanges.repos.length > 0) {
       tasks.push(
         gatherCodeContext(codeChanges)
           .then((ctx) => {
@@ -1549,12 +1662,12 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
     }
 
     let ragContext = ''
-    if (ragQuery?.trim()) {
+    if (!lockedTestPlan && ragQuery?.trim()) {
       tasks.push(
         queryContext(ragQuery, { mode: 'mix', topK: 30 }).then(c => { ragContext = c })
           .catch(e => { console.warn('[rag-query]', e.message) })
       )
-    } else if (docs.length > 0) {
+    } else if (!lockedTestPlan && docs.length > 0) {
       const autoQuery = docs.map(d => d.name).join(' ') + ' ' + (focusText || '')
       tasks.push(
         queryContext(autoQuery.trim(), { mode: 'mix', topK: 20 }).then(c => { ragContext = c })
@@ -1601,11 +1714,20 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
 
     /* --- Pipeline: 代码预分析 + 需求分析（多步 Agent）--- */
     const usePipeline = req.body?.usePipeline !== false
-    let pipelineResult = { codeAnalysisSummary: '', requirementAnalysis: '', pipelineUsed: false }
+    let pipelineResult = { codeAnalysisSummary: '', requirementAnalysis: '', testPlan: null, pipelineUsed: false }
 
     console.log(`[stream] start provider=${provider}, rawCodeFiles=${rawCodeFiles.length}, codeChangeSummary=${codeChangeSummary.length}字符, usePipeline=${usePipeline}`)
 
-    if (usePipeline && provider !== 'gemini') {
+    if (lockedTestPlan) {
+      pipelineResult = {
+        codeAnalysisSummary: '',
+        requirementAnalysis: '',
+        testPlan: lockedTestPlan,
+        pipelineUsed: true,
+      }
+      sendSSE('meta', { type: 'pipeline', status: 'reused', steps: ['generation', 'coverage_audit'] })
+      sendSSE('coverage_plan', { plan: lockedTestPlan })
+    } else if (usePipeline && provider !== 'gemini') {
       const pipeT0 = Date.now()
       try {
         const docText = docs.map(d => `## ${d.name}\n${d.text}`).join('\n\n')
@@ -1613,8 +1735,8 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
         const codeFiles = rawCodeFiles
 
         const pipelineSteps = codeFiles.length > 0
-          ? ['code_analysis', 'requirement_analysis', 'generation']
-          : ['requirement_analysis', 'generation']
+          ? ['code_analysis', 'requirement_analysis', 'coverage_planning', 'generation', 'coverage_audit']
+          : ['requirement_analysis', 'coverage_planning', 'generation', 'coverage_audit']
         console.log(`[stream] pipeline_start files=${codeFiles.length}, steps=${pipelineSteps.join('→')}`)
         sendSSE('meta', { type: 'pipeline', status: 'start', steps: pipelineSteps })
 
@@ -1622,9 +1744,13 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
           provider,
           model: llmModel,
           codeFiles,
+          documents: docs,
           documentText: docText,
           ragContext,
           requirementHint,
+          selectedTypes: types,
+          depth: dep,
+          timezone: timezone || 'Asia/Shanghai',
           opts: {
             signal: ac.signal,
             onProgress: (info) => sendSSE('pipeline_progress', info),
@@ -1635,6 +1761,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
         if (pipelineResult.pipelineUsed) {
           console.log(`[stream] pipeline_done elapsed=${pipeSec}s, codeChars=${pipelineResult.codeAnalysisSummary.length}, reqChars=${pipelineResult.requirementAnalysis.length}`)
           sendSSE('meta', { type: 'pipeline', status: 'done', codeAnalysisChars: pipelineResult.codeAnalysisSummary.length, requirementAnalysisChars: pipelineResult.requirementAnalysis.length })
+          if (pipelineResult.testPlan) sendSSE('coverage_plan', { plan: pipelineResult.testPlan })
         } else {
           console.log(`[stream] pipeline_empty elapsed=${pipeSec}s`)
         }
@@ -1645,7 +1772,47 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       }
     }
 
-    sendSSE('pipeline_progress', { step: 'final_generation', status: 'start', message: '预分析完成，正在调用模型生成用例…' })
+    const fullTestPlan = pipelineResult.testPlan
+    const uncoveredIds = Array.isArray(fullTestPlan?.coverage?.uncoveredTestPointIds)
+      ? fullTestPlan.coverage.uncoveredTestPointIds.map(String)
+      : []
+    const requestedTargetIds = Array.isArray(targetTestPointIds)
+      ? targetTestPointIds.map(String).map((id) => id.toUpperCase())
+      : []
+    const requestedTargetSet = new Set(requestedTargetIds)
+    const autoBatchSize = Math.min(24, Math.max(4, Number(process.env.AUTO_COVERAGE_TP_BATCH_SIZE) || 12))
+    const activeTargetIds = autoCoverage === true && fullTestPlan
+      ? uncoveredIds
+        .filter((id) => requestedTargetSet.size === 0 || requestedTargetSet.has(id))
+        .slice(0, autoBatchSize)
+      : []
+    const promptTestPlan = activeTargetIds.length > 0
+      ? focusTestPlanForGeneration(fullTestPlan, activeTargetIds)
+      : fullTestPlan
+    const caseTarget = activeTargetIds.length > 0
+      ? {
+          min: activeTargetIds.length,
+          max: Math.min(24, Math.max(activeTargetIds.length, activeTargetIds.length * 2)),
+        }
+      : undefined
+    const currentAutoRound = Math.max(1, Math.min(100, Number(autoRound) || 1))
+
+    if (activeTargetIds.length > 0) {
+      sendSSE('pipeline_progress', {
+        step: 'coverage_batch',
+        status: 'start',
+        round: currentAutoRound,
+        targetTestPointIds: activeTargetIds,
+        remainingTestPointCount: uncoveredIds.length,
+      })
+    }
+
+    sendSSE('pipeline_progress', {
+      step: 'final_generation',
+      status: 'start',
+      round: currentAutoRound,
+      message: '预分析完成，正在调用模型生成用例…',
+    })
 
     /* --- 构建增强版 Prompt --- */
     const genParams = {
@@ -1658,15 +1825,18 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
       codeChangeSummary: pipelineResult.pipelineUsed ? pipelineResult.codeAnalysisSummary : codeChangeSummary,
       ragContext,
       requirementAnalysis: pipelineResult.requirementAnalysis,
+      testPlan: promptTestPlan,
       pipelineMode: pipelineResult.pipelineUsed,
-      generationMode: mode,
+      generationMode: existingCaseBriefs.length > 0 ? 'append' : mode,
       existingCases: existingCaseBriefs,
-      batchTarget: mode === 'append' ? { min: batchMin, max: batchMax } : undefined,
+      batchTarget: caseTarget || (mode === 'append' ? { min: batchMin, max: batchMax } : undefined),
+      caseTarget,
+      targetTestPointIds: activeTargetIds,
     }
 
     const enhancedUserText = buildEnhancedUserContent(genParams)
-    const sysEnhanced = buildEnhancedSystemPrompt(dep)
-    const tail = buildEnhancedJsonTail(dep)
+    const sysEnhanced = buildEnhancedSystemPrompt(dep, caseTarget)
+    const tail = buildEnhancedJsonTail(dep, caseTarget)
     const enhancedTotalPromptChars =
       sysEnhanced.length + enhancedUserText.length + tail.length
 
@@ -1710,7 +1880,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
         maxTok = effectiveMaxCompletionTokens(provider, r.model, maxTok, enhancedApproxPromptChars)
 
         const client = (await import('openai')).default
-        const openai = new client({ apiKey: r.apiKey, baseURL: r.baseURL, timeout: STREAM_CLIENT_TIMEOUT_MS })
+        const openai = new client({ apiKey: r.apiKey, baseURL: r.baseURL, defaultHeaders: r.defaultHeaders, timeout: r.timeoutMs || STREAM_CLIENT_TIMEOUT_MS })
         openAiRetryPayload = { r, messages, maxTok, approxPromptChars: enhancedApproxPromptChars }
         const createStream = async (useJson, extraSignal) => {
           const body = {
@@ -1718,13 +1888,22 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
             temperature: 0.5,
             max_tokens: maxTok,
             messages,
-            stream: true,
+            stream: r.streaming !== false,
             ...(useJson ? { response_format: { type: 'json_object' } } : {}),
           }
           const sig = extraSignal
             ? AbortSignal.any([ac.signal, extraSignal])
             : ac.signal
-          return openai.chat.completions.create(body, { signal: sig })
+          const response = await openai.chat.completions.create(body, { signal: sig })
+          if (r.streaming !== false) return response
+          return (async function* () {
+            yield {
+              choices: [{
+                delta: { content: response.choices?.[0]?.message?.content || '' },
+                finish_reason: response.choices?.[0]?.finish_reason || 'stop',
+              }],
+            }
+          })()
         }
 
         logLlmDebug('generate-enhanced-stream (OpenAI 兼容) request', {
@@ -1855,7 +2034,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
           })
           const { r, messages, maxTok, approxPromptChars: retryApproxChars } = openAiRetryPayload
           const O = (await import('openai')).default
-          const openai2 = new O({ apiKey: r.apiKey, baseURL: r.baseURL, timeout: STREAM_CLIENT_TIMEOUT_MS })
+          const openai2 = new O({ apiKey: r.apiKey, baseURL: r.baseURL, defaultHeaders: r.defaultHeaders, timeout: r.timeoutMs || STREAM_CLIENT_TIMEOUT_MS })
           logLlmDebug('generate-enhanced-stream retry without json_object', {
             firstPassChars: fullText.length,
             firstPassSummaries: summaryTags,
@@ -1971,6 +2150,21 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
     if (ac.signal.aborted) { cleanupAndEnd(); return }
 
     const finalResult = tryParsePartialJSON(fullText)
+    sendSSE('pipeline_progress', { step: 'coverage_audit', status: 'start' })
+    const auditedTestPlan = pipelineResult.testPlan
+      ? applyCasesToTestPlan(pipelineResult.testPlan, [...existingCaseBriefs, ...finalResult.cases])
+      : null
+    if (auditedTestPlan) {
+      sendSSE('coverage_plan', { plan: auditedTestPlan })
+      sendSSE('pipeline_progress', {
+        step: 'coverage_audit',
+        status: 'done',
+        coverageRate: auditedTestPlan.coverage.coverageRate,
+        uncoveredTestPointCount: auditedTestPlan.coverage.uncoveredTestPointIds.length,
+      })
+    } else {
+      sendSSE('pipeline_progress', { step: 'coverage_audit', status: 'skipped' })
+    }
     const depthSpec = getDepthGenerationSpec(dep)
     // #region agent log
     {
@@ -2039,6 +2233,7 @@ app.post('/api/generate-enhanced-stream', async (req, res) => {
         interruptReason: streamError || undefined,
         partial: finalResult.partial,
         qualityHints,
+        testPlan: auditedTestPlan,
       })
     } else if (streamError) {
       sendSSE('error', { error: streamError, raw: fullText.slice(0, 2000) })
@@ -2141,123 +2336,10 @@ app.post('/api/preview-enhanced-prompt', async (req, res) => {
 
 /* ========== JSON 截断修复 ========== */
 
-function normalizeTestPlan(parsed) {
-  const obj = parsed && typeof parsed === 'object' ? parsed : {}
-  const rawReqItems = Array.isArray(obj.reqItems) ? obj.reqItems : []
-  const rawTestPoints = Array.isArray(obj.testPoints) ? obj.testPoints : []
-  const reqIdSet = new Set()
-  const testPointIdSet = new Set()
-
-  const reqItems = rawReqItems.map((item, idx) => {
-    const id = /^REQ-\d{3,}$/i.test(String(item?.id || ''))
-      ? String(item.id).toUpperCase()
-      : `REQ-${String(idx + 1).padStart(3, '0')}`
-    reqIdSet.add(id)
-    const type = ['module', 'feature', 'branch', 'gap'].includes(item?.type) ? item.type : 'feature'
-    const source = item?.source && typeof item.source === 'object' ? item.source : {}
-    return {
-      id,
-      type,
-      title: String(item?.title || `需求条目 ${idx + 1}`).trim(),
-      module: String(item?.module || item?.title || '').trim(),
-      parentId: String(item?.parentId || '').trim(),
-      source: {
-        documentName: String(source.documentName || '').trim(),
-        heading: String(source.heading || '').trim(),
-        excerpt: String(source.excerpt || '').trim().slice(0, 180),
-      },
-      testPointIds: [],
-      gaps: Array.isArray(item?.gaps) ? item.gaps.map(String).filter(Boolean) : [],
-      coverageStatus: type === 'gap' ? 'gap' : 'uncovered',
-    }
-  })
-
-  const testPoints = rawTestPoints.map((item, idx) => {
-    const id = /^TP-\d{3,}$/i.test(String(item?.id || ''))
-      ? String(item.id).toUpperCase()
-      : `TP-${String(idx + 1).padStart(3, '0')}`
-    testPointIdSet.add(id)
-    const sourceReqIds = Array.isArray(item?.sourceReqIds)
-      ? item.sourceReqIds.map((x) => String(x).toUpperCase()).filter((x) => reqIdSet.has(x))
-      : []
-    const priority = ['P0', 'P1', 'P2'].includes(item?.priority) ? item.priority : 'P1'
-    const isInformationGap = Boolean(item?.isInformationGap)
-    return {
-      id,
-      title: String(item?.title || `测试点 ${idx + 1}`).trim(),
-      sourceReqIds,
-      coverageType: String(item?.coverageType || (isInformationGap ? '信息不足' : '功能')).trim(),
-      priority,
-      isInformationGap,
-      agentStage: 'test_point_planning',
-      sourceEvidence: Array.isArray(item?.sourceEvidence) ? item.sourceEvidence.map(String).filter(Boolean).slice(0, 8) : [],
-      caseIds: Array.isArray(item?.caseIds) ? item.caseIds.map(String).filter(Boolean) : [],
-      gaps: Array.isArray(item?.gaps) ? item.gaps.map(String).filter(Boolean) : [],
-      coverageStatus: isInformationGap ? 'gap' : 'planned',
-    }
-  }).filter((tp) => tp.sourceReqIds.length > 0 || reqItems.length === 0)
-
-  const reqById = new Map(reqItems.map((req) => [req.id, req]))
-  for (const tp of testPoints) {
-    for (const reqId of tp.sourceReqIds) {
-      const req = reqById.get(reqId)
-      if (!req || req.testPointIds.includes(tp.id)) continue
-      req.testPointIds.push(tp.id)
-      req.coverageStatus = tp.isInformationGap ? 'gap' : 'planned'
-      if (tp.isInformationGap) {
-        for (const gap of tp.gaps) {
-          if (gap && !req.gaps.includes(gap)) req.gaps.push(gap)
-        }
-      }
-    }
-  }
-
-  const uncoveredReqIds = reqItems
-    .filter((req) => req.type !== 'module' && req.testPointIds.length === 0)
-    .map((req) => req.id)
-  const informationGapReqIds = reqItems
-    .filter((req) => req.type === 'gap' || req.coverageStatus === 'gap' || req.gaps.length > 0)
-    .map((req) => req.id)
-  const informationGapTestPointIds = testPoints
-    .filter((tp) => tp.isInformationGap || tp.coverageType.includes('信息不足') || tp.gaps.length > 0)
-    .map((tp) => tp.id)
-
-  return {
-    reqItems,
-    testPoints,
-    coverage: {
-      reqTotal: reqItems.length,
-      testPointTotal: testPoints.length,
-      uncoveredReqIds,
-      informationGapReqIds,
-      informationGapTestPointIds,
-    },
-  }
-}
-
-function parseLlmJsonObject(text) {
-  if (!String(text || '').trim()) return null
-  const cleaned = String(text)
-    .replace(/^\uFEFF/, '')
-    .replace(/<think>[\s\S]*?<\/think>/gi, '')
-    .replace(/<[｜|]+\s*DSML[\s\S]*?>/g, '')
-    .replace(/^```(?:json)?\s*/i, '')
-    .replace(/\s*```\s*$/i, '')
-    .trim()
-  return parseJsonLenient(cleaned) || parseJsonLenient(extractBalancedJsonObject(cleaned) || '')
-}
-
 function chunkArray(items, size) {
   const out = []
   for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size))
   return out
-}
-
-function renumberTestPoints(testPoints) {
-  return (Array.isArray(testPoints) ? testPoints : []).map((tp, idx) => ({
-    ...tp,
-    id: `TP-${String(idx + 1).padStart(3, '0')}`,
-  }))
 }
 
 /** 从首个 { 起按括号深度提取对象，字符串内括号不计入（适配模型前后废话、markdown） */
@@ -2400,6 +2482,20 @@ function tryParsePartialJSON(text) {
   // 2. 尝试去掉 markdown 围栏（若上面未完全去掉）
   let cleaned = String(text ?? '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '')
   cleaned = clipToJsonObjectStart(cleaned)
+
+  // For a truncated cases array, keep only objects that the model fully closed.
+  // The unfinished tail must never be repaired into a seemingly valid test case.
+  const completeCases = extractCompleteCaseObjects(cleaned)
+  if (completeCases.length > 0) {
+    result.cases = normalizeCases({ cases: completeCases })
+    result.partial = true
+    return result
+  }
+  if (/"cases"\s*:\s*\[/.test(cleaned)) {
+    result.partial = true
+    result.parseError = '模型输出在首条用例完成前已被截断，没有可安全保留的完整用例。'
+    return result
+  }
 
   // 3. 尝试修复截断的 JSON：补齐括号（优先对平衡子串操作）
   const truncBase = extractBalancedJsonObject(cleaned) || cleaned
@@ -2730,6 +2826,8 @@ app.post('/api/quality-contracts/drafts/:id/code-review', async (req, res) => {
           model: r.model,
           maxTokens: r.maxTokens,
           providerId: r.id,
+          defaultHeaders: r.defaultHeaders,
+          timeoutMs: r.timeoutMs,
         },
         enrichedParams,
         agentCtx,
@@ -2769,6 +2867,8 @@ app.post('/api/quality-contracts/drafts/:id/code-review', async (req, res) => {
               baseURL: r.baseURL,
               model: r.model,
               providerId: r.id,
+              defaultHeaders: r.defaultHeaders,
+              timeoutMs: r.timeoutMs,
             },
           })
           ruleProposalId = pass2Result.proposalId

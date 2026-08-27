@@ -53,11 +53,11 @@ function stripReasoningMarkers(text) {
   return s
 }
 
-function makeClient({ apiKey, baseURL }) {
+function makeClient({ apiKey, baseURL, defaultHeaders, timeoutMs: customTimeoutMs }) {
   if (!apiKey) throw new Error('缺少 API Key')
   if (!baseURL) throw new Error('缺少 Base URL')
-  const timeoutMs = Number(process.env.LLM_CODE_REVIEW_TIMEOUT_MS) || 600_000
-  return new OpenAI({ apiKey, baseURL, timeout: timeoutMs })
+  const timeoutMs = customTimeoutMs || Number(process.env.LLM_CODE_REVIEW_TIMEOUT_MS) || 600_000
+  return new OpenAI({ apiKey, baseURL, defaultHeaders, timeout: timeoutMs })
 }
 
 /**
