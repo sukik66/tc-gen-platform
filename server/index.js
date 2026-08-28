@@ -59,7 +59,7 @@ import {
 import { logLlmDebug, safeBaseUrlLabel } from './llm/debug-llm.js'
 import { setLastOpenAiCompatibleMeta, getLastOpenAiCompatibleMeta } from './llm/llmLastMeta.js'
 import { ensureEnvFile, getLocalConfig, saveLocalConfig } from './localConfig.js'
-import { deleteSkill, getSkillDetail, listSkills, readSkillContext, readSkillFile, saveSkill } from './skills.js'
+import { deleteSkill, getSkillDetail, getSkillVersion, listSkillVersions, listSkills, readSkillContext, readSkillFile, readSkillVersionFile, restoreSkillVersion, saveSkill } from './skills.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 /** 调试会话 NDJSON：workspace 根目录 debug-17c700.log */
@@ -142,6 +142,34 @@ app.get('/api/skills/:id/file', (req, res) => {
     res.status(file ? 200 : 404).json(file || { error: 'Skill 文件不存在' })
   } catch (e) {
     res.status(400).json({ error: e instanceof Error ? e.message : '读取 Skill 文件失败' })
+  }
+})
+
+app.get('/api/skills/:id/versions', (req, res) => {
+  const versions = listSkillVersions(req.params.id)
+  res.status(versions ? 200 : 404).json(versions ? { versions } : { error: 'Skill 不存在' })
+})
+
+app.get('/api/skills/:id/versions/:version', (req, res) => {
+  const version = getSkillVersion(req.params.id, req.params.version)
+  res.status(version ? 200 : 404).json(version || { error: 'Skill 版本不存在' })
+})
+
+app.get('/api/skills/:id/versions/:version/file', (req, res) => {
+  try {
+    const file = readSkillVersionFile(req.params.id, req.params.version, req.query.path)
+    res.status(file ? 200 : 404).json(file || { error: 'Skill 版本文件不存在' })
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : '读取 Skill 版本文件失败' })
+  }
+})
+
+app.post('/api/skills/:id/versions/:version/restore', (req, res) => {
+  try {
+    const skill = restoreSkillVersion(req.params.id, req.params.version)
+    res.status(skill ? 200 : 404).json(skill ? { skill } : { error: 'Skill 版本不存在' })
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : '恢复 Skill 版本失败' })
   }
 })
 

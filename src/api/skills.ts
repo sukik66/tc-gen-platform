@@ -7,6 +7,7 @@ export interface SkillSummary {
   totalBytes: number
   hasSkillMd: boolean
   updatedAt: string
+  currentVersion: number
 }
 
 export interface SkillFileSummary {
@@ -16,6 +17,14 @@ export interface SkillFileSummary {
 
 export interface SkillDetail extends SkillSummary {
   files: SkillFileSummary[]
+}
+
+export interface SkillVersionSummary {
+  version: number
+  createdAt: string
+  files: SkillFileSummary[]
+  totalBytes: number
+  current: boolean
 }
 
 async function readJson(response: Response) {
@@ -41,6 +50,21 @@ export async function fetchSkillDetail(id: string): Promise<SkillDetail> {
 export async function fetchSkillFile(id: string, filePath: string): Promise<{ skill: SkillSummary; path: string; content: string }> {
   const query = new URLSearchParams({ path: filePath })
   return await readJson(await fetch(`${apiBase}/api/skills/${encodeURIComponent(id)}/file?${query}`)) as unknown as { skill: SkillSummary; path: string; content: string }
+}
+
+export async function fetchSkillVersions(id: string): Promise<SkillVersionSummary[]> {
+  const body = await readJson(await fetch(`${apiBase}/api/skills/${encodeURIComponent(id)}/versions`)) as { versions?: SkillVersionSummary[] }
+  return body.versions || []
+}
+
+export async function fetchSkillVersionFile(id: string, version: number, filePath: string): Promise<{ skill: SkillSummary; version: number; path: string; content: string }> {
+  const query = new URLSearchParams({ path: filePath })
+  return await readJson(await fetch(`${apiBase}/api/skills/${encodeURIComponent(id)}/versions/${version}/file?${query}`)) as unknown as { skill: SkillSummary; version: number; path: string; content: string }
+}
+
+export async function restoreSkillVersion(id: string, version: number): Promise<SkillSummary> {
+  const body = await readJson(await fetch(`${apiBase}/api/skills/${encodeURIComponent(id)}/versions/${version}/restore`, { method: 'POST' })) as { skill?: SkillSummary }
+  return body.skill as SkillSummary
 }
 
 export async function uploadSkill(payload: { name: string; files: Array<{ path: string; content: string }>; replace?: boolean; id?: string }): Promise<SkillSummary> {

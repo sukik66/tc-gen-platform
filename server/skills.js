@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 const PROJECT_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DATA_ROOT = path.join(PROJECT_ROOT, 'server', 'data', 'skills')
+const VERSIONS_ROOT = path.join(DATA_ROOT, '.versions')
 const INDEX_FILE = path.join(DATA_ROOT, 'index.json')
 const MAX_FILES = 500
 const MAX_FILE_BYTES = 2 * 1024 * 1024
@@ -37,6 +38,10 @@ function safeName(value) {
   return name.slice(0, 80)
 }
 
+function skillIdentityName(value) {
+  return safeName(value).replace(/[-_ ]v\d+(?:\.\d+)*$/i, '').toLowerCase()
+}
+
 function safeRelativePath(value) {
   const normalized = String(value || '').replace(/\\/g, '/').replace(/^\/+/, '')
   if (!normalized || normalized.includes('\0')) throw new Error('Skill 文件路径不能为空')
@@ -53,11 +58,83 @@ function publicSkill(item) {
     totalBytes: item.totalBytes,
     hasSkillMd: item.hasSkillMd,
     updatedAt: item.updatedAt,
+    currentVersion: Number(item.currentVersion) || 1,
   }
 }
 
+function versionRoot(skillId, version) {
+  return path.join(VERSIONS_ROOT, String(skillId), `v${version}`)
+}
+
+function copyDirectory(source, target) {
+  fs.rmSync(target, { recursive: true, force: true })
+  fs.mkdirSync(path.dirname(target), { recursive: true })
+  fs.cpSync(source, target, { recursive: true })
+}
+
+function copySnapshot(source, target) {
+  const temp = path.join(DATA_ROOT, `.tmp-snapshot-${process.pid}-${Math.random().toString(36).slice(2, 8)}`)
+  fs.rmSync(temp, { recursive: true, force: true })
+  fs.cpSync(source, temp, {
+    recursive: true,
+  })
+  fs.rmSync(target, { recursive: true, force: true })
+  fs.mkdirSync(path.dirname(target), { recursive: true })
+  fs.renameSync(temp, target)
+}
+
+function ensureVersionSnapshot(item) {
+  const currentVersion = Number(item.currentVersion) || 1
+  const snapshot = versionRoot(item.id, currentVersion)
+  if (fs.existsSync(snapshot)) return currentVersion
+  const currentRoot = path.join(DATA_ROOT, item.id)
+  if (!fs.existsSync(currentRoot)) return currentVersion
+  copySnapshot(currentRoot, snapshot)
+  return currentVersion
+}
+
+function migrateLegacyVersion(item, items) {
+  const currentVersion = Number(item.currentVersion) || 1
+  const changed = !Number.isInteger(Number(item.currentVersion)) || !item.versionCreatedAt?.['1']
+  ensureVersionSnapshot(item)
+  if (!changed) return false
+  item.currentVersion = currentVersion
+  item.versionCreatedAt = {
+    ...(item.versionCreatedAt || {}),
+    '1': item.versionCreatedAt?.['1'] || item.updatedAt,
+  }
+  const index = items.findIndex((entry) => entry.id === item.id)
+  if (index >= 0) items[index] = item
+  return true
+}
+
+function readVersionFiles(item, version) {
+  const currentVersion = Number(item.currentVersion) || 1
+  const requested = Number(version)
+  if (!Number.isInteger(requested) || requested < 1 || requested > currentVersion) return null
+  ensureVersionSnapshot(item)
+  const root = versionRoot(item.id, requested)
+  if (!fs.existsSync(root)) return null
+  const files = []
+  const walk = (dir, prefix = '') => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const relative = prefix ? `${prefix}/${entry.name}` : entry.name
+      const absolute = path.join(dir, entry.name)
+      if (entry.isDirectory()) walk(absolute, relative)
+      else if (entry.isFile()) files.push({ path: relative, bytes: fs.statSync(absolute).size })
+    }
+  }
+  walk(root)
+  files.sort((a, b) => a.path.localeCompare(b.path))
+  return { version: requested, createdAt: item.versionCreatedAt?.[String(requested)] || item.updatedAt, files, totalBytes: files.reduce((sum, file) => sum + file.bytes, 0) }
+}
+
 export function listSkills() {
-  return readIndex().map(publicSkill).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)))
+  const items = readIndex()
+  let changed = false
+  for (const item of items) changed = migrateLegacyVersion(item, items) || changed
+  if (changed) writeIndex(items)
+  return items.map(publicSkill).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)))
 }
 
 export function getSkill(id) {
@@ -72,6 +149,28 @@ export function getSkillDetail(id) {
     ...publicSkill(item),
     files: (item.files || []).map((file) => ({ path: file.path, bytes: file.bytes })),
   }
+}
+
+export function listSkillVersions(id) {
+  const items = readIndex()
+  const item = items.find((entry) => entry.id === String(id))
+  if (!item) return null
+  const changed = migrateLegacyVersion(item, items)
+  if (changed) writeIndex(items)
+  ensureVersionSnapshot(item)
+  const currentVersion = Number(item.currentVersion) || 1
+  return Array.from({ length: currentVersion }, (_, index) => currentVersion - index)
+    .map((version) => readVersionFiles(item, version))
+    .filter(Boolean)
+    .map((version) => ({ ...version, current: version.version === currentVersion }))
+}
+
+export function getSkillVersion(id, version) {
+  const item = readIndex().find((entry) => entry.id === String(id))
+  if (!item) return null
+  const summary = readVersionFiles(item, version)
+  if (!summary) return null
+  return { skill: publicSkill(item), ...summary }
 }
 
 export function readSkillFile(id, relativePath) {
@@ -90,6 +189,19 @@ export function readSkillFile(id, relativePath) {
   }
 }
 
+export function readSkillVersionFile(id, version, relativePath) {
+  const item = readIndex().find((entry) => entry.id === String(id))
+  if (!item) return null
+  const summary = readVersionFiles(item, version)
+  if (!summary) return null
+  const normalized = safeRelativePath(relativePath)
+  if (!summary.files.some((file) => file.path === normalized)) return null
+  const root = path.resolve(versionRoot(item.id, summary.version))
+  const absolute = path.resolve(root, ...normalized.split('/'))
+  if (absolute !== root && !absolute.startsWith(`${root}${path.sep}`)) throw new Error('Skill 文件路径不合法')
+  return { skill: publicSkill(item), version: summary.version, path: normalized, content: fs.readFileSync(absolute, 'utf8') }
+}
+
 export function deleteSkill(id) {
   const items = readIndex()
   const index = items.findIndex((entry) => entry.id === String(id))
@@ -97,6 +209,7 @@ export function deleteSkill(id) {
   const [removed] = items.splice(index, 1)
   const dir = path.join(DATA_ROOT, removed.id)
   fs.rmSync(dir, { recursive: true, force: true })
+  fs.rmSync(path.join(VERSIONS_ROOT, removed.id), { recursive: true, force: true })
   writeIndex(items)
   return true
 }
@@ -120,7 +233,8 @@ export function saveSkill({ id, name, files, replace = false } = {}) {
   if (totalBytes > MAX_TOTAL_BYTES) throw new Error('Skill 总大小不能超过 20MB')
 
   const items = readIndex()
-  const existingIndex = items.findIndex((entry) => entry.id === String(id) || entry.name.toLowerCase() === cleanName.toLowerCase())
+  const cleanIdentity = skillIdentityName(cleanName)
+  const existingIndex = items.findIndex((entry) => entry.id === String(id) || entry.name.toLowerCase() === cleanName.toLowerCase() || skillIdentityName(entry.name) === cleanIdentity)
   if (existingIndex >= 0 && !replace) {
     const error = new Error('Skill 名称已存在')
     error.code = 'SKILL_EXISTS'
@@ -132,6 +246,10 @@ export function saveSkill({ id, name, files, replace = false } = {}) {
   const skillId = existing?.id || `skill-${crypto.randomUUID().slice(0, 8)}`
   const targetDir = path.join(DATA_ROOT, skillId)
   const tempDir = path.join(DATA_ROOT, `.tmp-${skillId}-${process.pid}`)
+  if (existing) {
+    // The old layout predates versions; preserve it as v1 before replacing the live files.
+    ensureVersionSnapshot({ ...existing, id: skillId })
+  }
   fs.rmSync(tempDir, { recursive: true, force: true })
   fs.mkdirSync(tempDir, { recursive: true })
   for (const file of normalizedFiles) {
@@ -142,6 +260,9 @@ export function saveSkill({ id, name, files, replace = false } = {}) {
   fs.rmSync(targetDir, { recursive: true, force: true })
   fs.renameSync(tempDir, targetDir)
 
+  const nextVersion = existing ? (Number(existing.currentVersion) || 1) + 1 : 1
+  copySnapshot(targetDir, versionRoot(skillId, nextVersion))
+
   const metadata = {
     id: skillId,
     name: cleanName,
@@ -149,10 +270,48 @@ export function saveSkill({ id, name, files, replace = false } = {}) {
     totalBytes,
     hasSkillMd: normalizedFiles.some((file) => path.basename(file.path).toLowerCase() === 'skill.md'),
     updatedAt: new Date().toISOString(),
+    currentVersion: nextVersion,
+    versionCreatedAt: {
+      ...(existing?.versionCreatedAt || {}),
+      [String(nextVersion)]: new Date().toISOString(),
+    },
     files: normalizedFiles.map(({ path: filePath, bytes }) => ({ path: filePath, bytes })),
   }
   if (existingIndex >= 0) items[existingIndex] = metadata
   else items.push(metadata)
+  writeIndex(items)
+  return publicSkill(metadata)
+}
+
+export function restoreSkillVersion(id, version) {
+  const items = readIndex()
+  const index = items.findIndex((entry) => entry.id === String(id))
+  if (index < 0) return null
+  const item = items[index]
+  const sourceSummary = readVersionFiles(item, version)
+  if (!sourceSummary) return null
+  const sourceRoot = versionRoot(item.id, sourceSummary.version)
+  const currentRoot = path.join(DATA_ROOT, item.id)
+  const tempDir = path.join(DATA_ROOT, `.tmp-restore-${item.id}-${process.pid}`)
+  copyDirectory(sourceRoot, tempDir)
+  const nextVersion = (Number(item.currentVersion) || 1) + 1
+  fs.rmSync(currentRoot, { recursive: true, force: true })
+  fs.renameSync(tempDir, currentRoot)
+  copySnapshot(currentRoot, versionRoot(item.id, nextVersion))
+  const metadata = {
+    ...item,
+    fileCount: sourceSummary.files.length,
+    totalBytes: sourceSummary.totalBytes,
+    hasSkillMd: sourceSummary.files.some((file) => path.basename(file.path).toLowerCase() === 'skill.md'),
+    updatedAt: new Date().toISOString(),
+    currentVersion: nextVersion,
+    versionCreatedAt: {
+      ...(item.versionCreatedAt || {}),
+      [String(nextVersion)]: new Date().toISOString(),
+    },
+    files: sourceSummary.files,
+  }
+  items[index] = metadata
   writeIndex(items)
   return publicSkill(metadata)
 }

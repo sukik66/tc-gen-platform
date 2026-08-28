@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ElementType, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { fetchSkillDetail, fetchSkillFile, type SkillDetail, type SkillFileSummary } from '../api/skills'
+import { fetchSkillDetail, fetchSkillFile, fetchSkillVersionFile, fetchSkillVersions, restoreSkillVersion, type SkillDetail, type SkillFileSummary, type SkillVersionSummary } from '../api/skills'
 
 type TreeNode = { folders: Record<string, TreeNode>; files: SkillFileSummary[] }
 
@@ -73,6 +73,11 @@ export function SkillDetailPage() {
   const [activePane, setActivePane] = useState<'source' | 'preview'>('preview')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
+  const [versions, setVersions] = useState<SkillVersionSummary[]>([])
+  const [versionPanelOpen, setVersionPanelOpen] = useState(false)
+  const [viewVersion, setViewVersion] = useState<number | null>(null)
+  const [versionBusy, setVersionBusy] = useState(false)
+  const [notice, setNotice] = useState('')
 
   useEffect(() => {
     let cancelled = false
@@ -87,15 +92,45 @@ export function SkillDetailPage() {
   }, [id])
 
   useEffect(() => {
+    if (!id) return
+    fetchSkillVersions(id).then(setVersions).catch(() => setVersions([]))
+  }, [id, detail?.currentVersion])
+
+  // Re-read the selected file when restoring creates a new current version,
+  // even if the selected path and view mode remain unchanged.
+  useEffect(() => {
     if (!id || !selectedPath) return
     let cancelled = false
     setContent('')
-    fetchSkillFile(id, selectedPath).then((file) => { if (!cancelled) setContent(file.content) }).catch((e) => { if (!cancelled) setError(e instanceof Error ? e.message : '无法读取文件') })
+    const request = viewVersion == null ? fetchSkillFile(id, selectedPath) : fetchSkillVersionFile(id, viewVersion, selectedPath)
+    request.then((file) => { if (!cancelled) setContent(file.content) }).catch((e) => { if (!cancelled) setError(e instanceof Error ? e.message : '无法读取文件') })
     return () => { cancelled = true }
-  }, [id, selectedPath])
+  }, [id, selectedPath, viewVersion, detail?.currentVersion])
+
+  const restoreVersion = async (version: number) => {
+    if (!window.confirm(`确定恢复到 v${version} 吗？恢复后会生成一个新的当前版本。`)) return
+    setVersionBusy(true)
+    setError('')
+    try {
+      const next = await restoreSkillVersion(id, version)
+      // Restore returns a summary; reload the detail so the file tree stays complete.
+      const refreshed = await fetchSkillDetail(id)
+      setContent('')
+      setDetail(refreshed)
+      setViewVersion(null)
+      const preferred = refreshed.files.find((file) => file.path.toLowerCase().endsWith('skill.md'))?.path || refreshed.files[0]?.path || ''
+      setSelectedPath((current) => refreshed.files.some((file) => file.path === current) ? current : preferred)
+      setNotice(`已恢复到 v${version}，当前版本为 v${next.currentVersion}`)
+      setVersions(await fetchSkillVersions(id))
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '恢复 Skill 版本失败')
+    } finally {
+      setVersionBusy(false)
+    }
+  }
 
   const tree = useMemo(() => buildTree(detail?.files || []), [detail?.files])
-  const selectedFile = detail?.files.find((file) => file.path === selectedPath)
+  const selectedFile = detail?.files?.find((file) => file.path === selectedPath)
   const sourceLines = useMemo(() => (content ? content.split(/\r?\n/) : ['']), [content])
 
   if (loading) return <div className="min-h-screen bg-[#0f1018] p-8 text-sm text-zinc-400">读取 Skill…</div>
@@ -105,6 +140,11 @@ export function SkillDetailPage() {
     <header className="border-b border-white/10 bg-[#151621]">
       <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-3 lg:px-6"><div className="flex min-w-0 items-center gap-3"><Link to="/skills" className="rounded-lg border border-white/15 px-2.5 py-1.5 text-xs text-zinc-400 transition hover:border-violet-400/50 hover:text-violet-200">← Skill 管理</Link><span className="h-7 w-px bg-white/10" /><div className="min-w-0"><div className="flex items-center gap-2"><h1 className="truncate text-base font-semibold text-white">{detail.name}</h1><span className="rounded bg-teal-400/10 px-1.5 py-0.5 text-[10px] text-teal-200">{detail.hasSkillMd ? 'SKILL.md' : 'Skill'}</span></div><p className="mt-0.5 truncate text-[11px] text-zinc-500">{detail.fileCount} 个文件 · {new Date(detail.updatedAt).toLocaleString()}</p></div></div><Link to="/generation" className="rounded-lg bg-violet-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-violet-400">去生成</Link></div>
     </header>
+    <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-3 border-b border-white/10 bg-[#11121b] px-4 py-2 lg:px-6">
+      <div className="flex items-center gap-2 text-xs text-zinc-400"><span>{viewVersion == null ? '当前版本' : '查看历史版本'}</span><span className="rounded bg-violet-400/15 px-1.5 py-0.5 text-violet-200">v{viewVersion ?? detail.currentVersion}</span>{notice && <span className="text-emerald-300">{notice}</span>}</div>
+      <div className="flex gap-2">{viewVersion != null && <button type="button" onClick={() => setViewVersion(null)} className="rounded-lg border border-white/15 px-3 py-1.5 text-xs text-zinc-300 hover:border-violet-400/50 hover:text-violet-200">返回当前</button>}<button type="button" onClick={() => setVersionPanelOpen((open) => !open)} className="rounded-lg border border-white/15 px-3 py-1.5 text-xs text-zinc-300 hover:border-violet-400/50 hover:text-violet-200">{versionPanelOpen ? '关闭历史' : '历史版本'}</button></div>
+    </div>
+    {versionPanelOpen && <div className="mx-auto max-w-[1500px] border-b border-white/10 bg-[#171822] px-4 py-3 lg:px-6"><div className="flex flex-wrap gap-2">{versions.length === 0 ? <span className="text-xs text-zinc-500">暂无历史版本</span> : versions.map((version) => <div key={version.version} className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/15 px-3 py-2 text-xs"><button type="button" onClick={() => { setViewVersion(version.current ? null : version.version); setVersionPanelOpen(false); setSelectedPath(version.files.find((file) => file.path.toLowerCase().endsWith('skill.md'))?.path || version.files[0]?.path || '') }} className={version.current ? 'text-violet-200' : 'text-zinc-300'}>v{version.version}{version.current ? '（当前）' : ''}</button>{!version.current && <button type="button" disabled={versionBusy} onClick={() => void restoreVersion(version.version)} className="rounded border border-amber-400/30 px-2 py-1 text-[10px] text-amber-200 hover:bg-amber-400/10 disabled:opacity-50">恢复</button>}<span className="text-zinc-600">{new Date(version.createdAt).toLocaleString()}</span></div>)}</div></div>}
     {error && <div className="mx-auto max-w-[1500px] px-4 pt-4 lg:px-6"><div className="rounded-lg border border-rose-400/30 bg-rose-400/10 px-3 py-2 text-xs text-rose-200">{error}</div></div>}
     <main className="mx-auto grid max-w-[1500px] gap-3 p-3 lg:h-[calc(100vh-73px)] lg:min-h-0 lg:grid-cols-[250px_minmax(0,1fr)] lg:overflow-hidden lg:p-4">
       <aside className="min-h-0 overflow-hidden rounded-xl border border-white/10 bg-[#171822]"><div className="flex h-11 items-center justify-between border-b border-white/10 px-3"><span className="text-xs font-semibold text-white">Skill 文件</span><span className="text-[10px] text-zinc-500">{detail.fileCount} 个文件</span></div><div className="max-h-[35vh] overflow-y-auto p-2 lg:h-[calc(100%-44px)] lg:max-h-none"> <Tree node={tree} selectedPath={selectedPath} onSelect={(path) => { setSelectedPath(path); setActivePane('preview') }} /></div></aside>

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { deleteSkill, getSkillDetail, listSkills, readSkillContext, readSkillFile, saveSkill } from '../server/skills.js'
+import { deleteSkill, getSkillDetail, getSkillVersion, listSkillVersions, listSkills, readSkillContext, readSkillFile, readSkillVersionFile, restoreSkillVersion, saveSkill } from '../server/skills.js'
 
 test('skills support folder-shaped uploads and prompt context', () => {
   const name = `test-skill-${Date.now()}`
@@ -46,5 +46,37 @@ test('skill list does not expose file contents', () => {
   for (const skill of listSkills()) {
     assert.equal('files' in skill, false)
     assert.equal('content' in skill, false)
+  }
+})
+
+test('skill versions increment and restore creates a new current version', () => {
+  const name = `version-skill-${Date.now()}`
+  const first = saveSkill({ name, files: [{ path: 'SKILL.md', content: 'version one' }] })
+  try {
+    assert.equal(first.currentVersion, 1)
+    const second = saveSkill({ name, id: first.id, replace: true, files: [{ path: 'SKILL.md', content: 'version two' }] })
+    assert.equal(second.currentVersion, 2)
+    assert.deepEqual(listSkillVersions(first.id).map((version) => version.version), [2, 1])
+    assert.match(getSkillVersion(first.id, 1).files.map((file) => file.path).join(','), /SKILL\.md/)
+    const restored = restoreSkillVersion(first.id, 1)
+    assert.equal(restored.currentVersion, 3)
+    assert.match(readSkillFile(first.id, 'SKILL.md').content, /version one/)
+    assert.match(readSkillVersionFile(first.id, 2, 'SKILL.md').content, /version two/)
+    assert.deepEqual(listSkillVersions(first.id).map((version) => version.version), [3, 2, 1])
+  } finally {
+    deleteSkill(first.id)
+  }
+})
+
+test('version-suffixed upload names require explicit replacement of the base skill', () => {
+  const name = `suffix-skill-${Date.now()}`
+  const first = saveSkill({ name, files: [{ path: 'SKILL.md', content: 'base' }] })
+  try {
+    assert.throws(
+      () => saveSkill({ name: `${name}-v7.0`, files: [{ path: 'SKILL.md', content: 'next' }] }),
+      (error) => error.code === 'SKILL_EXISTS' && error.existing.id === first.id,
+    )
+  } finally {
+    deleteSkill(first.id)
   }
 })
